@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+
+import imagen4 from "./concierto.png";
+import {useRef} from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, {Component, useEffect, useState } from "react";
+import Menu from './Menu';
+
+import './miCss.css';
+import { render } from "@testing-library/react";
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <h1>EVENTOS</h1>
+      <img src={imagen4}/>
+      <Menu/>
+
     </div>
-  );
-}
+  );}
+
 
 export default App;

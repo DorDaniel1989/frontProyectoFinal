@@ -1,0 +1,21 @@
+.fondo{
+    background-color:rgb(116, 20, 180);
+    color: aliceblue;
+    font-size: 2em;
+    text-align: center;
+  }
+
+.contenedorMinion{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+}
+.im{
+    width: 30%;
+   
+}
+
+.caja{
+    user-select: none;
+}
