@@ -13,7 +13,7 @@ function Home() {
 
   return (
     <div>
-        <div className="cabecera"> <h1 className="pru">Ander retrasao</h1>   </div>
+        <div className="cabecera"> <h1 className="pru">The dick</h1></div>
     
     <Menu/>
     <Cartas/>
