@@ -10,7 +10,8 @@ function Menu() {
 
   return (
     <header className='navbar'>
-    <div className='navbar__title navbar__item'><Link to='/details'>Detalles</Link></div>
+    <div className='navbar__title navbar__item'><Link to='/'>Home</Link></div>
+    <div className='navbar__item'><Link to='/details'>Detalles</Link></div>
     <div className='navbar__item'><Link to='/register'>Registro</Link></div>
     <div className='navbar__item'><Link to='/profile'>Perfil</Link></div>
     <div className='navbar__item'><Link to='/admin'>Admin</Link></div>        
