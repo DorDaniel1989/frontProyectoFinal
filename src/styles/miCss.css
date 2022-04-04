@@ -1,45 +1,61 @@
 .cabecera {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+  text-align: center;
+  height: 7rem;
+  margin-top: 5rem;
+  
+}
+h1{
+  font-size: 6rem;
 }
 
-.cabecera h1{
-    position: absolute;
+.opcionMenu{
+  width: 15%; 
+  background-color: rgb(40, 72, 101);
+  border: 1px black solid;
+  text-align: center;
+ 
 }
+
 .opcionMenu a{
     text-decoration: none;  
-    font-size: 2em;
+    font-size: 1.5em;
+    color: white;
+    
 }
 .opcionMenu:hover{
    
     background-color: blueviolet;
 }
-.navbar{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
 
-.opcionMenu{
-    width: 15%; 
-    background-color: aliceblue;
-    border: 1px black solid;
+
+
+/* NAVBAR*/
+
+.navbar {
+  display: flex;
+  align-items: center;
+  
+  background: rebeccapurple;
+  color: white;
+  font-family: Helvetica;
+  font-weight: 300;
 }
-  
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #3c3c44;
-    font-family: "Open Sans", sans-serif;
-  }
-  
-  .card {
+
+.navbar__title {
+  margin-right: auto;
+  font-size: 150%;
+  padding: 12px 16px;
+}
+
+.navbar__item {
+  padding: 16px 16px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+
+ /* fin NAVBAR*/
+  .cardP {
     width: 40rem;
     display: flex;
     align-items: center;
