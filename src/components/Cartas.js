@@ -26,7 +26,7 @@ function Cartas(){
                 cards.map(item => (
                    <div className="row">
                         <div className="col-6" key={item.eventoId}>
-                            <Carta title={item.evento} descripcion={item.descripcion}/>
+                            <Carta titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen}/>
                         </div>
                     </div>
                 ))
