@@ -16,6 +16,8 @@ export default function Tabs(props) {
             <li><a href={'#create'+ props.tab}>Añadir {props.tab}</a></li>
             <li><a href={'#create'+ props.tab}>Modificar {props.tab}</a></li>
             <li><a href={'#create'+ props.tab}>Eliminar {props.tab}</a></li>
+
         </ul>
     );
+    
   }
