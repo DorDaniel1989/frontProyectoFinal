@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import Carta from "./Carta";
+import '../styles/cartas.css';
 
 
 
@@ -7,6 +8,7 @@ import Carta from "./Carta";
 function Cartas(){
 
  const [cards , setCards] = useState([])
+ 
 
  useEffect(()=>{
      obtenerDatos()
@@ -20,16 +22,17 @@ function Cartas(){
  }
 
     return (
-     <div className="container">
+     <div className="container-cartas">
        
             {
                 cards.map(item => (
-                   <div className="row">
-                        <div className="col-6" key={item.eventoId}>
-                            <Carta titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen}/>
+                   
+                        <div className="col-4" key={item.eventoId}>
+                            <Carta titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId}/>
                         </div>
-                    </div>
+                        
                 ))
+
             }
 
 
