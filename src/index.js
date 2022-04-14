@@ -9,6 +9,7 @@ import Profile from './views/Profile';
 import Register from './views/Register';
 import Details from './views/Details';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useParams } from 'react-router';
 
 import {
   BrowserRouter as Router,
@@ -23,9 +24,7 @@ ReactDOM.render(
      <Route exact path="/admin" element={<Admin/>}/>
      <Route exact path="/profile" element={<Profile/>}/>
      <Route exact path="/register" element={<Register/>}/>
-     <Route exact path="/details" element={<Details/>}/>
-   
-     
+     <Route exact path="/details/:Id" element={<Details/>}/>
  </Routes>
 </Router>,
   document.getElementById('root')

@@ -1,7 +1,4 @@
-
-
 import {useRef} from "react";
-
 import React, {Component, useEffect, useState } from "react";
 import Menu from '../components/Menu';
 import Cartas from "../components/Cartas";
