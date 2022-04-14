@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
+import "jquery-ui-dist/jquery-ui";
 import './index.css';
 import Home from './views/Home';
 import Admin from './views/Admin';
