@@ -13,11 +13,11 @@ export default function Tabs(props) {
  
     return (
         <ul>
-            <li><a href={'#create'+ props.tab}>Añadir {props.tab}</a></li>
-            <li><a href={'#create'+ props.tab}>Modificar {props.tab}</a></li>
-            <li><a href={'#create'+ props.tab}>Eliminar {props.tab}</a></li>
+            <li><a href={'#create'+ props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>Añadir {props.tab}</a></li>
+            <li><a href={'#create'+ props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>Modificar {props.tab}</a></li>
+            <li><a href={'#create'+ props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>Eliminar {props.tab}</a></li>
 
         </ul>
     );
-    
+
   }

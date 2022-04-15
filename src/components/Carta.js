@@ -24,9 +24,7 @@ export default function Carta(props) {
   
 
  const ruta = "/details/"+props.eventoId;
- console.log(ruta)
-
-
+ 
   return (
     <Card sx={{ maxWidth: 300, maxHeight: 450 ,minHeight:450, marginTop :2}}>
       <CardHeader
