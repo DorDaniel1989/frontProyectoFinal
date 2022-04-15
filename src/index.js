@@ -4,6 +4,7 @@ import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
 import './index.css';
 import Home from './views/Home';
+import Login from './views/Login';
 import Admin from './views/Admin';
 import Profile from './views/Profile';
 import Register from './views/Register';
@@ -21,6 +22,7 @@ ReactDOM.render(
   <Router>
   <Routes>
      <Route exact path="/" element={<Home/>}/>
+     <Route exact path="/login" element={<Login/>}/>
      <Route exact path="/admin" element={<Admin/>}/>
      <Route exact path="/profile" element={<Profile/>}/>
      <Route exact path="/register" element={<Register/>}/>
