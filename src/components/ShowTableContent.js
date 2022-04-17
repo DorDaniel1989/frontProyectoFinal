@@ -27,19 +27,13 @@ export default function ShowTableContent(props) {
     var whichTabla = tabs.findIndex(t => {return t.name === props.tab;});
 
     useEffect(()=>{
-        obtenerDatos();
+        
         $( '.imgCopy' ).tooltip();
         
     } ,[])
 
 
-    const obtenerDatos = async() =>{
-        
-        const data =  await fetch(`http://localhost:5000/api/${endPointName[whichTabla]}`);
-        const tabla = await data.json()
-        props.setTablaData(tabla)
-        
-      }
+
 
       
     // función que copia en el portapapeles una imagen

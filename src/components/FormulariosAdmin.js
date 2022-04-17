@@ -1,10 +1,9 @@
 import React,{useState, useEffect} from "react";
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
-import Tabs from "./Tabs";
 import ShowTableContent from "./ShowTableContent";
+import FormData from "./FormData";
 import DeleteField from "./DeleteField";
-import { tab } from "@testing-library/user-event/dist/tab";
 
 
 
@@ -67,11 +66,24 @@ useEffect(()=>{
      <>
         {
             tabs.map(tabla => (
-                    
-                <div className="d-none formsAPI" id={'delete'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
-                    <ShowTableContent tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
-                    <DeleteField tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
-                </div>
+                <>
+                    <div className="d-none formsAPI" id={'show'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
+                        <ShowTableContent tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
+                    </div>  
+
+                    <div className="d-none formsAPI" id={'create'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
+                        <FormData tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
+                    </div>
+
+                    <div className="d-none formsAPI" id={'modify'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
+                        <p>a</p>
+                        
+                    </div>
+
+                    <div className="d-none formsAPI" id={'delete'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
+                        <DeleteField tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
+                    </div>
+                </>
     
             ))
         }
