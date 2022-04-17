@@ -2,14 +2,15 @@ import React,{useState, useEffect} from "react";
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
 import Tabs from "./Tabs";
-import parseHTML from 'html-react-parser'
+import "datatables.net-dt/js/dataTables.dataTables"
+import "datatables.net-dt/css/jquery.dataTables.min.css"
 
 
 export default function ShowTableContent(props) {
-
-    const [tablaData , getRegistros] = useState([])
  
     const tabs =  [{name:'Usuarios'}, {name: 'Inscripciones'} , {name: 'Eventos'}, {name: 'Comentarios'}, {name: 'Categorías'}, {name: 'Localizaciones'}];
+
+    
 
     const endPointName = [
         ['Usuario'],
@@ -20,94 +21,125 @@ export default function ShowTableContent(props) {
         ['Localizacion']
     ];
 
-    const fields = 
-                [
-                    ['usuarioId', 'username', 'password', 'email', 'administrator', 'nombre', 'apellido', 'direccion', 'telefono', 'imagen'],
-                    ['inscripcionId', 'usuarioId', 'eventoId', 'valoracion'], 
-                    ['eventoId', 'evento', 'imagen', 'fecha_inic', 'fecha_fin', 'hora_inic', 'hora_fin', 'localizacionId', 'descripcion', 'aforo_max', 'popularidad', 'precio', 'categoriaId'], 
-                    ['comentarioId', 'comentario_text', 'eventoId', 'categoriaId', 'usuarioId', 'fecha_comentario'], 
-                    ['categoriaId', 'categoria', 'descripcion_categoria'], 
-                    ['localizacionId', 'localizacion', 'latitud', 'longitud']
-                ];
+    const firstData = props.tablaData.slice(0, 1);
+    
 
     var whichTabla = tabs.findIndex(t => {return t.name === props.tab;});
 
     useEffect(()=>{
         obtenerDatos();
-        $('.imgCopy').tooltip();
+        $( '.imgCopy' ).tooltip();
+        
     } ,[])
-   
+
 
     const obtenerDatos = async() =>{
+        
         const data =  await fetch(`http://localhost:5000/api/${endPointName[whichTabla]}`);
         const tabla = await data.json()
-        getRegistros(tabla)
+        props.setTablaData(tabla)
         
       }
 
-    function copyImage(elemento) {
-        navigator.clipboard.writeText(elemento).then(
-            function() {
-              /* clipboard successfully set */
-              window.alert('Success! The text was copied to your clipboard') 
-            }, 
-            function() {
-              /* clipboard write failed */
-              window.alert('Opps! Your browser does not support the Clipboard API')
-            }
-        )
-    }
-     
+      
+    // función que copia en el portapapeles una imagen
 
-    function dataCollector(arrayDoObjetos) {
-        var res = "";
-        tablaData.map(tupla => {
+    function copyImage(imagen) {
+        
+       //navigator.clipboard.write(imagen.value);
 
-            res += "<tr>";
-            
-            for (var [key, value] of Object.entries(tupla)){
+        // recogemos el DOM de la imagen (la etiqueta HTML)
 
-                res += "<td>";
+        var range = document.createRange();  
 
-                if(key == 'imagen'){
-                    res += `<img title="click para copiar en portapapeles" class="imgCopy" src="${value}" alt="${endPointName[whichTabla]}Imagen" width="50" height="50" onClick={copyImage(${value})}>`;
-                }else{
-                    res += value;
-                }
+        // recogemos la imagen como objeto
 
-                res += "</td>";
-            }
+        range.selectNode(imagen.target);  
 
-            res += "</tr>";
-        }
-            
-        )
-        return res;
+        // la guardamos
+
+        window.getSelection().addRange(range);  
+
+       try {  
+
+        // tras copiar la imagen se ejecuta el comando de copiar en el portapapeles
+
+        var successful = document.execCommand('copy');  
+        var msg = successful ? 'successful' : 'unsuccessful';  
+        console.log('Copy image command was ' + msg);  
+
+      } catch(err) {  
+
+        console.log('Oops, unable to copy');  
+      }  
+
+      window.getSelection().removeAllRanges(); 
+
     }
 
       return (
-        <table className="tDatosbbdd">
-            <tr>
-            {
-                
-                fields[whichTabla].map(campos => (
-                    
-                    <>
-                        <th>
-                            {campos}
-                        </th>
-                    </>
-    
-                ))
-                }
-            </tr>
+        
+        <table className="tDatosbbdd display" onLoad={() =>{$( '.tDatosbbdd' ).DataTable();}}>
+            <thead>
+                <tr>
+                    {
+
+                        <>
+                        {
+                            firstData.map((tupla) => (
+                                Object.entries(tupla).map(([key, value]) => (
+                                    <th>
+                                        {key}
+                                    </th>
+                                    
+                                ))
+                            ))
+                        }
+                            
+                        </>
+
+                    }
+                </tr>
+            </thead>
+
+            <tbody>
 
             {
-                parseHTML(dataCollector(tablaData))
+                props.tablaData.map((tupla) => (
+                    <tr>
+                        {
+                            Object.entries(tupla).map(([key, value]) => (
+                                key === 'imagen' ? (<td><img title="click para copiar en portapapeles" className="imgCopy" src={value} alt="Imagen" width="50" height="50" onClick={(event) => {copyImage(event)}}/></td>) : (<td>{value}</td>)
+                            
+                            ))
+                        }
+                    
+                    </tr>
+                ))
+    
             }
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    {
+
+                        firstData.map((tupla) => (
+                            Object.entries(tupla).map(([key, value]) => (
+                                <>
+                                    <th>
+                                        {key}
+                                    </th>
+                                </>
+                            ))
+                        ))
+                        
+                    }
+                </tr>
+            </tfoot>
             
         </table>
+        
     );
 
-    
    }
