@@ -42,10 +42,10 @@ function TextArea(props) {
         }
     }
 
-    function PostComentario(){
+    const PostComentario = async() =>{
        var data = crearPostBody()
-       console.log(data)
-        axios.post('http://localhost:5000/api/Comentario',  data)
+       
+        await axios.post('http://localhost:5000/api/Comentario',  data)
         window.location.reload();
      
     }
