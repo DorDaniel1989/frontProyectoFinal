@@ -19,10 +19,10 @@ function TextArea(props) {
         var day = dateObj.getUTCDate();
         var year = dateObj.getUTCFullYear();
        
-        if(month<10){
+        if(month < 10){
           month="0"+ month
         }
-        if(day<10){
+        if(day < 10){
           day="0"+ day
         }
 
@@ -35,7 +35,7 @@ function TextArea(props) {
             "comentario_text" : capturarComentario(),
             "eventoId": props.eventoId,
             "categoriaId" : props.categoriaId,
-            "usuarioId": "cookies.get('user').usuarioId",
+            "usuarioId": props.usuarioId,
             "fecha_comentario" : obtenerFecha(),
            
 
@@ -59,7 +59,7 @@ function TextArea(props) {
           <textarea className="form-control" id="textarea" rows="3"></textarea>
         </div>
        
-        <a><button onClick={PostComentario} type="button" className="btn btn-primary" >Añadir comentario</button></a>
+        <a><button onClick={PostComentario} type="button" className={"btn btn-primary "+props.display} >Añadir comentario</button></a>
 
       </form>
       

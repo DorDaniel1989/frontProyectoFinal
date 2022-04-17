@@ -7,7 +7,7 @@ function Cartas(){
 
  const [cards , setCards] = useState([])
  
-
+ 
  useEffect(()=>{
      obtenerDatos()
  } ,[])
