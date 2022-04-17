@@ -47,7 +47,7 @@ function FormularioLogin() {
                     console.log(respuesta)
                     localStorage.setItem('user', JSON.stringify(respuesta));
                     console.log("Bienvenid@ ",  JSON.parse(localStorage.getItem('user')).nombre)
-                    console.log("Este es el token del usuario guardado en cookies =>", cookies.get('user').token)
+                    //console.log("Este es el token del usuario guardado en cookies =>", cookies.get('user').token)
                     window.location.reload();
                 } else {
                     console.log(response)
