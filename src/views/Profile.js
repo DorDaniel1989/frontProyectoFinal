@@ -6,6 +6,7 @@ import CuerpoPerfil from "../components/CuerpoPerfil"
 import '../styles/admin.sass';
 import { render } from "@testing-library/react";
 
+
 function Admin() {
 
   return (
@@ -15,6 +16,7 @@ function Admin() {
     <Menu/>
     <h1>HELLO PROFILE</h1>
     <CuerpoPerfil/>
+    
     </div>
   );}
 

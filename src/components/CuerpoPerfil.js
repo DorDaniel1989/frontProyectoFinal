@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import InscripcionesUsuario from "../components/InscripcionesUsuario";
 
 function CuerpoPerfil(){
 
@@ -29,6 +30,8 @@ function CuerpoPerfil(){
     <h2>Apellido : {user.apellido}</h2>
     <h2>Direccion : {user.direccion}</h2>
     <h2>Telefono : {user.telefono}</h2>
+
+    <InscripcionesUsuario/>
     </>
     )
 }

@@ -22,7 +22,6 @@ ReactDOM.render(
   <Router>
   <Routes>
      <Route exact path="/" element={<Home/>}/>
-     <Route exact path="/login" element={<Login/>}/>
      <Route exact path="/admin" element={<Admin/>}/>
      <Route exact path="/profile/:Id" element={<Profile/>}/>
      <Route exact path="/register" element={<Register/>}/>
