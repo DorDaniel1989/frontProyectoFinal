@@ -39,6 +39,7 @@ export default function ShowTableContent(props) {
    
 
     const obtenerDatos = async() =>{
+        
         const data =  await fetch(`http://localhost:5000/api/${endPointName[whichTabla]}`);
         const tabla = await data.json()
         getRegistros(tabla)
@@ -70,7 +71,7 @@ export default function ShowTableContent(props) {
                 res += "<td>";
 
                 if(key == 'imagen'){
-                    res += `<img title="click para copiar en portapapeles" class="imgCopy" src="${value}" alt="${endPointName[whichTabla]}Imagen" width="50" height="50" onClick={copyImage(${value})}>`;
+                    res += `<img title="click para copiar en portapapeles" className="imgCopy" src="${value}" alt="${endPointName[whichTabla]}Imagen" width="50" height="50" onClick={copyImage(${value})}>`;
                 }else{
                     res += value;
                 }

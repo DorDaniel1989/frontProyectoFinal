@@ -3,8 +3,6 @@ import Carta from "./Carta";
 import '../styles/cartas.css';
 
 
-
-
 function Cartas(){
 
  const [cards , setCards] = useState([])
@@ -21,6 +19,7 @@ function Cartas(){
    
  }
 
+
     return (
      <div className="container-cartas">
        
@@ -28,7 +27,7 @@ function Cartas(){
                 cards.map(item => (
                    
                         <div className="col-4" key={item.eventoId}>
-                            <Carta titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId}/>
+                            <Carta titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic}/>
                         </div>
                         
                 ))
