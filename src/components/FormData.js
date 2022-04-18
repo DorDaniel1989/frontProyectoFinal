@@ -6,7 +6,21 @@ import axios from 'axios';
 
 
 export default function FormData(props) {
- 
+
+    const [formData, setForm] = useState([
+        //añadiremos dinámicamente los inputfields
+    ])
+
+    const controlarCambio = e =>{
+        const {name,value} = e.target;
+        setForm({
+            ...formData,
+            [name]: value
+        })
+        console.log(formData);
+      }
+
+
     const tabs =  [{name:'Usuarios'}, {name: 'Inscripciones'} , {name: 'Eventos'}, {name: 'Comentarios'}, {name: 'Categorías'}, {name: 'Localizaciones'}];
 
     
@@ -97,12 +111,6 @@ export default function FormData(props) {
 
     var whichTabla = tabs.findIndex(t => {return t.name === props.tab;});
 
-    useEffect(()=>{
-        obtenerDatos();
-        
-    } ,[])
-
-
     const obtenerDatos = async() =>{
         
         const data =  await fetch(`http://localhost:5000/api/${endPointName[whichTabla]}`);
@@ -110,6 +118,29 @@ export default function FormData(props) {
         props.setTablaData(tabla)
         
       }
+
+    function crearPostBody(){
+
+        return formData
+    }
+
+    const anyadirRegistro = async() =>{
+
+        var data = crearPostBody()
+        
+        await axios.post(`http://localhost:5000/api/${endPointName[whichTabla]}`, data)
+               .catch(function (error) {
+                   alert('El registro no se puedo añadir!!!')                
+               }).then(response =>{
+                    return response.data;
+                }).then(response=>{
+                       alert('Registro añadido satisfactoriamente')
+
+                })  
+            
+  
+        obtenerDatos();
+    }
 
       //console.log(fieldType[whichTabla][0])
 
@@ -121,7 +152,7 @@ export default function FormData(props) {
                     Object.entries(campo).map(([key, value]) => (
                     <>
                         <label for={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>{key}:</label><br/>
-                        <input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} name={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}></input><br/>
+                        <input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} name={key} onChange={controlarCambio}></input><br/>
                     </>
                         
                     ))
@@ -130,7 +161,7 @@ export default function FormData(props) {
                 
             }
             <div className="row">
-                <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => console.log('uwu')} className="btn" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
+                <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => anyadirRegistro()} className="btn" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
             </div>
             </form>
         </>
