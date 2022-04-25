@@ -7,12 +7,45 @@ import axios from 'axios';
 
 export default function FormData(props) {
 
+
+    function getBase64(file) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          console.log(reader.result);
+        };
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+        };
+    }
+
+	function Uploaded() {
+        
+		var file = document.querySelector(`#imagen${props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}`)['files'][0];
+
+        var base64str;
+
+        base64str = getBase64(file);
+
+        return base64str;
+
+       
+        
+	}
+
     const [formData, setForm] = useState([
         //añadiremos dinámicamente los inputfields
     ])
 
     const controlarCambio = e =>{
-        const {name,value} = e.target;
+        var {name,value} = e.target;
+  
+    if([name] == 'administrator'){
+		value = e.target.checked; 
+	}
+	if([name] == 'imagen'){
+		value = Uploaded(); 
+	}
         setForm({
             ...formData,
             [name]: value
@@ -54,7 +87,7 @@ export default function FormData(props) {
             apellido: "text",
             direccion: "text",
             telefono: "tel",
-            imagen: "image"
+            imagen: "file"
           }],
         [
             {
@@ -65,7 +98,7 @@ export default function FormData(props) {
         [
             {
             evento: "text",
-            imagen: "image",
+            imagen: "file",
             fecha_inic: "date",
             fecha_fin: "date",
             hora_inic: "time",
@@ -127,6 +160,19 @@ export default function FormData(props) {
     const anyadirRegistro = async() =>{
 
         var data = crearPostBody()
+        console.log("Antes: ");
+        console.log(data);
+
+        Object.entries(data).map(([key, value]) => {
+
+
+	        if(key === 'imagen'){
+	            //https://www.geeksforgeeks.org/how-to-convert-image-into-base64-string-using-javascript/
+	        }
+
+        })
+        console.log("Ahora: ");
+        console.log(data);
         
         await axios.post(`http://localhost:5000/api/${endPointName[whichTabla]}`, data)
                .catch(function (error) {
