@@ -15,8 +15,8 @@ function Home() {
    <Cabecera/>
    <Menu/>
    <Cartas/>
-    
-    </>
+   </>
+   
   );}
 
 

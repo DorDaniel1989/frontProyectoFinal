@@ -3,7 +3,7 @@
 	border-radius: 20px;
 	box-shadow: 0 5px 5px rgba(0,0,0,.4);
 	margin: 5em auto;
-	display: flex;
+	display: none;
 }
 .company__info{
 	background-color: #008080;
@@ -73,4 +73,19 @@ form{
 .btn:hover, .btn:focus{
 	background-color: #008080;
 	color:#fff;
+}
+
+#login{
+	display: none;
+	
+}
+
+#contenedorLogin{
+
+	position: absolute;
+    display: flex;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 255, 255, 0);
+
 }

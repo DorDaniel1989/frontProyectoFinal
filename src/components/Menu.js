@@ -3,11 +3,18 @@
 import {Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import FormularioLogin from '../components/FormularioLogin';
+import $ from 'jquery';
+import "jquery-ui-dist/jquery-ui";
 import '../styles/miCss.css';
 
 function Menu() {
 
   const ruta = "/profile/";
+
+function displayLoginForm(){
+  $("#login").css("display","flex")
+  $("#contenedorLogin").css("background-color", "rgba(0, 255, 255, 0.5)")
+}
 
   function logout(){
 
@@ -16,13 +23,19 @@ function Menu() {
     
   }
 
+
+
   if(localStorage.getItem('user')==null)
   return (
+    <>
     <header className='navbar'>
     <div className='navbar__title navbar__item'><Link to='/'>Home</Link></div>
     <div className='navbar__item'><Link to='/register'>Registro</Link></div>
-    <FormularioLogin/>
+    <div className='navbar__item'><button className="btn btn-primary" onClick={displayLoginForm}>Login</button></div>
+    
    </header>
+   <FormularioLogin/>
+   </>
   )
   else
   return (

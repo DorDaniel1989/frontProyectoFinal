@@ -1,10 +1,9 @@
 
 import React, { Component, useEffect, useState } from "react";
-
 import '../styles/login.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import md5 from 'md5';
+
 
 
 function FormularioLogin() {
@@ -60,6 +59,7 @@ function FormularioLogin() {
 
     return (
        
+        <div id="contenedorLogin">
             <div className="row main-content bg-success text-center" id="login">
 
                 <div className="col-md-4 text-center company__info">
@@ -95,7 +95,7 @@ function FormularioLogin() {
                     </div>
                 </div>
             </div>
-        
+            </div>
     );
 }
 
