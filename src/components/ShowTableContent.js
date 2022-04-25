@@ -107,7 +107,11 @@ export default function ShowTableContent(props) {
                     <tr>
                         {
                             Object.entries(tupla).map(([key, value]) => (
-                                key === 'imagen' ? (<td><img title="click para copiar en portapapeles" className="imgCopy" src={value} alt="Imagen" width="50" height="50" onClick={(event) => {copyImage(event)}}/></td>) : (<td>{value}</td>)
+                                key === 'imagen' ? 
+                                    value === null ? (<td></td>) : (<td><img title="click para copiar en portapapeles" className="imgCopy" src={value} alt="Imagen" width="50" height="50" onClick={(event) => {copyImage(event)}}/></td>) 
+                                : key === 'administrator' ? 
+                                        value === true ? (<td>True</td>) : (<td>False</td>) 
+                                : (<td>{value}</td>)  
                             
                             ))
                         }

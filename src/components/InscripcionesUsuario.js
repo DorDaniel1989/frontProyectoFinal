@@ -26,7 +26,7 @@ function InscripcionesUsuario() {
 
     async function  EliminarInscripcion(Id){
 
-        const response = await axios.delete(` https://localhost:5001/api/Inscripcion/delete/${Id}`);
+        const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
         console.log(response)
         obtenerDatos()
     

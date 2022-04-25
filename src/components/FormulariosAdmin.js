@@ -72,12 +72,11 @@ useEffect(()=>{
                     </div>  
 
                     <div className="d-none formsAPI" id={'create'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
-                        <FormData tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
+                        <FormData method = {'POST'} tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
                     </div>
 
                     <div className="d-none formsAPI" id={'modify'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
-                        <p>a</p>
-                        
+                        <FormData method = {'PUT'} tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>   
                     </div>
 
                     <div className="d-none formsAPI" id={'delete'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
