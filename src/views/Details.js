@@ -1,5 +1,6 @@
 
 import React, {Component, useEffect, useState } from "react";
+import Cabecera from '../components/Cabecera';
 import Menu from '../components/Menu';
 import CuerpoDetalles from '../components/CuerpoDetalles';
 import Cartas from "../components/Cartas";
@@ -10,9 +11,8 @@ function Details() {
 
   return (
     <div>
-        <div className="cabecera"> <h1 className="pru">EVENTOS</h1></div>
-    
     <Menu/>
+    <Cabecera/>
     <h1>DETALLES</h1>
     <CuerpoDetalles/>
     

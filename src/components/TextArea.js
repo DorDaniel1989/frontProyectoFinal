@@ -58,7 +58,6 @@ function TextArea(props) {
           <label htmlFor="exampleFormControlTextarea1">Example textarea</label>
           <textarea className="form-control" id="textarea" rows="3"></textarea>
         </div>
-       
         <a><button onClick={PostComentario} type="button" className={"btn btn-primary "+props.display} >Añadir comentario</button></a>
 
       </form>

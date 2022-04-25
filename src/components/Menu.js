@@ -13,7 +13,7 @@ function Menu() {
 
     localStorage.clear();
     window.location="/";
-
+    
   }
 
   if(localStorage.getItem('user')==null)
@@ -22,7 +22,7 @@ function Menu() {
     <div className='navbar__title navbar__item'><Link to='/'>Home</Link></div>
     <div className='navbar__item'><Link to='/register'>Registro</Link></div>
     <FormularioLogin/>
- </header>
+   </header>
   )
   else
   return (
@@ -32,7 +32,7 @@ function Menu() {
     <div className='navbar__item'> <Link to={ruta+JSON.parse(localStorage.getItem('user')).usuarioId}>Hola{JSON.parse(localStorage.getItem('user')).nombre}</Link></div>
    
 
-</header>
+    </header>
   )
 }
 

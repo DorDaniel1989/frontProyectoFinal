@@ -56,7 +56,6 @@ function FormularioLogin() {
             }).catch(error => {
                 console.log(error)
             })
-            
    }
 
     return (

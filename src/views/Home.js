@@ -1,5 +1,6 @@
 import {useRef} from "react";
 import React, {Component, useEffect, useState } from "react";
+import Cabecera from '../components/Cabecera';
 import Menu from '../components/Menu';
 import Cartas from "../components/Cartas";
 import '../styles/miCss.css';
@@ -9,13 +10,13 @@ import { render } from "@testing-library/react";
 function Home() {
 
   return (
-    <div>
-        <div className="cabecera"> <h1 className="pru">The dick</h1></div>
+   <>
+   <div className="fondo"></div>
+   <Cabecera/>
+   <Menu/>
+   <Cartas/>
     
-    <Menu/>
-    <Cartas/>
-    
-    </div>
+    </>
   );}
 
 

@@ -1,24 +1,23 @@
 
 import React, {Component, useEffect, useState } from "react";
+import Cabecera from '../components/Cabecera';
 import Menu from '../components/Menu';
-import Cartas from "../components/Cartas";
 import CuerpoPerfil from "../components/CuerpoPerfil"
 import '../styles/admin.sass';
 import { render } from "@testing-library/react";
 
 
-function Admin() {
+function Profile() {
 
   return (
-    <div>
-        <div className="cabecera"> <h1 className="pru">EVENTOS</h1>   </div>
-    
+    <>
+
     <Menu/>
-    <h1>HELLO PROFILE</h1>
+    <Cabecera/>
     <CuerpoPerfil/>
     
-    </div>
+    </>
   );}
 
 
-export default Admin;
+export default Profile;
