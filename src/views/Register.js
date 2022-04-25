@@ -1,21 +1,21 @@
 
 import React, {Component, useEffect, useState } from "react";
 import Menu from '../components/Menu';
+import Cabecera from '../components/Cabecera';
 import Cartas from "../components/Cartas";
 import '../styles/admin.sass';
 import { render } from "@testing-library/react";
 
-function Admin() {
+function Register() {
 
   return (
     <div>
-        <div className="cabecera"> <h1 className="pru">EVENTOS</h1>   </div>
-    
+  
     <Menu/>
-    <h1>HELLO REGISTER</h1>
+    <Cabecera/>
     
     </div>
   );}
 
 
-export default Admin;
+export default Register;
