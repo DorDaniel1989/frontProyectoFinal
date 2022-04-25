@@ -42,6 +42,10 @@ export default function ShowTableContent(props) {
         
        //navigator.clipboard.write(imagen.value);
 
+       // deseleccionamos todos los rangos por si acaso hay algo seleccionado y nos ahorramos errores
+
+       window.getSelection().removeAllRanges();
+
         // recogemos el DOM de la imagen (la etiqueta HTML)
 
         var range = document.createRange();  
