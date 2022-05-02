@@ -1,20 +1,29 @@
 
 import React, {Component, useEffect, useState } from "react";
-import Menu from '../components/Menu';
-import Acordeon from "../components/Acordeon";
-import Forms from "../components/FormulariosAdmin";
+import  { Navigate } from 'react-router-dom'
+import Menu from '../components/MenuLoginAdmin';
+import Login from '../components/AdminLogin';
 import '../styles/admin.sass';
-import { render } from "@testing-library/react";
 
 function Admin() {
 
-  return (
-    <>
-      <Menu/>
-      
+    if(localStorage.getItem('user') != null){
+        if(JSON.parse(localStorage.getItem('user')).admin){
+            return (<Navigate to='/adminCMS'  />);
+        }else{
+            return (<Navigate to='/'  />);
+        }
+        
+    }else{
+        return (
+            <>
+                <Menu/>
 
-    </>
-  );}
+                <Login/>
+            </>
+        );
+    }
+}
 
 
 export default Admin;
