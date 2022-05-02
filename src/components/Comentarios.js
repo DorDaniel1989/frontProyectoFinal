@@ -39,13 +39,16 @@ function Comentarios() {
 
                                 <div className="comment-box" key={item.comentarioId}>
                                     <div className="comment-head">
+
+                                        
                                         <span>#{item.username}</span>
-                                        <span>{item.fecha_comentario}</span>
+                                        <span>&emsp;{item.fecha_comentario}</span>
+                                        <span>:{item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>
                                         <i className="fa fa-heart"></i>
                                     </div>
                                     <div className="comment-content">
-                                        {item.comentario_text}
+                                        {item.comentario_text} 
                                     </div>
                                 </div>
                             ))

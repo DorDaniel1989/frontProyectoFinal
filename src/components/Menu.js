@@ -35,7 +35,7 @@ function displayLoginForm(){
     <>
     <header className='navbar' id="nav-bar" >
     <div className='navbar__title navbar__item'><Link to='/'>Home</Link></div>
-    <div className='navbar__item'><img src="../imagenes/Eventum.png"/></div>
+    <img className="navbar__title logo-eventum" src={imagen}/>
     <div className='navbar__item'><button className="btn btn-success"><Link to='/register'>Regístrate</Link></button></div>
     <div className='navbar__item'><button className="btn btn-primary" onClick={displayLoginForm}>Login</button></div>
     
