@@ -9,17 +9,15 @@ import { render } from "@testing-library/react";
 function Admin() {
 
   return (
-    <div>
-        <div className="cabecera"> <h1 className="pru">EVENTOS</h1> </div>
-    
-    <Menu/>
-    <Acordeon/>
+    <>
+      <Menu/>
+      <Acordeon/>
 
-    <div className="formularios">
-      <Forms/>
-    </div>
-      
-    </div>
+      <div className="formularios">
+        <Forms/>
+      </div>
+
+    </>
   );}
 
 

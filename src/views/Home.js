@@ -1,6 +1,5 @@
 import {useRef} from "react";
 import React, {Component, useEffect, useState } from "react";
-import Cabecera from '../components/Cabecera';
 import Menu from '../components/Menu';
 import Cartas from "../components/Cartas";
 import '../styles/miCss.css';

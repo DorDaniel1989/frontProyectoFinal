@@ -108,6 +108,7 @@ export default function FormData(props) {
                 administrator: 'checkbox',
                 nombre: "text",
                 apellido: "text",
+                about_me: "text",
                 direccion: "text",
                 telefono: "tel",
                 imagen: "file"
@@ -139,7 +140,8 @@ export default function FormData(props) {
                 eventoId: "number",
                 categoriaId: "number",
                 usuarioId: "number",
-                fecha_comentario: "date"
+                fecha_comentario: "date",
+                hora_comentario: "time"
               }], 
             [
                 {
