@@ -4,8 +4,8 @@ import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
 import './index.css';
 import Home from './views/Home';
-import Login from './views/Login';
-import Admin from './views/Admin';
+import AdminCMS from './views/Admin';
+import Admin from './views/AdminLogin';
 import Profile from './views/Profile';
 import Register from './views/Register';
 import Details from './views/Details';
@@ -23,6 +23,7 @@ ReactDOM.render(
   <Routes>
      <Route exact path="/" element={<Home/>}/>
      <Route exact path="/admin" element={<Admin/>}/>
+     <Route exact path="/adminCMS" element={<AdminCMS/>}/>
      <Route exact path="/profile/:Id" element={<Profile/>}/>
      <Route exact path="/register" element={<Register/>}/>
      <Route exact path="/details/:Id" element={<Details/>}/>

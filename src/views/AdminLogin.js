@@ -1,19 +1,20 @@
 
 import React, {Component, useEffect, useState } from "react";
 import Menu from '../components/Menu';
-import Cartas from "../components/Cartas";
+import Acordeon from "../components/Acordeon";
+import Forms from "../components/FormulariosAdmin";
 import '../styles/admin.sass';
 import { render } from "@testing-library/react";
 
-function Register() {
+function Admin() {
 
   return (
-    <div>
-  
-    <Menu/>
+    <>
+      <Menu/>
+      
 
-    </div>
+    </>
   );}
 
 
-export default Register;
+export default Admin;
