@@ -11,8 +11,8 @@ function Home() {
 
   return (
    <>
-   <div className="fondo"></div>
-   <Cabecera/>
+  
+ 
    <Menu/>
    <Cartas/>
    </>
