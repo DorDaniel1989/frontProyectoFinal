@@ -34,19 +34,18 @@ function FormularioLogin() {
         }
 
         console.log('Iniciando sesion...')
-       // console.log(baseUrl + `/${data}`)
+
 
         await axios.post(baseUrl, data)
             .then(response => {
                 return response.data;
             }).then(response => {
-                
+
                 if (response != null) {
                     var respuesta = response;
                     console.log(respuesta)
                     localStorage.setItem('user', JSON.stringify(respuesta));
-                    console.log("Bienvenid@ ",  JSON.parse(localStorage.getItem('user')).nombre)
-                    //console.log("Este es el token del usuario guardado en cookies =>", cookies.get('user').token)
+                    console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
                     window.location.reload();
                 } else {
                     console.log(response)
@@ -55,47 +54,49 @@ function FormularioLogin() {
             }).catch(error => {
                 console.log(error)
             })
-   }
+    }
 
     return (
-       
-        <div id="contenedorLogin">
-            <div className="row main-content bg-success text-center" id="login">
 
-                <div className="col-md-4 text-center company__info">
-                    <span className="company__logo"><h2><span className="fa fa-android"></span></h2></span>
-                    <h4 className="company_title">Your Company Logo</h4>
+
+        <div className="login-container">
+            <div className="form-box">
+                <div className="header-form">
+                    <h4 className="text-primary text-center"> LOGIN</h4>
+                    <div className="image">
+                    </div>
                 </div>
-                <div className="col-md-8 col-xs-12 col-sm-12 login_form ">
-                    <div className="container-fluid">
-                        <div className="row">
-                            <h2>Log In</h2>
+                <div className="body-form">
+                    <form>
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <i className="bi bi-person-circle"></i>
+                            </div>
+                            <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control" placeholder="Username" />
                         </div>
-                        <div className="row">
-                            <form method="POST" control="" className="form-group">
-                                <div className="row">
-                                    <input type="text" onChange={controlarCambio} name="username" id="username" className="form__input" placeholder="Username" />
-                                </div>
-                                <div className="row">
-
-                                    <input type="password" onChange={controlarCambio} name="password" id="password" className="form__input" placeholder="Password" />
-                                </div>
-                                <div className="row">
-                                    <input type="checkbox" name="remember_me" id="remember_me" className="" />
-                                    <label htmlFor="remember_me">Remember Me!</label>
-                                </div>
-                                <div className="row">
-                                    <input onClick={() => iniciarSesion()} className="btn" />
-                                </div>
-                            </form>
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                              <i className="fa fa-lock"></i>
+                            </div>
+                            <input type="password" onChange={controlarCambio} name="password" id="password" className="form-control" placeholder="Password" />
                         </div>
-                        <div className="row">
-                            <p>Don't have an account? <a href="#">Register Here</a></p>
+                        <input onClick={() => iniciarSesion()} className="btn login" value="LOGIN" />
+                        <div className="message">
+                            <div><input type="checkbox" /> Remember ME</div>
+                            <div><a href="#">Forgot your password</a></div>
                         </div>
+                    </form>
+                    <div className="social">
+                        <a href="#"><i className="fab fa-facebook"></i></a>
+                        <a href="#"><i className="fab fa-twitter-square"></i></a>
+                        <a href="#"><i className="fab fa-google"></i></a>
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
+
+
+
     );
 }
 

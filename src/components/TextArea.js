@@ -29,6 +29,25 @@ function TextArea(props) {
         return day + "/" + month + "/" + year;
     }
 
+
+    function obtenerHora(){
+
+      var dateObj = new Date();
+      var hour = dateObj.getHours();
+      var minutes = dateObj.getMinutes();
+
+
+      if(hour < 10){
+        hour="0"+ hour
+      }
+      if(minutes < 10){
+        minutes="0"+ minutes
+      }
+
+      return hour + ":" + minutes ;
+
+    }
+
     function crearPostBody(){
 
         return {
@@ -37,31 +56,30 @@ function TextArea(props) {
             "categoriaId" : props.categoriaId,
             "usuarioId": props.usuarioId,
             "fecha_comentario" : obtenerFecha(),
-           
+            "hora_comentario" : obtenerHora()
 
         }
     }
 
     const PostComentario = async() =>{
-       var data = crearPostBody()
-       
+        var data = crearPostBody()
         await axios.post('http://localhost:5000/api/Comentario',  data)
         window.location.reload();
      
     }
 
   return (
-
+    <div className="comments-container">
       <form>
       
         <div className="form-group">
-          <label htmlFor="exampleFormControlTextarea1">Example textarea</label>
+          
           <textarea className="form-control" id="textarea" rows="3"></textarea>
         </div>
         <a><button onClick={PostComentario} type="button" className={"btn btn-primary "+props.display} >Añadir comentario</button></a>
 
       </form>
-      
+      </div>
   );
 }
 

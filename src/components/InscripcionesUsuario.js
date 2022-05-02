@@ -21,11 +21,11 @@ function InscripcionesUsuario() {
         const data = await fetch(`http://localhost:5000/api/Inscripcion/Usuario/${Id}`);
         const inscripciones = await data.json()
         setInscripciones(inscripciones)
-        console.log(inscripciones)
+        $('.tMisInscripciones').DataTable()
     }
 
     async function  EliminarInscripcion(Id){
-
+        console.log(Id)
         const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
         console.log(response)
         obtenerDatos()
@@ -35,10 +35,11 @@ function InscripcionesUsuario() {
     return (
 
         <div className="container">
+                                                                                      
+          
 
-            <h2>IDS DE EVENTOS INSCRIPCIONES DEL USUARIO</h2>
-
-            <table className="tMisInscripciones" onLoad={$('.tMisInscripciones').DataTable()}>
+            <table className="tMisInscripciones" onLoad={obtenerDatos}>
+       
                 <thead>
                     <tr>
                         <th>Seleccionar</th>
@@ -50,15 +51,27 @@ function InscripcionesUsuario() {
                     {
                         inscripciones.map(item => (
                             <tr key={item.inscripcionId}>
-                                <td><button onClick={()=>EliminarInscripcion(item.inscripcionId)} className="btn btn-warning"> Desapuntar</button></td>
-                                <td>{item.inscripcionId}</td>
-                                <td>{item.eventoId}</td>
+                                <td><button onClick={()=>EliminarInscripcion(item.s.inscripcionId)} className="btn btn-danger"> Eliminar</button></td>
+                                <td>{item.evento}</td>
+                              
                             </tr>
                         ))
                     }
                 </tbody>
             </table>
-            <input type="button"  value="Seleccion"/>
+          
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
 
     )

@@ -9,8 +9,6 @@ function Cabecera() {
   
    <div className="cabecera"> <h1 className="pru">EVENTUM</h1></div>
   
-    
-   
   );}
 
 
