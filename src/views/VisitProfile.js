@@ -12,9 +12,7 @@ function VisitProfile() {
     <>
     <Menu/>
     <CuerpoVisitProfile/>
-    
     </>
   );}
-
 
 export default VisitProfile;
