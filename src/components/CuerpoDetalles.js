@@ -18,11 +18,8 @@ function CuerpoDetalles(props) {
 
   const ruta = "/profile/";
   const [evento, setEvento] = useState([])
-  const [localizacion, setLocalizacion] = useState([])
   const [inscripciones, setInscripciones] = useState([])
-  const [comentarios, setComentarios] = useState([])
   const { Id } = useParams();
-
 
 
   useEffect(() => {
@@ -37,11 +34,10 @@ function CuerpoDetalles(props) {
     const evento = await evenData.json()
     setEvento(evento)
 
-    const inscData = await fetch(`http://localhost:5000/api/Inscripcion/evento/${Id}`);
+    const inscData = await fetch(`http://localhost:5000/api/Inscripcion/evento/${Id}`).then(comprobarAforo());
     const inscripciones = await inscData.json()
-   // console.log(inscripciones)
     setInscripciones(inscripciones)
-  //  console.log(inscripciones.includes(JSON.parse(localStorage.getItem('user')).username))
+    
 
   }
 
@@ -64,12 +60,18 @@ function CuerpoDetalles(props) {
 
 
   function comprobarAforo() {
+
     console.log(inscripciones.length)
     console.log(evento.aforo_max)
     console.log("console ", inscripciones.length >= evento.aforo_max)
    
-    return inscripciones.length >= evento.aforo_max
-
+    if(inscripciones.length >= evento.aforo_max)
+    {
+      console.log(inscripciones.length >= evento.aforo_max)
+      document.getElementById("btn-inscribir").setAttribute("class", "btn btn-disabled btn-danger")
+      document.getElementById("btn-inscribir").innerText="COMPLETO"
+    }
+    
   }
 
 
@@ -129,15 +131,15 @@ function CuerpoDetalles(props) {
 
           <Map />
 
-          {comprobarAforo() ? <div>COMPLETO!</div>:<div>Ok!</div>}
+          
 
           {
             comprobarInscripcion() ?
-              <a><button type="button" className="btn btn-success disabled ">Asistiré a este evento</button></a> :
+              <a><button  id="btn-inscribir" type="button" className="btn btn-success disabled ">Asistiré a este evento</button></a> :
               <a><button  id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>
-
+             
           }
-
+          { comprobarAforo()}
         </div>
         <div className="bodyDetails">
           <h1>{evento.evento}</h1>
