@@ -8,7 +8,7 @@ import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import LocalActivityIcon from '@mui/icons-material/LocalActivity';
-import imagen from "../imagenes/maluma.png";
+import imagen from "../imagenes/marcanthony.png";
 import { CardActionArea, Button } from '@mui/material';
 import '../styles/cards.css';
 
@@ -19,11 +19,11 @@ export default function Carta(props) {
 
   return (
 
-      <div className='card cardP col-8' key={props.titulo} >
+      <div className='card cardP ' key={props.titulo} >
           <h2>{props.titulo}</h2>
           <p>{props.fecha}</p>
           <p>{props.descripcion}</p>
-          <img height={300} src={imagen}/>
+          <img height={200} src={imagen}/>
        <Button href= {ruta}>VER</Button>
         
         

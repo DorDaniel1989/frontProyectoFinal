@@ -23,6 +23,9 @@ function Cartas(){
 
     return (
      <div className="container-cartas">
+
+     <h1 className="titoloEventos">dasdasdasd</h1>
+          
           
             {
                 cards.map(item => (

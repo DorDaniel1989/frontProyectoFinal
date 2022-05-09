@@ -42,12 +42,15 @@ function FormularioLogin() {
             }).then(response => {
 
                 if (response != null) {
-                    var respuesta = response;
-                    console.log(respuesta)
-                    localStorage.setItem('user', JSON.stringify(respuesta));
-                    console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
-                    console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).telefono)
-                    window.location.reload();
+                    if(response.admin){
+                        var respuesta = response;
+                        console.log(respuesta)
+                        localStorage.setItem('user', JSON.stringify(respuesta));
+                        console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
+                        window.location.reload();
+                    }else{
+                        alert('El usuario no es un administrador')
+                    }
                 } else {
                     console.log(response)
                     alert('El usuario o la contraseña no son correctos')
@@ -60,7 +63,7 @@ function FormularioLogin() {
     return (
 
 
-        <div className="login-container">
+        <div className="adminlogin-container">
             <div className="form-box">
                 <div className="header-form">
                     <h4 className="text-primary text-center"> LOGIN</h4>
