@@ -44,7 +44,7 @@ function FormularioEditarUsuario(props) {
    
    console.log(JSON.parse(localStorage.getItem('user')).telefono) 
 
-
+   
     const [formData, setForm] = useState({
 
         usuarioId :   JSON.parse(localStorage.getItem('user')).usuarioId,
