@@ -8,6 +8,39 @@ import "jquery-ui-dist/jquery-ui";
 
 function FormularioEditarUsuario(props) {
 
+    function getBase64(objeto) {
+
+        // declaramos variable del tipo clave valor
+
+        var {name,value} = objeto;
+
+        //seleccionamos el objeto imagen de dentro del DOM de la etiqueta HTML
+
+        var file = document.querySelector(`#imagen`)['files'][0];
+
+        // creamos un reader y convertimos la imagen en string base64
+
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        // cargamos el string y lo extraemos en el hook de react para el formulario
+
+        reader.onload = function () {
+            console.log(reader.result);
+          setForm({
+            ...formData,
+            [name]: reader.result
+        })
+        };
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+          setForm({
+            ...formData,
+            [name]: null
+        })
+        };
+    }
+
    
    console.log(JSON.parse(localStorage.getItem('user')).telefono) 
 
@@ -24,7 +57,7 @@ function FormularioEditarUsuario(props) {
         direccion: JSON.parse(localStorage.getItem('user')).direccion,
         telefono: JSON.parse(localStorage.getItem('user')).telefono,
         about_me: JSON.parse(localStorage.getItem('user')).about_me,
-       
+        imagen: JSON.parse(localStorage.getItem('user')).imagen,
         
     });
 
@@ -34,7 +67,7 @@ function FormularioEditarUsuario(props) {
       },[] )
     
 
-    console.log("Estado del formulario al comenzar  =>" + formData.about_me)
+    console.log("Estado del formulario al comenzar  =>" + formData.imagen)
  
     const baseUrl = 'http://localhost:5000/api/Usuario/'+ props.usuarioId;
     console.log(baseUrl)
@@ -42,11 +75,14 @@ function FormularioEditarUsuario(props) {
 
     const controlarCambio = e => {
         const { name, value } = e.target;
-        setForm({
-            ...formData,
-            [name]: value
-            
-        })
+        if([name] != 'imagen'){
+		    setForm({
+                ...formData,
+                [name]: value
+            })
+	    }else{
+            getBase64(e.target); 
+        }
        // console.log("data de controlar cambio =>", formData)
 
     }
@@ -152,7 +188,7 @@ $("#container-perfil").css("display", "flex");
                             <div className="input-group-prepend">
                                 <i className="fa fa-lock"></i>
                             </div>
-                            <input type="file" onChange={controlarCambio} name="new_imagenUsuario" id="new_imagenUsuario" className="form-control"/>
+                            <input type="file" onChange={controlarCambio} name="imagen" id="imagen" className="form-control"/>
                         </div>
 
                         <input onClick={() => actualizarUsuario()} className="btn login" value="GUARDAR CAMBIOS" />
