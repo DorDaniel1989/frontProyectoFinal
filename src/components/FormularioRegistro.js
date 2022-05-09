@@ -3,74 +3,101 @@ import React, { Component, useEffect, useState } from "react";
 import '../styles/login.css';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
 
 
 
 function FormularioRegistro(props) {
 
-    const baseUrl = 'http://localhost:5000/api/Usuario/authenticate/';
+    const baseUrl = 'http://localhost:5000/api/Usuario/';
     const cookies = new Cookies();
 
+    const navigate = useNavigate();
+
+    function getBase64(objeto) {
+
+        // declaramos variable del tipo clave valor
+
+        var {name,value} = objeto;
+
+        //seleccionamos el objeto imagen de dentro del DOM de la etiqueta HTML
+
+        var file = document.querySelector(`#imagen`)['files'][0];
+
+        // creamos un reader y convertimos la imagen en string base64
+
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        // cargamos el string y lo extraemos en el hook de react para el formulario
+
+        reader.onload = function () {
+            console.log(reader.result);
+          setForm({
+            ...formData,
+            [name]: reader.result
+        })
+        };
+        reader.onerror = function (error) {
+          console.log('Error: ', error);
+          setForm({
+            ...formData,
+            [name]: null
+        })
+        };
+    }
+
     const [formData, setForm] = useState({
-        new_username: props.username,
-        new_password: props.password,
+        username: props.username,
+        password: props.password,
         email: props.email,
         nombre: props.nombre,
         apellido: props.apellido,
         direccion: props.direccion,
         telefono: props.telefono,
         about_me: props.about_me,
-        new_imagenUsuario: props.imagen
+        imagen: props.imagen
     });
 
     const controlarCambio = e => {
         const { name, value } = e.target;
-        setForm({
-            ...formData,
-            [name]: value
-        })
-        console.log(formData)
+        if([name] != 'imagen'){
+		    setForm({
+                ...formData,
+                [name]: value
+            })
+	    }else{
+            getBase64(e.target); 
+        }
+       // console.log("data de controlar cambio =>", formData)
+
     }
 
 
     const registroUsuario = async () => {
 
-        var data = {
-            "new_username": formData.new_username,
-            "new_password": formData.new_password,
-            "email": formData.email,
-            "nombre": formData.nombre,
-            "apellido": formData.apellido,
-            "direccion": formData.direccion,
-            "telefono": formData.telefono,
-            "about_me": formData.about_me,
-            "new_imagenUsuario": formData.new_imagenUsuario
-
-        }
-
+        console.log(formData);
         console.log('Registrando usuario...');
 
-        console.log(data);
 
 
-        // await axios.post(baseUrl, data)
-        //     .then(response => {
-        //         return response.data;
-        //     }).then(response => {
+         await axios.post(baseUrl, formData)
+             .then(response => {
+                 return response.data;
+             }).then(response => {
 
-        //         if (response != null) {
-        //             var respuesta = response;
-        //             console.log(respuesta)
-        //             localStorage.setItem('user', JSON.stringify(respuesta));
-        //             console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
-        //             window.location.reload();
-        //         } else {
-        //             console.log(response)
-        //             alert('El usuario o la contraseña no son correctos')
-        //         }
-        //     }).catch(error => {
-        //         console.log(error)
-        //     })
+                 if (response != null) {
+                     var respuesta = response;
+                     console.log(respuesta)
+                    
+                     navigate("/");
+                 } else {
+                     console.log(response)
+                     alert('El usuario o la contraseña no son correctos')
+                 }
+             }).catch(error => {
+                 console.log(error)
+             })
     }
 
     return (
@@ -90,7 +117,7 @@ function FormularioRegistro(props) {
                             <div className="input-group-prepend">
                                 <i className="bi bi-person-circle"></i>
                             </div>
-                            <input type="text" onChange={controlarCambio} name="new_username" id="new_username" className="form-control" value={props.username} placeholder="Username" />
+                            <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control" value={props.username} placeholder="Username" />
                         </div>
 
 
@@ -98,7 +125,7 @@ function FormularioRegistro(props) {
                             <div className="input-group-prepend">
                                 <i className="fa fa-lock"></i>
                             </div>
-                            <input type="password" onChange={controlarCambio} name="new_password" id="new_password" value={props.password} className="form-control" placeholder="Password" />
+                            <input type="password" onChange={controlarCambio} name="password" id="password" value={props.password} className="form-control" placeholder="Password" />
                         </div>
 
                         <div className="input-group mb-3">
@@ -142,7 +169,7 @@ function FormularioRegistro(props) {
                             <div className="input-group-prepend">
                                 <i className="fa fa-lock"></i>
                             </div>
-                            <input type="file" onChange={controlarCambio} name="new_imagenUsuario" id="new_imagenUsuario" className="form-control"/>
+                            <input type="file" onChange={controlarCambio} name="imagen" id="imagen" className="form-control"/>
                         </div>
                       
 
