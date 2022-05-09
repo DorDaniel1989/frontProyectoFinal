@@ -6,10 +6,9 @@ import { useNavigate } from "react-router-dom";
 import InscripcionesUsuario from "../components/InscripcionesUsuario";
 import defaultUser from "../imagenes/defaultUser.png";
 import DatosUsuario from "../components/DatosUsuario";
-import $ from 'jquery';
 import axios from 'axios';
 import "jquery-ui-dist/jquery-ui";
-
+import $ from 'jquery';
 
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 

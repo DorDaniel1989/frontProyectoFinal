@@ -8,10 +8,13 @@ import Map from "./Map";
 import Link from '@mui/material/Link';
 import axios from 'axios';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
+import fuego_activo from "../imagenes/fuego_activo.jpg";
+import fuego_tenue from "../imagenes/fuego_tenue.jpg";
+import imagen1 from "../imagenes/marcanthony.png";
+import "jquery-ui-dist/jquery-ui";
+import $ from 'jquery';
 
 import '../styles/miCss.css';
-
-
 
 
 function CuerpoDetalles(props) {
@@ -20,7 +23,8 @@ function CuerpoDetalles(props) {
   const [evento, setEvento] = useState([])
   const [inscripciones, setInscripciones] = useState([])
   const { Id } = useParams();
-
+ 
+  const [inscripcionId, setInscripcionId] = useState([])
 
   useEffect(() => {
     obtenerDatos()
@@ -37,7 +41,7 @@ function CuerpoDetalles(props) {
     const inscData = await fetch(`http://localhost:5000/api/Inscripcion/evento/${Id}`).then(comprobarAforo());
     const inscripciones = await inscData.json()
     setInscripciones(inscripciones)
-    
+
 
   }
 
@@ -64,14 +68,13 @@ function CuerpoDetalles(props) {
     console.log(inscripciones.length)
     console.log(evento.aforo_max)
     console.log("console ", inscripciones.length >= evento.aforo_max)
-   
-    if(inscripciones.length >= evento.aforo_max)
-    {
+
+    if (inscripciones.length >= evento.aforo_max) {
       console.log(inscripciones.length >= evento.aforo_max)
       document.getElementById("btn-inscribir").setAttribute("class", "btn btn-disabled btn-danger")
-      document.getElementById("btn-inscribir").innerText="COMPLETO"
+      document.getElementById("btn-inscribir").innerText = "COMPLETO"
     }
-    
+
   }
 
 
@@ -82,11 +85,29 @@ function CuerpoDetalles(props) {
     inscripciones.forEach(element => {
       if (element.username == (JSON.parse(localStorage.getItem('user')).username)) {
         //console.log("encontrado!")
+       // setInscripcionId(inscripciones.inscripcionId)
+        
+        console.log("inscripcionID => ",inscripcionId)
         inscrito = true;
       }
     });
 
     return inscrito;
+
+  }
+
+
+  async function sumarHype() {
+
+    $('.hype').toggleClass('d-none')
+
+
+
+  }
+
+  async function restarHype() {
+
+    $('.hype').toggleClass('d-none')
 
   }
 
@@ -105,6 +126,9 @@ function CuerpoDetalles(props) {
           <Map />
 
           <a><button onClick={Inscribirse} type="button" className="btn btn-success disabled">Inscribirse</button></a>
+
+
+
         </div>
 
         <div className="bodyDetails">
@@ -131,15 +155,20 @@ function CuerpoDetalles(props) {
 
           <Map />
 
-          
 
           {
-            comprobarInscripcion() ?
-              <a><button  id="btn-inscribir" type="button" className="btn btn-success disabled ">Asistiré a este evento</button></a> :
-              <a><button  id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>
-             
+            comprobarInscripcion() ? (
+              <>
+                <a><button id="btn-inscribir" type="button" className="btn btn-success disabled ">Asistiré a este evento</button></a>
+                <img onClick={restarHype} className="hype d-none" height={50} src={fuego_activo} />
+                <img onClick={sumarHype} className="hype" height={50} src={fuego_tenue} /></>) :
+                 (
+              <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
+
           }
-          { comprobarAforo()}
+         
+
+          {comprobarAforo()}
         </div>
         <div className="bodyDetails">
           <h1>{evento.evento}</h1>
