@@ -1,5 +1,6 @@
 import {useRef} from "react";
 import React, {Component, useEffect, useState } from "react";
+import Buscador from '../components/Buscador';
 import Menu from '../components/Menu';
 import Cartas from "../components/Cartas";
 import '../styles/miCss.css';
@@ -10,10 +11,9 @@ function Home() {
 
   return (
    <>
-  
- 
-   <Menu/>
-   <Cartas/>
+    <Menu/>
+    <Buscador/>
+    <Cartas/>
    </>
    
   );}
