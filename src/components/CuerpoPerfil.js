@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import  { Navigate } from 'react-router-dom'
 import InscripcionesUsuario from "../components/InscripcionesUsuario";
 import defaultUser from  "../imagenes/defaultUser.png";
 import DatosUsuario from "../components/DatosUsuario";
@@ -8,22 +9,33 @@ import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
 function CuerpoPerfil() {
 
+
   const [user, setUser] = useState([])
   const { Id } = useParams();
+
   
   useEffect(() => {
+
+    if(JSON.parse(localStorage.getItem('user')).usuarioId != Id){
+      console.log("PARAMETRO ID DESDE LOCALSTORAGE",JSON.parse(localStorage.getItem('user')).usuarioId)
+      console.log("PARAETRO ID DESDE URL =>",Id)
+      console.log(JSON.parse(localStorage.getItem('user')).usuarioId != Id )
+      return (<Navigate to='/' />);
+    }
     obtenerDatos()
+
   }, [])
 
+  
   const obtenerDatos = async () => {
     const data = await fetch(`http://localhost:5000/api/Usuario/${Id}`);
     const user = await data.json()
-    user.imagen == "" ? user.imagen = defaultUser : user.imagen = user.imagen
+    user.imagen == ""  ? user.imagen = defaultUser : user.imagen = user.imagen
  
     setUser(user)
 
   }
-
+  
   function abrirFrameDatos(){
 
     console.log("Abriendo datos de usuario....")
@@ -32,7 +44,7 @@ function CuerpoPerfil() {
 
   }
 
-
+  
   return (
     <div className="container">
     <div id="container-perfil" className='container'>
@@ -54,6 +66,6 @@ function CuerpoPerfil() {
       <DatosUsuario/>
     </div>
   )
-}
 
+}
 export default CuerpoPerfil;

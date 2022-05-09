@@ -19,7 +19,7 @@ function DatosUsuario() {
     const user = await data.json()
     console.log("!")
     console.log(user)
-    user.imagen == "" ? user.imagen = defaultUser : user.imagen = user.imagen
+    user.imagen == "" || user.imagen == null? user.imagen = defaultUser : user.imagen = user.imagen
  
     setUser(user)
 
