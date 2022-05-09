@@ -49,7 +49,7 @@ function displayLoginForm(){
     <div className='navbar__title navbar__item'><Link to='/'>Home</Link></div>
     <img className="navbar__title logo-eventum" src={imagen}/>
     <div className='navbar__item'><button  className="btn btn-danger" onClick={logout}>Logout</button></div>
-    <div className='navbar__item'><h2><Link to={ruta+JSON.parse(localStorage.getItem('user')).usuarioId}>Hola {JSON.parse(localStorage.getItem('user')).nombre}</Link></h2></div>
+    <div className='navbar__item'><h2 className="bienvenidoUsuario"><Link to={ruta+JSON.parse(localStorage.getItem('user')).usuarioId}>Hola {JSON.parse(localStorage.getItem('user')).nombre}</Link></h2></div>
    
 
     </header>

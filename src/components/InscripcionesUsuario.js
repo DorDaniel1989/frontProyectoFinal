@@ -42,9 +42,9 @@ function InscripcionesUsuario() {
        
                 <thead>
                     <tr>
-                        <th>Seleccionar</th>
-                        <th>Inscripcion Id</th>
-                        <th>Evento Id</th>
+                        <th></th>
+                        <th>EVENTO</th>
+                        <th>FECHA/HORA</th>
                     </tr>
                 </thead>
                 <tbody>

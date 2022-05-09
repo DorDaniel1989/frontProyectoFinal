@@ -1,13 +1,14 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import Link from '@mui/material/Link';
+
+import {Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import '../styles/miCss.css';
 
 
 function Comentarios() {
 
-    const ruta = "/profile/";
+    const ruta = "/visitProfile/";
     const [comentarios, setComentarios] = useState([])
     const { Id } = useParams();
 
@@ -40,8 +41,8 @@ function Comentarios() {
                                 <div className="comment-box" key={item.comentarioId}>
                                     <div className="comment-head">
 
-                                        
-                                        <span>#{item.username}</span>
+                                        <Link to={ruta+item.usuarioId}>{item.username}</Link>
+                                        <span>{ruta+ item.usuarioId}</span>
                                         <span>&emsp;{item.fecha_comentario}</span>
                                         <span>:{item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>

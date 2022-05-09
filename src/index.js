@@ -6,7 +6,8 @@ import './index.css';
 import Home from './views/Home';
 import AdminCMS from './views/Admin';
 import Admin from './views/AdminLogin';
-import Profile from './views/Profile';
+import Profile from './views/Profile'
+import VisitProfile from './views/VisitProfile';
 import Register from './views/Register';
 import Details from './views/Details';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -18,6 +19,7 @@ import {
   Route,
 } from "react-router-dom";
 
+
 ReactDOM.render(
   <Router>
   <Routes>
@@ -25,6 +27,7 @@ ReactDOM.render(
      <Route exact path="/admin" element={<Admin/>}/>
      <Route exact path="/adminCMS" element={<AdminCMS/>}/>
      <Route exact path="/profile/:Id" element={<Profile/>}/>
+     <Route exact path="/visitProfile/:Id" element={<VisitProfile/>}/>
      <Route exact path="/register" element={<Register/>}/>
      <Route exact path="/details/:Id" element={<Details/>}/>
  </Routes>

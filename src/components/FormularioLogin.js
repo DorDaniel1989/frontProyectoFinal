@@ -46,6 +46,7 @@ function FormularioLogin() {
                     console.log(respuesta)
                     localStorage.setItem('user', JSON.stringify(respuesta));
                     console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
+                    console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).telefono)
                     window.location.reload();
                 } else {
                     console.log(response)

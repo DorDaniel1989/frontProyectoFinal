@@ -143,6 +143,12 @@ function CuerpoDetalles(props) {
         </div>
         <div className="bodyDetails">
           <h1>{evento.evento}</h1>
+          <h2>{evento.precio}</h2>
+          <h2>{evento.hora_inic}</h2>
+          <h2>{evento.hora_fin}</h2>
+          <h2>{evento.fecha_inic}</h2>
+          <h2>{evento.fecha_fin}</h2>
+          <h2>NOMBRE_LOCALIZACION FALTA{evento.localizacion}</h2>
           <p>{evento.descripcion}</p>
           <img src={imagen} />
 

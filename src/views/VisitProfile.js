@@ -15,5 +15,4 @@ function VisitProfile() {
     </>
   );}
 
-
 export default VisitProfile;
