@@ -17,7 +17,9 @@ h1{
  
 }
 
-
+.formularioEditarComentario{
+  display: none;
+}
 
 body {
   font-family: 'Roboto', Arial, Helvetica, Sans-serif, Verdana;

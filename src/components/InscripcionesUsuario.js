@@ -59,19 +59,6 @@ function InscripcionesUsuario() {
                     }
                 </tbody>
             </table>
-          
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
 
     )
