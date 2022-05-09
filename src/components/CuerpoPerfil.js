@@ -16,12 +16,10 @@ function CuerpoPerfil() {
   
   useEffect(() => {
 
-    if(JSON.parse(localStorage.getItem('user')).usuarioId != Id){
-      console.log("PARAMETRO ID DESDE LOCALSTORAGE",JSON.parse(localStorage.getItem('user')).usuarioId)
-      console.log("PARAETRO ID DESDE URL =>",Id)
-      console.log(JSON.parse(localStorage.getItem('user')).usuarioId != Id )
-      return (<Navigate to='/' />);
-    }
+    console.log("PARAMETRO ID DESDE LOCALSTORAGE",JSON.parse(localStorage.getItem('user')).usuarioId)
+    console.log("PARAETRO ID DESDE URL =>",Id)
+    console.log(JSON.parse(localStorage.getItem('user')).usuarioId != Id )
+
     obtenerDatos()
 
   }, [])
@@ -44,28 +42,37 @@ function CuerpoPerfil() {
 
   }
 
-  
-  return (
-    <div className="container">
-    <div id="container-perfil" className='container'>
-      <div className="aside" id="aside-details">
 
-        <h1>{user.username}</h1>
-        <img src={user.imagen} />
-        <button className="btn btn-warning" onClick={abrirFrameDatos}> Ver datos Personales</button>
-
-      </div>
-
-      
-      <div className="bodyDetails">
-         <InscripcionesUsuario/>
-      </div>
-
-    </div>
+  if(localStorage.getItem('user') != null){
+    if(JSON.parse(localStorage.getItem('user')).usuarioId != Id){
+        return (<Navigate to='/'  />);
+    }else{
+      return (
+        <div className="container">
+        <div id="container-perfil" className='container'>
+          <div className="aside" id="aside-details">
     
-      <DatosUsuario/>
-    </div>
-  )
+            <h1>{user.username}</h1>
+            <img src={user.imagen} />
+            <button className="btn btn-warning" onClick={abrirFrameDatos}> Ver datos Personales</button>
+    
+          </div>
+    
+          
+          <div className="bodyDetails">
+             <InscripcionesUsuario/>
+          </div>
+    
+        </div>
+        
+          <DatosUsuario/>
+        </div>
+      );
+    }
+  }else{
+    return (<Navigate to='/'  />);
+  }
+  
 
 }
 export default CuerpoPerfil;
