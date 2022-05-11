@@ -17,7 +17,7 @@ import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
 function CuerpoPerfil() {
 
-  const ruta = "/visitProfile/";
+  const ruta = "/profile/";
   const [user, setUser] = useState([])
   const [comentarios, setComentarios] = useState([])
   const { Id } = useParams();

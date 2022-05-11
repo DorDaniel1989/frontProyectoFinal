@@ -8,9 +8,8 @@ import Map from "./Map";
 import Link from '@mui/material/Link';
 import axios from 'axios';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
-import fuego_activo from "../imagenes/fuego_activo.jpg";
-import fuego_tenue from "../imagenes/fuego_tenue.jpg";
-import imagen1 from "../imagenes/marcanthony.png";
+import fuego_activo from "../imagenes/fuego_activo.gif";
+import fuego_tenue from "../imagenes/fuego_tenue.png";
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 
@@ -22,6 +21,7 @@ function CuerpoDetalles(props) {
   const ruta = "/profile/";
   const [evento, setEvento] = useState([])
   const [inscripciones, setInscripciones] = useState([])
+  const [localizacion, setlocalizacion] = useState([])
   const { Id } = useParams();
  
   const [inscripcionId, setInscripcionId] = useState([])
@@ -42,6 +42,10 @@ function CuerpoDetalles(props) {
     const inscripciones = await inscData.json()
     setInscripciones(inscripciones)
 
+    const locData = await fetch(`http://localhost:5000/api/Localizacion/evento/${Id}`);
+    const localizacion = await locData.json()
+    setlocalizacion(localizacion[0])
+    console.log(localizacion)
 
   }
 
@@ -89,6 +93,7 @@ function CuerpoDetalles(props) {
         
         console.log("inscripcionID => ",inscripcionId)
         inscrito = true;
+        getInscripcion();
       }
     });
 
@@ -96,18 +101,59 @@ function CuerpoDetalles(props) {
 
   }
 
+  async function getInscripcion(){
+    const inscData = await fetch(`http://localhost:5000/api/Inscripcion/Usuario/${JSON.parse(localStorage.getItem('user')).usuarioId}`);
+    const inscripcionesUser = await inscData.json()
+    inscripcionesUser.map((tupla) => {
+      Object.entries(tupla).map(([key, subkey]) => {
+
+        if(key == 's'){
+          Object.entries(subkey).map(([key, value]) =>{
+            if(key == 'eventoId'){
+              if(value == Id){
+                setInscripcionId(subkey['inscripcionId']);
+                return true;
+              }
+            }
+          })
+        }
+        
+      })
+    })
+    
+  }
+
+  async function EliminarInscripcion(Id) {
+    console.log('aca wacho '+Id);
+    const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
+    console.log(response)
+    obtenerDatos()
+    await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${Id}`)
+      .catch(function (error) {
+        alert('Error!!! ->\n' + error)
+      }); 
+    window.location.reload();
+  }
 
   async function sumarHype() {
 
     $('.hype').toggleClass('d-none')
 
-
+    await axios.get(`http://localhost:5000/api/Inscripcion/HypeUp/${Id}`)
+      .catch(function (error) {
+        alert('Error!!! ->\n' + error)
+      }); 
 
   }
 
   async function restarHype() {
 
     $('.hype').toggleClass('d-none')
+
+    await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${Id}`)
+      .catch(function (error) {
+        alert('Error!!! ->\n' + error)
+      }); 
 
   }
 
@@ -159,7 +205,7 @@ function CuerpoDetalles(props) {
           {
             comprobarInscripcion() ? (
               <>
-                <a><button id="btn-inscribir" type="button" className="btn btn-success disabled ">Asistiré a este evento</button></a>
+                <a><button id="btn-bye-inscribir" onClick={() => {EliminarInscripcion(inscripcionId)}} type="button" className="btn btn-success">Cancelar inscripción</button></a>
                 <img onClick={restarHype} className="hype d-none" height={50} src={fuego_activo} />
                 <img onClick={sumarHype} className="hype" height={50} src={fuego_tenue} /></>) :
                  (
@@ -172,14 +218,13 @@ function CuerpoDetalles(props) {
         </div>
         <div className="bodyDetails">
           <h1>{evento.evento}</h1>
-          <h2>{evento.precio}</h2>
-          <h2>{evento.hora_inic}</h2>
-          <h2>{evento.hora_fin}</h2>
-          <h2>{evento.fecha_inic}</h2>
-          <h2>{evento.fecha_fin}</h2>
-          <h2>NOMBRE_LOCALIZACION FALTA{evento.localizacion}</h2>
-          <p>{evento.descripcion}</p>
+          <h4>{evento.fecha_inic} hasta {evento.fecha_fin} de {evento.hora_inic} a {evento.hora_fin}</h4>
+          <h2>{localizacion.localizacion}</h2>
           <img src={imagen} />
+          <p>{evento.descripcion}</p>
+          <br></br>
+          <h3>Precio entrada: {evento.precio}</h3>
+          <br></br>
 
           <TextArea display={""} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={JSON.parse(localStorage.getItem('user')).usuarioId} />
           <Comentarios />
