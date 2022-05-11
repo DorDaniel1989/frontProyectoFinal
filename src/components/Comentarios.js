@@ -41,10 +41,9 @@ function Comentarios() {
                                 <div className="comment-box" key={item.comentarioId}>
                                     <div className="comment-head">
 
-                                        <Link to={ruta+item.usuarioId}>{item.username}</Link>
-                                        <span>{ruta+ item.usuarioId}</span>
-                                        <span>&emsp;{item.fecha_comentario}</span>
-                                        <span>:{item.hora_comentario}</span>
+                                        <span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>
+                                        <span>&emsp;{item.fecha_comentario}&nbsp;</span>
+                                        <span>a las {item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>
                                         <i className="fa fa-heart"></i>
                                     </div>
