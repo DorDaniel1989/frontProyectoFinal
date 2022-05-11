@@ -141,7 +141,7 @@ function CuerpoDetalles(props) {
           <Comentarios />
         </div>
       </div>
-
+ 
     );
   } else
 
