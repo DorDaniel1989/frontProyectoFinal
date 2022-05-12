@@ -19,6 +19,7 @@ import '../styles/miCss.css';
 function CuerpoDetalles(props) {
 
   const ruta = "/profile/";
+  let hypeado = false;
   const [evento, setEvento] = useState([])
   const [inscripciones, setInscripciones] = useState([])
   const [localizacion, setlocalizacion] = useState([])
@@ -94,6 +95,7 @@ function CuerpoDetalles(props) {
         console.log("inscripcionID => ",inscripcionId)
         inscrito = true;
         getInscripcion();
+        checkHype(inscripcionId);
       }
     });
 
@@ -124,15 +126,39 @@ function CuerpoDetalles(props) {
   }
 
   async function EliminarInscripcion(Id) {
+
+    if (hypeado){
+      await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
+        .catch(function (error) {
+          alert('Error!!! ->\n' + error)
+        }); 
+        console.log('estabas hypeado prro');
+    }
+
     console.log('aca wacho '+Id);
+
     const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
     console.log(response)
     obtenerDatos()
-    await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
+    window.location.reload();
+  }
+
+  async function checkHype(Id){
+    
+    const thisInsc = await axios.get(`http://localhost:5000/api/Inscripcion/${Id}`)
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
       }); 
-    window.location.reload();
+
+
+    Object.entries(thisInsc.data).map(([key, value]) => {
+      if(key == 'valoracion' && value == 1){
+        $('.hype').toggleClass('d-none')
+      }
+    })
+
+
+    
   }
 
   async function sumarHype() {
@@ -144,6 +170,8 @@ function CuerpoDetalles(props) {
         alert('Error!!! ->\n' + error)
       }); 
 
+    hypeado = true;
+
   }
 
   async function restarHype() {
@@ -154,6 +182,8 @@ function CuerpoDetalles(props) {
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
       }); 
+
+    hypeado = false;
 
   }
 
