@@ -128,7 +128,7 @@ function CuerpoDetalles(props) {
     const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
     console.log(response)
     obtenerDatos()
-    await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${Id}`)
+    await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
       }); 
