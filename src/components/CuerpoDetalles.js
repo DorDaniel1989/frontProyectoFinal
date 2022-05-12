@@ -196,6 +196,7 @@ function CuerpoDetalles(props) {
       <div className='container'>
 
         <div className="aside" id="aside-details">
+          <h2>AFORO MAX {evento.aforo_max}</h2>
           <h2>ASISTENTES {inscripciones.length}</h2>
           <h2>CUPOS {evento.aforo_max - inscripciones.length}</h2>
 
@@ -210,8 +211,13 @@ function CuerpoDetalles(props) {
         <div className="bodyDetails">
 
           <h1>{evento.evento}</h1>
-          <p>{evento.descripcion}</p>
+          <h4>{evento.fecha_inic} hasta {evento.fecha_fin} de {evento.hora_inic} a {evento.hora_fin}</h4>
+          <h2>{localizacion.localizacion}</h2>
           <img src={imagen} />
+          <p>{evento.descripcion}</p>
+          <br></br>
+          <h3>Precio entrada: {evento.precio}</h3>
+          <br></br>
 
           <TextArea display={"disabled"} eventoId={evento.eventoId} categoriaId={evento.categoriaId} />
           <Comentarios />
