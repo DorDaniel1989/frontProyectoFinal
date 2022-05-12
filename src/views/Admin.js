@@ -16,6 +16,7 @@ function Admin() {
         }else{
           return (
             <>
+              <marquee>Cuidado!!! que estás en el admin wacho</marquee>
               <Menu/>
               <Acordeon/>
 
