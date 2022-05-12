@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import InscripcionesUsuario from "../components/InscripcionesUsuario";
+import ComentariosUser from "./ComentariosVisitUser"; 
+import EventosUser from "./EventosVisitUser";
 import defaultUser from  "../imagenes/defaultUser.png";
 
 function CuerpoVisitProfile() {
@@ -32,6 +34,9 @@ function CuerpoVisitProfile() {
         
       </div>
 
+      <ComentariosUser/>
+
+      <EventosUser user = {Id}/>
        
     </div>
   )
