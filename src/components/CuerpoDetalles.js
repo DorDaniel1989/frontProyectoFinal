@@ -139,7 +139,7 @@ function CuerpoDetalles(props) {
 
     $('.hype').toggleClass('d-none')
 
-    await axios.get(`http://localhost:5000/api/Inscripcion/HypeUp/${Id}`)
+    await axios.get(`http://localhost:5000/api/Inscripcion/HypeUp/${inscripcionId}`)
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
       }); 
@@ -150,7 +150,7 @@ function CuerpoDetalles(props) {
 
     $('.hype').toggleClass('d-none')
 
-    await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${Id}`)
+    await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
       }); 
