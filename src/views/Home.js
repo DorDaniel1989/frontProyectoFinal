@@ -4,6 +4,7 @@ import Buscador from '../components/Buscador';
 import Menu from '../components/Menu';
 import Cartas from "../components/Cartas";
 import Carrusel from "../components/Carrusel";
+import AliceCarousel from 'react-alice-carousel';
 import Card from "../components/Card";
 import '../styles/miCss.css';
 
@@ -29,22 +30,30 @@ function Home() {
 
   let masHypeados = orderHypeados.slice(0, 8);
 
-  console.log(masHypeados);
+  const responsive = {
+    0: { items: 1 },
+    820: { items: 2 },
+    1220: { items: 3 },
+    1624: { items: 4 }
+  };
+
   return (
    <>
     <Menu/>
     <Buscador/>
       <div className="carousel-outer">
-        <Carrusel>
 
+        <AliceCarousel infinite = {true} autoPlay autoPlayInterval="3000" responsive={responsive}>
         {
             masHypeados.map((tupla) => {
               return (<Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} />)
             })
             
         }
+    </AliceCarousel>
 
-        </Carrusel>
+        
+
       </div>
     <Cartas/>
    </>

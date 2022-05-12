@@ -33,7 +33,8 @@ class Carrusel extends PureComponent {
             galleryItems: { length }
         } = this.state;
         let moveToindex = this.state.currentIndex + itemsInSlide;
-        if (moveToindex > length) moveToindex = length - itemsInSlide;
+        if (moveToindex > length) moveToindex = itemsInSlide;
+        console.log('el slide: ' + itemsInSlide);
         this.setState((p) => ({ ...p, currentIndex: moveToindex }));
     };
 
@@ -45,6 +46,7 @@ class Carrusel extends PureComponent {
             isPrevSlideDisabled
         } = event;
         let isNextDisabled = isNextSlideDisabled;
+        console.log(item);
         if (item + itemsInSlide >= this.state.galleryItems.length) {
             isNextDisabled = true;
         }
@@ -64,6 +66,8 @@ class Carrusel extends PureComponent {
                 <Slider
                     // animationDuration={00}
                     activeIndex={this.state.currentIndex}
+                    autoPlay 
+                    autoPlayInterval="10000"
                     keysControlDisabled
                     startIndex={currentIndex}
                     onInitialized={this.handleOnSlideChange}
@@ -83,17 +87,17 @@ class Carrusel extends PureComponent {
                     {this.props.children}
                 </Slider>
                 <div className="controls">
-                    {!this.state.isPrevSlideDisabled && (
+
                         <button className="btn-prev" onClick={this.slidePrevPage}>
                             Prev
                         </button>
-                    )}
+
                     <div className="flex-grow-1"></div>
-                    {!this.state.isNextSlideDisabled && (
+
                         <button className="btn-next" onClick={this.slideNextPage}>
                             Próx
                         </button>
-                    )}
+
                 </div>
             </Fragment>
         );
