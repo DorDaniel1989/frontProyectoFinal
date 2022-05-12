@@ -7,7 +7,7 @@ import Carrusel from "../components/Carrusel";
 import AliceCarousel from 'react-alice-carousel';
 import Card from "../components/Card";
 import '../styles/miCss.css';
-
+import '../styles/carrusel.sass';
 import { render } from "@testing-library/react";
 
 function Home() {
