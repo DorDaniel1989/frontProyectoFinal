@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import InscripcionesUsuario from "../components/InscripcionesUsuario";
 import defaultUser from "../imagenes/defaultUser.png";
 import DatosUsuario from "../components/DatosUsuario";
+import ComentariosUser from "./ComentariosUser";
+import EventosUser from "./EventosUser";
 import axios from 'axios';
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
@@ -57,15 +59,6 @@ function CuerpoPerfil() {
 
   }
 
-  async function EliminarComentario(Id) {
-
-    console.log(Id)
-    const response = await axios.delete(` https://localhost:5001/api/Comentario/${Id}`);
-    console.log(response)
-    obtenerDatos()
-
-  }
-
 
   async function EliminarCuenta(usuarioId) {
 
@@ -96,39 +89,12 @@ function CuerpoPerfil() {
 
 
             <div className="bodyDetails">
-              <InscripcionesUsuario />
+              <EventosUser user = {Id} />
 
 
-              <div className="comments-container">
-                <ul id="comments-list" className="comments-list">
-                  <h1>Comentarios </h1>
-                  <li>
-                    <div className="comment-main-level">
-                      {
 
-                        comentarios.map(item => (
+              <ComentariosUser />
 
-                          <div className="comment-box" key={item.comentarioId}>
-                            <div className="comment-head">
-
-                              <Link to={ruta + item.usuarioId}>{item.username}</Link>
-                              <button onClick={() => EliminarComentario(item.comentarioId)} className="btn btn-danger">Eliminar</button>
-                              <span>&emsp;{item.fecha_comentario}</span>
-                              <span>:{item.hora_comentario}</span>
-                              <i className="fa fa-reply"></i>
-                              <i className="fa fa-heart"></i>
-                            </div>
-                            <div className="comment-content">
-                              {item.comentario_text}
-                            </div>
-
-                          </div>
-                        ))
-                      }
-                    </div>
-                  </li>
-                </ul>
-              </div>
             </div>
           </div>
 
