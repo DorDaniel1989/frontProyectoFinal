@@ -14,9 +14,6 @@ import $ from 'jquery';
 
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
-
-
-
 function CuerpoPerfil() {
 
   const ruta = "/profile/";
@@ -98,7 +95,7 @@ function CuerpoPerfil() {
             </div>
           </div>
 
-          <DatosUsuario />
+          <DatosUsuario tablaData={user} setTablaData={setUser}/>
         </div>
       );
     }

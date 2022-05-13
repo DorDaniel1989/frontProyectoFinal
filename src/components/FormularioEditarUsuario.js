@@ -8,6 +8,27 @@ import "jquery-ui-dist/jquery-ui";
 
 function FormularioEditarUsuario(props) {
 
+    const [formData, setForm] = useState({
+
+        usuarioId: JSON.parse(localStorage.getItem('user')).usuarioId,
+        username: JSON.parse(localStorage.getItem('user')).username,
+        password: JSON.parse(localStorage.getItem('user')).password,
+        email: JSON.parse(localStorage.getItem('user')).email,
+        administrator: JSON.parse(localStorage.getItem('user')).administrator,
+        nombre: JSON.parse(localStorage.getItem('user')).nombre,
+        apellido: JSON.parse(localStorage.getItem('user')).apellido,
+        direccion: JSON.parse(localStorage.getItem('user')).direccion,
+        telefono: JSON.parse(localStorage.getItem('user')).telefono,
+        about_me: JSON.parse(localStorage.getItem('user')).about_me,
+        imagen: JSON.parse(localStorage.getItem('user')).imagen,
+
+    });
+
+console.log(formData);
+    useEffect(() => {
+
+    }, [])
+
     function getBase64(objeto) {
 
         // declaramos variable del tipo clave valor
@@ -41,37 +62,7 @@ function FormularioEditarUsuario(props) {
         };
     }
 
-   
-   console.log(JSON.parse(localStorage.getItem('user')).telefono) 
-
-   
-    const [formData, setForm] = useState({
-
-        usuarioId :   JSON.parse(localStorage.getItem('user')).usuarioId,
-        username: JSON.parse(localStorage.getItem('user')).username,
-        password: JSON.parse(localStorage.getItem('user')).password,
-        email:  JSON.parse(localStorage.getItem('user')).email,
-        administrator : JSON.parse(localStorage.getItem('user')).administrator,
-        nombre: JSON.parse(localStorage.getItem('user')).nombre,
-        apellido: JSON.parse(localStorage.getItem('user')).apellido,
-        direccion: JSON.parse(localStorage.getItem('user')).direccion,
-        telefono: JSON.parse(localStorage.getItem('user')).telefono,
-        about_me: JSON.parse(localStorage.getItem('user')).about_me,
-        imagen: JSON.parse(localStorage.getItem('user')).imagen,
-        
-    });
-
-
-    useEffect(() => {
-       
-      },[] )
-    
-
-    console.log("Estado del formulario al comenzar  =>" + formData.imagen)
- 
-    const baseUrl = 'http://localhost:5000/api/Usuario/'+ props.usuarioId;
-    console.log(baseUrl)
-
+    const baseUrl = 'http://localhost:5000/api/Usuario/'+ props.tablaData.usuarioId;
 
     const controlarCambio = e => {
         const { name, value } = e.target;
