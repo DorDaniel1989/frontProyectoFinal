@@ -29,7 +29,7 @@ function CuerpoDetalles(props) {
 
   useEffect(() => {
     obtenerDatos()
-
+    comprobarInscripcion();
   }, [])
 
 
@@ -62,9 +62,9 @@ function CuerpoDetalles(props) {
 
     axios.post('http://localhost:5000/api/Inscripcion', data).then(response => {
       return response.data
-    }).then(response => console.log(response))
+    }).then(response => {console.log(response); window.location.reload();})
 
-    window.location.reload();
+    
   }
 
 
@@ -152,8 +152,10 @@ function CuerpoDetalles(props) {
 
 
     Object.entries(thisInsc.data).map(([key, value]) => {
-      if(key == 'valoracion' && value == 1){
-        $('.hype').toggleClass('d-none')
+      if(key == 'valoracion' && value >= 1){
+        console.log('hype on');
+        $('.hype-on').removeClass('d-none')
+        $('.hype-off').addClass('d-none')
       }
     })
 
@@ -242,8 +244,8 @@ function CuerpoDetalles(props) {
             comprobarInscripcion() ? (
               <>
                 <a><button id="btn-bye-inscribir" onClick={() => {EliminarInscripcion(inscripcionId)}} type="button" className="btn btn-success">Cancelar inscripción</button></a>
-                <img onClick={restarHype} className="hype d-none" height={50} src={fuego_activo} />
-                <img onClick={sumarHype} className="hype" height={50} src={fuego_tenue} /></>) :
+                <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
+                <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></>) :
                  (
               <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
 
