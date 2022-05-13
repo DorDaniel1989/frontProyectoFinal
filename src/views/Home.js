@@ -131,6 +131,7 @@ function Home() {
             clickable: true,
             dynamicBullets: true
           }}
+          allowTouchMove={false}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           className="mySwiper"
@@ -168,6 +169,7 @@ function Home() {
           clickable: true,
           dynamicBullets: true
         }}
+        allowTouchMove={false}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
@@ -205,6 +207,7 @@ function Home() {
           clickable: true,
           dynamicBullets: true
         }}
+        allowTouchMove={false}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
@@ -242,6 +245,7 @@ function Home() {
           clickable: true,
           dynamicBullets: true
         }}
+        allowTouchMove={false}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
@@ -279,6 +283,7 @@ function Home() {
           clickable: true,
           dynamicBullets: true
         }}
+        allowTouchMove={false}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
@@ -316,6 +321,7 @@ function Home() {
           clickable: true,
           dynamicBullets: true
         }}
+        allowTouchMove={false}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
@@ -353,6 +359,7 @@ function Home() {
           clickable: true,
           dynamicBullets: true
         }}
+        allowTouchMove={false}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
