@@ -9,7 +9,7 @@ import '../styles/miCss.css';
 
 function ComentariosUser() {
 
-    const ruta = "/visitProfile/";
+    const ruta = "/profile/";
     const [comentarios, setComentarios] = useState([])
     const { Id } = useParams();
 

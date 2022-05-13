@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 import {Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import '../styles/miCss.css';
@@ -9,6 +10,7 @@ import '../styles/miCss.css';
 function Comentarios() {
 
     const ruta = "/visitProfile/";
+    const rutaPropia = "/profile/";
     const [comentarios, setComentarios] = useState([])
     const { Id } = useParams();
 
@@ -28,6 +30,15 @@ function Comentarios() {
 
     }
 
+    async function EliminarComentario(Id) {
+
+        console.log(Id)
+        const response = await axios.delete(` https://localhost:5001/api/Comentario/${Id}`);
+        console.log(response)
+        obtenerDatos()
+
+    }
+
     return (
         <div className="comments-container">
             <ul id="comments-list" className="comments-list">
@@ -40,8 +51,7 @@ function Comentarios() {
 
                                 <div className="comment-box" key={item.comentarioId}>
                                     <div className="comment-head">
-
-                                        <span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>
+                                        {item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className="btn btn-danger">Eliminar</button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)}
                                         <span>&emsp;{item.fecha_comentario}&nbsp;</span>
                                         <span>a las {item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>
