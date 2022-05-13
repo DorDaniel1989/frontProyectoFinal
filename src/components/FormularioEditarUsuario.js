@@ -8,26 +8,15 @@ import "jquery-ui-dist/jquery-ui";
 
 function FormularioEditarUsuario(props) {
 
-    const [formData, setForm] = useState({
+    var [formData, setForm] = useState({...props.tablaData});
 
-        usuarioId: JSON.parse(localStorage.getItem('user')).usuarioId,
-        username: JSON.parse(localStorage.getItem('user')).username,
-        password: JSON.parse(localStorage.getItem('user')).password,
-        email: JSON.parse(localStorage.getItem('user')).email,
-        administrator: JSON.parse(localStorage.getItem('user')).administrator,
-        nombre: JSON.parse(localStorage.getItem('user')).nombre,
-        apellido: JSON.parse(localStorage.getItem('user')).apellido,
-        direccion: JSON.parse(localStorage.getItem('user')).direccion,
-        telefono: JSON.parse(localStorage.getItem('user')).telefono,
-        about_me: JSON.parse(localStorage.getItem('user')).about_me,
-        imagen: JSON.parse(localStorage.getItem('user')).imagen,
 
-    });
-
-console.log(formData);
     useEffect(() => {
+        setForm(props.tablaData);
+        
+    }, [props.tablaData])
 
-    }, [])
+    console.log(formData);
 
     function getBase64(objeto) {
 
@@ -91,8 +80,8 @@ console.log(formData);
              .then(response => {
                  return response.data;
              }).then(response => {
-                     window.location.reload();
-                     alert('El usuario ha sido modificado')
+                    props.setTablaData(formData);
+                    //alert('El usuario ha sido modificado')
                  }
              ).catch(error => {
                  console.log("ERROR FATAL")
@@ -102,8 +91,8 @@ console.log(formData);
 
     function cerrarVentana(){
 
-$(".container-datos").css("display", "none");
-$("#container-perfil").css("display", "flex");
+        $(".container-datos").css("display", "none");
+        $("#container-perfil").css("display", "flex");
     }
 
 
