@@ -15,16 +15,18 @@ function Admin() {
             return (<Navigate to='/'  />);
         }else{
           return (
-            <>
-              <marquee>Cuidado!!! que estás en el admin wacho</marquee>
+            <div className="container-fluid">
               <Menu/>
-              <Acordeon/>
 
-              <div className="formularios">
+              <marquee>Cuidado!!! que estás en el admin wacho</marquee>
+
+              <div id="dCMS" className="container-fluid">
+                <Acordeon/>
+
                 <Forms/>
               </div>
 
-            </>
+              </div>
           );
         }
   }else{
