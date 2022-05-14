@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 import '../styles/miCss.css';
+import '../styles/comentarios.sass';
 
 
 function ComentariosUser() {

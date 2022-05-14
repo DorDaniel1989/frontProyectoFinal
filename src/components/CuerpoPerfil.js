@@ -85,11 +85,9 @@ function CuerpoPerfil() {
 
             <div className="bodyDetails">
 
-            <h1 className="titoloEventos">{user.about_me}</h1>
+            <h1>{user.about_me}</h1>
 
             <NavTabs/>
-            
-            
 
             </div>
           </div>
