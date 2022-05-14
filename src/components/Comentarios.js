@@ -39,7 +39,7 @@ function Comentarios() {
 
     }
 
-    const estaLogueado=()=> localStorage.getItem('User') != null ? true : false;
+    const estaLogueado=()=> localStorage.getItem('user') !== null ? true : false;
      
     
     return (
@@ -55,7 +55,7 @@ function Comentarios() {
                                 <div className="comment-box" key={item.comentarioId}>
                                     <div className="comment-head">
                                       
-                                        {estaLogueado()?( item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className="btn btn-danger">Eliminar</button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):""} :
+                                        {estaLogueado()?( item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className="btn btn-danger">Eliminar</button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
 
 
                                         <span>&emsp;{item.fecha_comentario}&nbsp;</span>
