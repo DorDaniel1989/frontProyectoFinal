@@ -202,7 +202,12 @@ function CuerpoDetalles(props) {
           <h1>{evento.evento}</h1>
 
           <div id="fondo-evento">
-            <div className="absolute-info">
+
+          <div className="absolute-info">
+             
+                
+            <button id="btn btn-inscribir " type="button" className="btn btn-primary disabled">Inscribirme</button>
+
               <div className="cuadrado-info">
                 <p>Max</p>
                 <p>{evento.aforo_max}</p>
@@ -218,6 +223,7 @@ function CuerpoDetalles(props) {
               </div>
 
             </div>
+           
           </div>
         </div>
         <div className="body-details">
@@ -230,7 +236,7 @@ function CuerpoDetalles(props) {
           <h3>Precio entrada: {evento.precio}</h3>
           <br></br>
 
-          <TextArea display={""} />
+          <TextArea display={"disabled"} />
           <Comentarios />
           <br />
           <br />
