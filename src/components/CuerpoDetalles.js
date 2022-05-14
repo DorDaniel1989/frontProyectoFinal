@@ -48,9 +48,9 @@ function CuerpoDetalles(props) {
 
     var imagenf = document.getElementById("fondo-evento");
     imagenf.style.backgroundImage = `url(${imagen})`;
-    imagenf.style.width= "70%"
-    imagenf.style.maxHeight= "400px"
-  
+    imagenf.style.width = "70%"
+    imagenf.style.maxHeight = "400px"
+
   }
 
   function Inscribirse() {
@@ -237,37 +237,50 @@ function CuerpoDetalles(props) {
 
         <div className="cabecera-evento" id="aside-details">
           <h1>{evento.evento}</h1>
+
+          
           <div id="fondo-evento">
-          <div className="absolute-info">
-
-            <div className="cuadrado-info">
-            <p>AFORO MAX</p>
-            <p>{evento.aforo_max}</p>
-            </div>
-            <h4> </h4>
-            <h4>ASISTENTES {inscripciones.length}</h4>
-            <h4>CUPOS {evento.aforo_max - inscripciones.length}</h4>
-          </div>
-
-          </div>
-         
-          {
+     
+            <div className="absolute-info">
+            {
             comprobarInscripcion() ? (
-              <>
+              <div className="inscribirse-hype-container">
                 <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="btn btn-success">Cancelar inscripción</button></a>
                 <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
-                <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></>) :
+                <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) :
               (
                 <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
-
+                
           }
-
-
+          
           {comprobarAforo()}
+
+
+            
+              <div className="cuadrado-info">
+                <p>Max</p>
+                <p>{evento.aforo_max}</p>
+              </div>
+              <div className="cuadrado-info">
+                <p>Van</p>
+                <p>{inscripciones.length}</p>
+              </div>
+              
+              <div className="cuadrado-info">
+                <p>Faltan</p>
+                <p>{evento.aforo_max - inscripciones.length}</p>
+              </div>
+              
+            </div>
+
+      
+          </div>
+
+        
         </div>
 
         <div className="body-details">
-          <Map />
+          
           <h4>{evento.fecha_inic} hasta {evento.fecha_fin} de {evento.hora_inic} a {evento.hora_fin}</h4>
           <h2>{localizacion.localizacion}</h2>
 
@@ -278,7 +291,13 @@ function CuerpoDetalles(props) {
 
           <TextArea display={""} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={JSON.parse(localStorage.getItem('user')).usuarioId} />
           <Comentarios />
+          <br/>
+          <br/>
+          <hr/>
+          <h3 >Ubicacion:</h3>
+          <Map />
         </div>
+       
       </div>
 
     )
