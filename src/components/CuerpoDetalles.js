@@ -5,9 +5,7 @@ import imagen from "../imagenes/maluma.png";
 import TextArea from "./TextArea";
 import Comentarios from "./Comentarios";
 import Map from "./Map";
-import Link from '@mui/material/Link';
 import axios from 'axios';
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import fuego_activo from "../imagenes/fuego_activo.gif";
 import fuego_tenue from "../imagenes/fuego_tenue.png";
 import "jquery-ui-dist/jquery-ui";

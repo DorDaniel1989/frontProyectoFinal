@@ -1,14 +1,9 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-
-import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Link from '@mui/material/Link';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import LocalActivityIcon from '@mui/icons-material/LocalActivity';
+
 import imagen from "../imagenes/maluma.png";
 import { CardActionArea, Button } from '@mui/material';
 

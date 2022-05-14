@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Carta from "./Carta";
 import Card from "./Card";
 import axios from 'axios';
 import '../styles/cartas.css';
 
-import Carousel from 'react-grid-carousel'
+
 
 function EventosUser(props) {
 
@@ -32,9 +31,6 @@ function EventosUser(props) {
 
     return (
         <div className="container-cartas">
-
-            <h1 className="titoloEventos">dasdasdasd</h1>
-
 
             {
                 cards.map(item => (
