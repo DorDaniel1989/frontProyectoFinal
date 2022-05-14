@@ -4,12 +4,13 @@ import "jquery-ui-dist/jquery-ui";
 import Tabs from "./Tabs";
 import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
-import DataTable from 'react-data-table-component';
 
 
 export default function ShowTableContent(props) {
  
     const tabs =  [{name:'Usuarios'}, {name: 'Inscripciones'} , {name: 'Eventos'}, {name: 'Comentarios'}, {name: 'Categorías'}, {name: 'Localizaciones'}];
+
+    
 
     const endPointName = [
         ['Usuario'],
@@ -22,16 +23,6 @@ export default function ShowTableContent(props) {
 
     const firstData = props.tablaData.slice(0, 1);
     
-    const columns = [];
-
-    firstData.map((tupla) => {
-        Object.entries(tupla).map(([key, value]) => {
-            columns.push({name: key,
-                        selector: row => row.title});
-            })
-        });
-
-            
 
     var whichTabla = tabs.findIndex(t => {return t.name === props.tab;});
 
@@ -150,12 +141,7 @@ export default function ShowTableContent(props) {
             </tfoot>
             
         </table>
-
-        
         
     );
-<DataTable
-            columns={columns}
-            data={props.tablaData}
-        />
+
    }

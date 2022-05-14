@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import ComentariosUser from "./ComentariosUser";
 import EventosUser from "./EventosUser";
 import '../styles/NavTabs.css';
-import imagenPreferencias from '../imagenes/preferencias.jpg'
+
 
 function NavTabs() {
   const [toggleState, setToggleState] = useState(1);
@@ -13,8 +13,6 @@ function NavTabs() {
   };
 
   const { Id } = useParams();
-
-
 
 
   return (
@@ -33,13 +31,7 @@ function NavTabs() {
        
           Comentarios
         </button>
-        <button
-          className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-          onClick={() => toggleTab(3)}
-        >
-            <img src={imagenPreferencias}/>
-          Preferencias
-        </button>
+      
       </div>
 
       <div className="content-tabs">
