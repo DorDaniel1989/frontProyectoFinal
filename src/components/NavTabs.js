@@ -43,6 +43,7 @@ function NavTabs() {
 
 
           <EventosUser user = {Id} />
+          
         </div>
 
         <div

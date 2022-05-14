@@ -46,8 +46,8 @@ function CuerpoPerfil() {
   function abrirFrameDatos() {
 
     console.log("Abriendo datos de usuario....")
-    $(".container-datos").css("display", "flex")
-    $("#container-perfil").css("display", "none");
+    $("#container-datos").css("display", "flex").css("z-index", "1")
+    $("#container-perfil").css("z-index", "99");
 
   }
 
