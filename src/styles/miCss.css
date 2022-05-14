@@ -97,7 +97,7 @@ box-shadow: 5px 10px 10px #8888887c;
 .navbar {
   display: flex;
   align-items: center;
-  background: rgb(30, 21, 31);
+  background: rgba(30, 21, 31, 0);
   color: white;
   font-family: Helvetica;
   font-weight: 300;

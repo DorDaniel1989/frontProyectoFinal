@@ -3,15 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
-import InscripcionesUsuario from "../components/InscripcionesUsuario";
 import defaultUser from "../imagenes/defaultUser.png";
 import DatosUsuario from "../components/DatosUsuario";
-import ComentariosUser from "./ComentariosUser";
-import EventosUser from "./EventosUser";
+import NavTabs from "../components/NavTabs";
 import axios from 'axios';
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
-
+import '../styles/perfil.sass';
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
 function CuerpoPerfil() {
@@ -78,7 +76,7 @@ function CuerpoPerfil() {
             <div className="aside" id="aside-details">
 
               <h1>{user.username}</h1>
-              <img src={user.imagen} />
+              <img src={user.imagen} className="imagenPerfil" />
               <button className="btn btn-warning" onClick={abrirFrameDatos}> Ver datos Personales</button>
               <button className="btn btn-danger" onClick={()=>EliminarCuenta(user.usuarioId)}>Eliminar cuenta</button>
 
@@ -86,11 +84,12 @@ function CuerpoPerfil() {
 
 
             <div className="bodyDetails">
-              <EventosUser user = {Id} />
 
+            <h1 className="titoloEventos">{user.about_me}</h1>
 
-
-              <ComentariosUser />
+            <NavTabs/>
+            
+            
 
             </div>
           </div>
