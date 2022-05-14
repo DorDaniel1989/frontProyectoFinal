@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useParams } from 'react-router-dom';
-import ComentariosUser from "./ComentariosUser";
-import EventosUser from "./EventosUser";
-import '../styles/NavTabs.css';
-import imagenPreferencias from '../imagenes/preferencias.jpg'
 import ComentariosVisitUser from "./ComentariosVisitUser"; 
 import EventosVisitUser from "./EventosVisitUser";
+import '../styles/NavTabs.sass';
 
 function NavTabs() {
   const [toggleState, setToggleState] = useState(1);
