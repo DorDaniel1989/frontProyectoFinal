@@ -10,7 +10,8 @@ import axios from 'axios';
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 import '../styles/perfil.sass';
-import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
+import imagenPreferencias from '../imagenes/preferencias.jpg'
+
 
 function CuerpoPerfil() {
 
@@ -55,39 +56,32 @@ function CuerpoPerfil() {
   }
 
 
-  async function EliminarCuenta(usuarioId) {
-
-    console.log("eliminando cuenta" ,usuarioId)
-    const response = await axios.delete(` http://localhost:5000/api/Usuario/${usuarioId}`);
-    console.log(response) 
-    localStorage.clear();
-    
-    navigate("/");
-  }
-
-
   if (localStorage.getItem('user') !== null) {
     if (JSON.parse(localStorage.getItem('user')).usuarioId != Id) {
       return (<Navigate to='/' />);
     } else {
       return (
         <div className="container">
+
           <div id="container-perfil" className='container'>
-            <div className="aside" id="aside-details">
-
-              <h1>{user.username}</h1>
+            <div className="cabeceraPerfil" id="aside-details">
+              <div className="div_imagen">
+              <button className="btn-preferencias btn bg-primary" onClick={abrirFrameDatos}> <img src={imagenPreferencias} /> </button>
               <img src={user.imagen} className="imagenPerfil" />
-              <button className="btn btn-warning" onClick={abrirFrameDatos}> Ver datos Personales</button>
-              <button className="btn btn-danger" onClick={()=>EliminarCuenta(user.usuarioId)}>Eliminar cuenta</button>
-
+              <h1>{user.username}</h1>
+              </div>
+            
+              <div className="div_about_me">
+              <h1>{user.about_me}</h1>
+              </div>
+              
             </div>
-
 
             <div className="bodyDetails">
 
-            <h1>{user.about_me}</h1>
+          
 
-            <NavTabs/>
+            <NavTabs />
 
             </div>
           </div>
@@ -99,7 +93,5 @@ function CuerpoPerfil() {
   } else {
     return (<Navigate to='/' />);
   }
-
-
 }
 export default CuerpoPerfil;

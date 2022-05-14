@@ -47,16 +47,6 @@ box-shadow: 5px 10px 10px #8888887c;
 
 }
 
-.bodyDetails{
- width:65%;
- 
-}
-
-.container{
-
-  padding: 0 !important;
-}
-
 .container-cartas{
   width: 100% ;
   display: flex;
