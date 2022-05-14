@@ -20,7 +20,7 @@ function Admin() {
 
               <marquee>Cuidado!!! que estás en el admin wacho</marquee>
 
-              <div id="dCMS" className="container-fluid">
+              <div id="dCMS" className="container-fluid d-flex flex-wrap">
                 <Acordeon/>
 
                 <Forms/>
