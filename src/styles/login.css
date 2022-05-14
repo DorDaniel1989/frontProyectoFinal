@@ -2,7 +2,7 @@
   
   .login-container{
 	  display:none;
-	 background-color:  rgba(23, 135, 255, 0.397);
+	 background-color:  rgba(23, 135, 255, 0);
 	  align-items:center;
 	  justify-content:center;
 	  height:100vh;
@@ -13,7 +13,7 @@
 	.form-box{
 		width:380px;
 		height:fit-content;
-		background-color:rgba(101, 217, 136, 0.838);
+		background-color:rgba(15, 15, 19, 0.838);
 		padding:20px;
 		display:flex;
 		flex-direction:column;

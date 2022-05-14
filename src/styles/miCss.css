@@ -27,7 +27,7 @@ body {
 }
 
 .container{
-  background-color: #f9fafa9a;
+  background-color: #faffff4c;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap ;
@@ -101,8 +101,6 @@ box-shadow: 5px 10px 10px #8888887c;
   color: white;
   font-family: Helvetica;
   font-weight: 300;
-  position: sticky !important; 
-  top: 0 !important;
   z-index: 1 !important;
 }
 
