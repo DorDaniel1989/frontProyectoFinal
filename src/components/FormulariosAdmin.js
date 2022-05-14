@@ -67,11 +67,11 @@ useEffect(()=>{
         {
             tabs.map(tabla => (
                 <>
-                    <div className="d-none formsAPI" id={'show'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
+                    <div className="d-none formsAPI showTable container-fluid" id={'show'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
                         <ShowTableContent tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
                     </div>  
 
-                    <div className="formularios">
+                    <div className="formularios container-fluid">
                         <div className="d-none formsAPI" id={'create'+ tabla.name.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
                             <FormData method = {'POST'} tab = {tabla.name} tablaData = {tabla.table} setTablaData = {tabla.setTable}/>
                         </div>
