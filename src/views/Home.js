@@ -1,11 +1,11 @@
 import React, {Component, useEffect, useState } from "react";
 import Buscador from '../components/Buscador';
 import Menu from '../components/Menu';
-import Cartas from "../components/Cartas";
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from "swiper";
 import Card from "../components/Card";
-import '../styles/miCss.css';
+
 import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";

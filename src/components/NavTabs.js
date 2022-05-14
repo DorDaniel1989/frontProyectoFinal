@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useParams } from 'react-router-dom';
 import ComentariosUser from "./ComentariosUser";
 import EventosUser from "./EventosUser";
-import '../styles/NavTabs.css';
-
+import '../styles/NavTabs.sass';
 
 function NavTabs() {
   const [toggleState, setToggleState] = useState(1);
@@ -40,6 +39,9 @@ function NavTabs() {
         >
           <h2>Eventos a los que asistiré</h2>
           <hr />
+
+
+
           <EventosUser user = {Id} />
         </div>
 
@@ -50,13 +52,10 @@ function NavTabs() {
           <hr />
           <ComentariosUser />
         </div>
-
         <div
-          className={toggleState === 3 ? "content  active-content" : "content"}
+          id="ajustes-preferencias"
         >
-          <h2>Mi cuenta</h2>
-          <hr />
-          <ComentariosUser />
+          
         </div>
       </div>
     </div>

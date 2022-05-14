@@ -1,7 +1,6 @@
 
 import React, { Component, useEffect, useState } from "react";
-import '../styles/login.css';
-import { Navigate } from 'react-router-dom';
+import '../styles/login.sass';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import $ from 'jquery';

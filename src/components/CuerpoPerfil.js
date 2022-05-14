@@ -6,18 +6,18 @@ import { useNavigate } from "react-router-dom";
 import defaultUser from "../imagenes/defaultUser.png";
 import DatosUsuario from "../components/DatosUsuario";
 import NavTabs from "../components/NavTabs";
-import axios from 'axios';
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 import '../styles/perfil.sass';
 import imagenPreferencias from '../imagenes/preferencias.jpg'
 
 
+
 function CuerpoPerfil() {
 
-  const ruta = "/profile/";
+
   const [user, setUser] = useState([])
-  const [comentarios, setComentarios] = useState([])
+
   const { Id } = useParams();
 
   const navigate = useNavigate();
@@ -41,10 +41,6 @@ function CuerpoPerfil() {
 
     setUser(user)
 
-    const comData = await fetch(`http://localhost:5000/api/Comentario/Usuario/${Id}`);
-    const comentarios = await comData.json()
-    setComentarios(comentarios)
-
   }
 
   function abrirFrameDatos() {
@@ -61,32 +57,29 @@ function CuerpoPerfil() {
       return (<Navigate to='/' />);
     } else {
       return (
-        <div className="container">
 
-          <div id="container-perfil" className='container'>
-            <div className="cabeceraPerfil" id="aside-details">
-              <div className="div_imagen">
+
+        <div id="container-perfil" className='container container-perfil'>
+          <div className="cabeceraPerfil" id="aside-details">
+            <div className="div_imagen">
               <button className="btn-preferencias btn bg-primary" onClick={abrirFrameDatos}> <img src={imagenPreferencias} /> </button>
               <img src={user.imagen} className="imagenPerfil" />
               <h1>{user.username}</h1>
-              </div>
-            
-              <div className="div_about_me">
-              <h1>{user.about_me}</h1>
-              </div>
-              
             </div>
 
-            <div className="bodyDetails">
+            <div className="div_about_me">
+              <h1>{user.about_me}</h1>
+            </div>
 
-          
+          </div>
+
+          <div className="bodyDetails">
 
             <NavTabs />
 
-            </div>
           </div>
 
-          <DatosUsuario tablaData={user} setTablaData={setUser}/>
+          <DatosUsuario tablaData={user} setTablaData={setUser} />
         </div>
       );
     }

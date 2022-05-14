@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import imagen from "../imagenes/maluma.png";
+import imagen from "../imagenes/concierto.png";
 import TextArea from "./TextArea";
 import Comentarios from "./Comentarios";
 import Map from "./Map";
@@ -10,8 +10,8 @@ import fuego_activo from "../imagenes/fuego_activo.gif";
 import fuego_tenue from "../imagenes/fuego_tenue.png";
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
+import '../styles/evento.sass';
 
-import '../styles/miCss.css';
 
 
 function CuerpoDetalles(props) {
@@ -22,7 +22,7 @@ function CuerpoDetalles(props) {
   const [inscripciones, setInscripciones] = useState([])
   const [localizacion, setlocalizacion] = useState([])
   const { Id } = useParams();
- 
+
   const [inscripcionId, setInscripcionId] = useState([])
 
   useEffect(() => {
@@ -46,6 +46,11 @@ function CuerpoDetalles(props) {
     setlocalizacion(localizacion[0])
     console.log(localizacion)
 
+    var imagenf = document.getElementById("fondo-evento");
+    imagenf.style.backgroundImage = `url(${imagen})`;
+    imagenf.style.width= "70%"
+    imagenf.style.maxHeight= "400px"
+  
   }
 
   function Inscribirse() {
@@ -60,9 +65,9 @@ function CuerpoDetalles(props) {
 
     axios.post('http://localhost:5000/api/Inscripcion', data).then(response => {
       return response.data
-    }).then(response => {console.log(response); window.location.reload();})
+    }).then(response => { console.log(response); window.location.reload(); })
 
-    
+
   }
 
 
@@ -88,9 +93,9 @@ function CuerpoDetalles(props) {
     inscripciones.forEach(element => {
       if (element.username == (JSON.parse(localStorage.getItem('user')).username)) {
         //console.log("encontrado!")
-       // setInscripcionId(inscripciones.inscripcionId)
-        
-        console.log("inscripcionID => ",inscripcionId)
+        // setInscripcionId(inscripciones.inscripcionId)
+
+        console.log("inscripcionID => ", inscripcionId)
         inscrito = true;
         getInscripcion();
         checkHype(inscripcionId);
@@ -101,39 +106,39 @@ function CuerpoDetalles(props) {
 
   }
 
-  async function getInscripcion(){
+  async function getInscripcion() {
     const inscData = await fetch(`http://localhost:5000/api/Inscripcion/Usuario/${JSON.parse(localStorage.getItem('user')).usuarioId}`);
     const inscripcionesUser = await inscData.json()
     inscripcionesUser.map((tupla) => {
       Object.entries(tupla).map(([key, subkey]) => {
 
-        if(key == 's'){
-          Object.entries(subkey).map(([key, value]) =>{
-            if(key == 'eventoId'){
-              if(value == Id){
+        if (key == 's') {
+          Object.entries(subkey).map(([key, value]) => {
+            if (key == 'eventoId') {
+              if (value == Id) {
                 setInscripcionId(subkey['inscripcionId']);
                 return true;
               }
             }
           })
         }
-        
+
       })
     })
-    
+
   }
 
   async function EliminarInscripcion(Id) {
 
-    if (hypeado){
+    if (hypeado) {
       await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
         .catch(function (error) {
           alert('Error!!! ->\n' + error)
-        }); 
-        console.log('estabas hypeado prro');
+        });
+      console.log('estabas hypeado prro');
     }
 
-    console.log('aca wacho '+Id);
+    console.log('aca wacho ' + Id);
 
     const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
     console.log(response)
@@ -141,16 +146,16 @@ function CuerpoDetalles(props) {
     window.location.reload();
   }
 
-  async function checkHype(Id){
-    
+  async function checkHype(Id) {
+
     const thisInsc = await axios.get(`http://localhost:5000/api/Inscripcion/${Id}`)
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
-      }); 
+      });
 
 
     Object.entries(thisInsc.data).map(([key, value]) => {
-      if(key == 'valoracion' && value >= 1){
+      if (key == 'valoracion' && value >= 1) {
         console.log('hype on');
         $('.hype-on').removeClass('d-none')
         $('.hype-off').addClass('d-none')
@@ -158,7 +163,7 @@ function CuerpoDetalles(props) {
     })
 
 
-    
+
   }
 
   async function sumarHype() {
@@ -168,7 +173,7 @@ function CuerpoDetalles(props) {
     await axios.get(`http://localhost:5000/api/Inscripcion/HypeUp/${inscripcionId}`)
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
-      }); 
+      });
 
     hypeado = true;
 
@@ -181,7 +186,7 @@ function CuerpoDetalles(props) {
     await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
       .catch(function (error) {
         alert('Error!!! ->\n' + error)
-      }); 
+      });
 
     hypeado = false;
 
@@ -193,7 +198,7 @@ function CuerpoDetalles(props) {
 
     return (
 
-      <div className='container'>
+      <div className='container  container-perfil'>
 
         <div className="aside" id="aside-details">
           <h2>AFORO MAX {evento.aforo_max}</h2>
@@ -223,40 +228,49 @@ function CuerpoDetalles(props) {
           <Comentarios />
         </div>
       </div>
- 
+
     );
   } else
 
     return (
-      <div className='container'>
+      <div className='container container-evento'>
 
-        <div className="aside" id="aside-details">
-          <h2>AFORO MAX {evento.aforo_max}</h2>
-          <h2>ASISTENTES {inscripciones.length}</h2>
-          <h2>CUPOS {evento.aforo_max - inscripciones.length}</h2>
+        <div className="cabecera-evento" id="aside-details">
+          <h1>{evento.evento}</h1>
+          <div id="fondo-evento">
+          <div className="absolute-info">
 
-          <Map />
+            <div className="cuadrado-info">
+            <p>AFORO MAX</p>
+            <p>{evento.aforo_max}</p>
+            </div>
+            <h4> </h4>
+            <h4>ASISTENTES {inscripciones.length}</h4>
+            <h4>CUPOS {evento.aforo_max - inscripciones.length}</h4>
+          </div>
 
-
+          </div>
+         
           {
             comprobarInscripcion() ? (
               <>
-                <a><button id="btn-bye-inscribir" onClick={() => {EliminarInscripcion(inscripcionId)}} type="button" className="btn btn-success">Cancelar inscripción</button></a>
+                <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="btn btn-success">Cancelar inscripción</button></a>
                 <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
                 <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></>) :
-                 (
-              <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
+              (
+                <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
 
           }
-         
+
 
           {comprobarAforo()}
         </div>
-        <div className="bodyDetails">
-          <h1>{evento.evento}</h1>
+
+        <div className="body-details">
+          <Map />
           <h4>{evento.fecha_inic} hasta {evento.fecha_fin} de {evento.hora_inic} a {evento.hora_fin}</h4>
           <h2>{localizacion.localizacion}</h2>
-          <img src={imagen} />
+
           <p>{evento.descripcion}</p>
           <br></br>
           <h3>Precio entrada: {evento.precio}</h3>

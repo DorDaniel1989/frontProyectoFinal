@@ -1,12 +1,12 @@
 
 
-import {Link, BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
+import React from "react";
 import FormularioLogin from '../components/FormularioLogin';
 import imagen from "../imagenes/Eventum_golden.png";
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
-import '../styles/miCss.css';
+import '../styles/navbar.sass';
 
 function Menu() {
 

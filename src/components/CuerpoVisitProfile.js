@@ -1,8 +1,5 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import ComentariosVisitUser from "./ComentariosVisitUser";
-import EventosVisitUser from "./EventosVisitUser";
 import defaultUser from "../imagenes/defaultUser.png";
 import NavTabsVisitUser from "../components/NavTabsVisitUser";
 import '../styles/perfil.sass';

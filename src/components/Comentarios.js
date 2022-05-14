@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import {Link, BrowserRouter, Routes, Route } from "react-router-dom";
-import '../styles/miCss.css';
+
 
 
 function Comentarios() {
