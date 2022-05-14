@@ -260,7 +260,7 @@ box-shadow: 5px 10px 10px #8888887c;
   =======================*/
  .comments-container {
    margin: 60px auto 15px;
-   width: 768px;
+   width: 70%;
  }
  
  .comments-container h1 {
@@ -331,7 +331,7 @@ box-shadow: 5px 10px 10px #8888887c;
   * Caja del Comentario
   ---------------------------*/
  .comments-list .comment-box {
-   width: 680px;
+   width: 80%;
    float: right;
    position: relative;
    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
@@ -361,6 +361,7 @@ box-shadow: 5px 10px 10px #8888887c;
  
  .reply-list .comment-box {
    width: 610px;
+   background-color: #03658c;
  }
  .comment-box .comment-head {
    background: #FCFCFC;

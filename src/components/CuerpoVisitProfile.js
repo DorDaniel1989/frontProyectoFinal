@@ -1,9 +1,12 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import ComentariosUser from "./ComentariosVisitUser"; 
-import EventosUser from "./EventosVisitUser";
-import defaultUser from  "../imagenes/defaultUser.png";
+import ComentariosVisitUser from "./ComentariosVisitUser";
+import EventosVisitUser from "./EventosVisitUser";
+import defaultUser from "../imagenes/defaultUser.png";
+import NavTabsVisitUser from "../components/NavTabsVisitUser";
+import '../styles/perfil.sass';
+
 
 function CuerpoVisitProfile() {
 
@@ -30,13 +33,19 @@ function CuerpoVisitProfile() {
         <h1>PERFIL DE : {user.username}</h1>
         <img src={user.imagen} />
         <h2>Descripcion : {user.about_me}</h2>
-        
+
       </div>
 
-      <ComentariosUser/>
+      <div className="bodyDetails">
 
-      <EventosUser user = {Id}/>
-       
+        <h1>{user.about_me}</h1>
+
+        <NavTabsVisitUser />
+
+      </div>
+
+
+
     </div>
   )
 }
