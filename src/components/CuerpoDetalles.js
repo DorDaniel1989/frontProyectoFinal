@@ -44,12 +44,18 @@ function CuerpoDetalles(props) {
     const locData = await fetch(`http://localhost:5000/api/Localizacion/evento/${Id}`);
     const localizacion = await locData.json()
     setlocalizacion(localizacion[0])
-    console.log(localizacion)
+    
 
-    var imagenf = document.getElementById("fondo-evento");
-    imagenf.style.backgroundImage = `url(${imagen})`;
-    imagenf.style.width = "70%"
-    imagenf.style.maxHeight = "400px"
+    const imagenf = document.getElementById("fondo-evento");
+    console.log("imagen F ", imagenf)
+    try{
+      imagenf.style.backgroundImage = `url(${imagen})`;
+      imagenf.style.width = "70%"
+      imagenf.style.maxHeight = "400px"
+    }catch(e){
+      
+    }
+    
 
   }
 
@@ -61,8 +67,7 @@ function CuerpoDetalles(props) {
       "eventoId": Id,
       "valoracion": 0
     }
-    console.log(data)
-
+    
     axios.post('http://localhost:5000/api/Inscripcion', data).then(response => {
       return response.data
     }).then(response => { console.log(response); window.location.reload(); })
@@ -73,12 +78,8 @@ function CuerpoDetalles(props) {
 
   function comprobarAforo() {
 
-    console.log(inscripciones.length)
-    console.log(evento.aforo_max)
-    console.log("console ", inscripciones.length >= evento.aforo_max)
-
     if (inscripciones.length >= evento.aforo_max) {
-      console.log(inscripciones.length >= evento.aforo_max)
+    
       document.getElementById("btn-inscribir").setAttribute("class", "btn btn-disabled btn-danger")
       document.getElementById("btn-inscribir").innerText = "COMPLETO"
     }
@@ -162,8 +163,6 @@ function CuerpoDetalles(props) {
       }
     })
 
-
-
   }
 
   async function sumarHype() {
@@ -193,40 +192,54 @@ function CuerpoDetalles(props) {
   }
 
 
-
   if (localStorage.getItem('user') == null) {
-
+     console.log("local storage   evento ", localStorage.getItem('user'))
     return (
 
-      <div className='container  container-perfil'>
+      <div className='container container-evento'>
 
-        <div className="aside" id="aside-details">
-          <h2>AFORO MAX {evento.aforo_max}</h2>
-          <h2>ASISTENTES {inscripciones.length}</h2>
-          <h2>CUPOS {evento.aforo_max - inscripciones.length}</h2>
-
-          <Map />
-
-          <a><button onClick={Inscribirse} type="button" className="btn btn-success disabled">Inscribirse</button></a>
-
-
-
-        </div>
-
-        <div className="bodyDetails">
-
+        <div className="cabecera-evento" id="aside-details">
           <h1>{evento.evento}</h1>
+
+          <div id="fondo-evento">
+            <div className="absolute-info">
+              <div className="cuadrado-info">
+                <p>Max</p>
+                <p>{evento.aforo_max}</p>
+              </div>
+              <div className="cuadrado-info">
+                <p>Van</p>
+                <p>{inscripciones.length}</p>
+              </div>
+
+              <div className="cuadrado-info">
+                <p>Faltan</p>
+                <p>{evento.aforo_max - inscripciones.length}</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div className="body-details">
+
           <h4>{evento.fecha_inic} hasta {evento.fecha_fin} de {evento.hora_inic} a {evento.hora_fin}</h4>
-          <h2>{localizacion.localizacion}</h2>
-          <img src={imagen} />
+
+
           <p>{evento.descripcion}</p>
           <br></br>
           <h3>Precio entrada: {evento.precio}</h3>
           <br></br>
 
-          <TextArea display={"disabled"} eventoId={evento.eventoId} categoriaId={evento.categoriaId} />
+          <TextArea display={""} />
           <Comentarios />
+          <br />
+          <br />
+          <hr />
+          <h3 >Ubicacion:</h3>
+          <h2>{localizacion.localizacion}</h2>
+          <Map />
         </div>
+
       </div>
 
     );
@@ -238,25 +251,23 @@ function CuerpoDetalles(props) {
         <div className="cabecera-evento" id="aside-details">
           <h1>{evento.evento}</h1>
 
-          
+
           <div id="fondo-evento">
-     
+
             <div className="absolute-info">
-            {
-            comprobarInscripcion() ? (
-              <div className="inscribirse-hype-container">
-                <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="btn btn-success">Cancelar inscripción</button></a>
-                <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
-                <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) :
-              (
-                <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
-                
-          }
-          
-          {comprobarAforo()}
+              {
+                comprobarInscripcion() ? (
+                  <div className="inscribirse-hype-container">
+                    <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="btn btn-success">Cancelar inscripción</button></a>
+                    <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
+                    <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) :
+                  (
+                    <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
 
+              }
 
-            
+              {comprobarAforo()}
+
               <div className="cuadrado-info">
                 <p>Max</p>
                 <p>{evento.aforo_max}</p>
@@ -265,24 +276,19 @@ function CuerpoDetalles(props) {
                 <p>Van</p>
                 <p>{inscripciones.length}</p>
               </div>
-              
+
               <div className="cuadrado-info">
                 <p>Faltan</p>
                 <p>{evento.aforo_max - inscripciones.length}</p>
               </div>
-              
+
             </div>
-
-      
           </div>
-
-        
         </div>
-
         <div className="body-details">
-          
+
           <h4>{evento.fecha_inic} hasta {evento.fecha_fin} de {evento.hora_inic} a {evento.hora_fin}</h4>
-          <h2>{localizacion.localizacion}</h2>
+
 
           <p>{evento.descripcion}</p>
           <br></br>
@@ -291,13 +297,14 @@ function CuerpoDetalles(props) {
 
           <TextArea display={""} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={JSON.parse(localStorage.getItem('user')).usuarioId} />
           <Comentarios />
-          <br/>
-          <br/>
-          <hr/>
+          <br />
+          <br />
+          <hr />
           <h3 >Ubicacion:</h3>
+          <h2>{localizacion.localizacion}</h2>
           <Map />
         </div>
-       
+
       </div>
 
     )

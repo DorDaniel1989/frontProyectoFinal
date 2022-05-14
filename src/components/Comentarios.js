@@ -42,7 +42,7 @@ function Comentarios() {
     return (
         <div className="comments-container">
             <ul id="comments-list" className="comments-list">
-                <h1>Comentarios </h1>
+                <h2>Comentarios </h2>
                 <li>
                     <div className="comment-main-level">
                         {
