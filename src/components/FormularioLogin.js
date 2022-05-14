@@ -63,7 +63,7 @@ function FormularioLogin() {
         <div className="login-container">
             <div className="form-box">
                 <div className="header-form">
-                    <h4 className="text-primary text-center"> LOGIN</h4>
+                    <h4 className="text-center"> LOGIN</h4>
                     <div className="image">
                     </div>
                 </div>
