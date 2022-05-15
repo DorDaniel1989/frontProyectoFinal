@@ -68,42 +68,68 @@
                 .tss-1cdcmys-MUIDataTable-responsiveBase
                     //scrollbar-color: #BA8B02 whitesmoke
 
-                    table
-                        thead
-                            th
-                                padding-top: 32px
-                                padding-bottom: 0
-                                button
-                                    font-size: 12px
-
+                table
+                    thead
+                        th
+                            padding-top: 32px
+                            padding-bottom: 0
+                            button
+                                font-size: 12px
+                                text-align: center
+                                background-color: #BA8B02 !important
+                                margin: 0
+                                top: 50%
+                                left: 50%
+                                -ms-transform: translate(-50%, -50%)
+                                transform: translate(-50%, -50%)
+                                .tss-bd2lw8-MUIDataTableHeadCell-sortActive
+                                    color: white
+                                svg
+                                    color: white
+                    tbody
+                        tr
+                            height: 102px
+                            td
+                                font-size: 12px                        
+                                .tss-1qtl85h-MUIDataTableBodyCell-root
                                     text-align: center
-                                    background-color: #BA8B02 !important
+                    tfoot
+                        tr
+                            td
+                                .MuiTablePagination-selectLabel
+                                    padding-top: 15px !important
+                                .MuiTablePagination-displayedRows
+                                    padding-top: 15px !important
+        .formsAPI
 
-                                    margin: 0
-                                    top: 50%
-                                    left: 50%
-                                    -ms-transform: translate(-50%, -50%)
-                                    transform: translate(-50%, -50%)
+            .container
+                max-width: 1000px
 
-                                    .tss-bd2lw8-MUIDataTableHeadCell-sortActive
-                                        color: white
-                                    svg
-                                        color: white
+                background-color: #000000 !important
+                border-color:#BA8B02 !important
 
-                        tbody
+                .formEdit
+                    display: flex
+                    flex-direction: row
+                    flex-wrap: wrap
 
-                            tr
-                                height: 102px
-                                td
-                                    font-size: 12px                        
-
-                                    .tss-1qtl85h-MUIDataTableBodyCell-root
-                                        text-align: center
-
-                        tfoot
-
-                            .MuiTablePagination-selectLabel
-                                padding-top: 15px !important
-
-                            .MuiTablePagination-displayedRows
-                                padding-top: 15px !important
+                    .dDataInput
+                        width: 50%
+                        label
+                            color: white
+                        input[type="file"]
+                            color: white
+                        input
+                            width: fit-content
+                    .dDataInputBtn
+                        width: 100%
+                        padding-top: 10px !important
+                .dDataInput
+                    width: 50%
+                    p
+                        color: white
+                    input
+                        width: fit-content
+                .dDataInputBtn
+                    width: 100%
+                    padding-top: 10px !important
