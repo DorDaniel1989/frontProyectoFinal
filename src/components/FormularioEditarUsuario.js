@@ -115,7 +115,7 @@ function FormularioEditarUsuario(props) {
 
 
         <div className="container register-container">
-            <div className="form-box  form-editar-usuario">
+            <div className="form-box-editar">
             <button  onClick={cerrarVentana} className="btn btn-close bg-danger" ></button>
                 <div className="header-form">
                     <h4 className="text-white text-center"> DATOS PERSONALES</h4>

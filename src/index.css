@@ -13,11 +13,17 @@ code {
     monospace;
 }
 
+h1{
+  text-decoration: underline #BA8B02;
+
+}
 h1 , h2{
   color: rgb(255, 255, 255);
   width: 100%;
   text-align: center;
+  padding: 5%;
 }
+
 
 
 .MuiButton-root{

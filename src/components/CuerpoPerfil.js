@@ -9,7 +9,7 @@ import NavTabs from "../components/NavTabs";
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 import '../styles/perfil.sass';
-import imagenPreferencias from '../imagenes/preferencias.jpg'
+import imagenPreferencias from '../imagenes/configuraciones.png'
 
 
 
@@ -69,7 +69,7 @@ function CuerpoPerfil() {
             </div>
 
             <div className="div_about_me">
-              <h1>{user.about_me}</h1>
+              <h2>{user.about_me}</h2>
             </div>
 
           </div>
