@@ -6,9 +6,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from "swiper";
 import Card from "../components/Card";
 
+import fuego_activo from "../imagenes/fuego_activo.gif";
+
 import 'swiper/css';
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+
+import '../styles/home.sass';
 
 function Home() {
 
@@ -99,9 +103,8 @@ function Home() {
    <>
     <Menu/>
     <Buscador/>
-
-        <h1>Los Más Hypeados</h1>     
-
+        <h1><img  className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img  className="hype hype-on" height={50} src={fuego_activo} /></h1>     
+    
         <Swiper
           initialSlide={0}
           //slidesPerView={3}
