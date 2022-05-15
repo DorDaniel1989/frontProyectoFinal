@@ -6,7 +6,7 @@ import FormularioLogin from '../components/FormularioLogin';
 import imagen from "../imagenes/Eventum_golden.png";
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
-import '../styles/miCss.css';
+
 
 function Menu() {
 

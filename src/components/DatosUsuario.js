@@ -5,7 +5,7 @@ import FormularioEditarUsuario from "../components/FormularioEditarUsuario";
 function DatosUsuario(props) {
 
   return (
-    <div className='container container-datos'>
+    <div id="container-datos" className="container-datos">
         
       <FormularioEditarUsuario tablaData={props.tablaData} setTablaData={props.setTablaData}/>
 

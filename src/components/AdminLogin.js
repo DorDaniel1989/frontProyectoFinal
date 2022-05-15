@@ -1,6 +1,6 @@
 
 import React, { Component, useEffect, useState } from "react";
-import '../styles/login.css';
+import '../styles/login.sass';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 

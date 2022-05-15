@@ -3,7 +3,6 @@ import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
 import MUIDataTable from "mui-datatables";
 
-
 export default function ShowTableContent(props) {
 
   useEffect(()=>{
@@ -14,6 +13,8 @@ export default function ShowTableContent(props) {
   } ,[])
  
     const tabs =  [{name:'Usuarios'}, {name: 'Inscripciones'} , {name: 'Eventos'}, {name: 'Comentarios'}, {name: 'Categorías'}, {name: 'Localizaciones'}];
+
+    
 
     const endPointName = [
         ['Usuario'],
@@ -34,6 +35,7 @@ export default function ShowTableContent(props) {
                         });
             })
         });
+
 
     var whichTabla = tabs.findIndex(t => {return t.name === props.tab;});
 
@@ -106,7 +108,8 @@ console.log(auxTablaData)
             isRowSelectable: false
           }}
         />       
-        
+
+      
     );
 
    }

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import imagen from "../imagenes/marcanthony.png";
 import { Button } from '@mui/material';
-import '../styles/cards.css';
+import '../styles/cards.sass';
 
 export default function Carta(props) {
 
 
   const ruta = "/details/" + props.eventoId;
+  
 
   return (
 
@@ -15,8 +16,7 @@ export default function Carta(props) {
           <p>{props.fecha}</p>
           <p>{props.descripcion}</p>
           <img height={200} src={imagen}/>
-       <Button href= {ruta}>VER</Button>
-        
+          <Button href= {ruta}>VER</Button>
         
  </div> 
   )

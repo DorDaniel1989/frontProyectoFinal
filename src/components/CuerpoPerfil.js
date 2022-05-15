@@ -6,17 +6,18 @@ import { useNavigate } from "react-router-dom";
 import defaultUser from "../imagenes/defaultUser.png";
 import DatosUsuario from "../components/DatosUsuario";
 import NavTabs from "../components/NavTabs";
-import axios from 'axios';
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 import '../styles/perfil.sass';
-import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
+import imagenPreferencias from '../imagenes/preferencias.jpg'
+
+
 
 function CuerpoPerfil() {
 
-  const ruta = "/profile/";
+
   const [user, setUser] = useState([])
-  const [comentarios, setComentarios] = useState([])
+
   const { Id } = useParams();
 
   const navigate = useNavigate();
@@ -40,29 +41,14 @@ function CuerpoPerfil() {
 
     setUser(user)
 
-    const comData = await fetch(`http://localhost:5000/api/Comentario/Usuario/${Id}`);
-    const comentarios = await comData.json()
-    setComentarios(comentarios)
-
   }
 
   function abrirFrameDatos() {
 
     console.log("Abriendo datos de usuario....")
-    $(".container-datos").css("display", "flex")
-    $("#container-perfil").css("display", "none");
+    $("#container-datos").css("display", "flex").css("z-index", "1")
+    $("#container-perfil").css("z-index", "99");
 
-  }
-
-
-  async function EliminarCuenta(usuarioId) {
-
-    console.log("eliminando cuenta" ,usuarioId)
-    const response = await axios.delete(` http://localhost:5000/api/Usuario/${usuarioId}`);
-    console.log(response) 
-    localStorage.clear();
-    
-    navigate("/");
   }
 
 
@@ -71,35 +57,34 @@ function CuerpoPerfil() {
       return (<Navigate to='/' />);
     } else {
       return (
-        <div className="container">
-          <div id="container-perfil" className='container'>
-            <div className="aside" id="aside-details">
 
-              <h1>{user.username}</h1>
+
+        <div id="container-perfil" className='container container-perfil'>
+          <div className="cabeceraPerfil" id="aside-details">
+            <div className="div_imagen">
+              <button className="btn-preferencias btn bg-primary" onClick={abrirFrameDatos}> <img src={imagenPreferencias} /> </button>
               <img src={user.imagen} className="imagenPerfil" />
-              <button className="btn btn-warning" onClick={abrirFrameDatos}> Ver datos Personales</button>
-              <button className="btn btn-danger" onClick={()=>EliminarCuenta(user.usuarioId)}>Eliminar cuenta</button>
-
+              <h1>{user.username}</h1>
             </div>
 
-
-            <div className="bodyDetails">
-
-            <h1>{user.about_me}</h1>
-
-            <NavTabs/>
-
+            <div className="div_about_me">
+              <h1>{user.about_me}</h1>
             </div>
+
           </div>
 
-          <DatosUsuario tablaData={user} setTablaData={setUser}/>
+          <div className="bodyDetails">
+
+            <NavTabs />
+
+          </div>
+
+          <DatosUsuario tablaData={user} setTablaData={setUser} />
         </div>
       );
     }
   } else {
     return (<Navigate to='/' />);
   }
-
-
 }
 export default CuerpoPerfil;

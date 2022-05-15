@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import axios from 'axios';
-import '../styles/cartas.css';
-
+import '../styles/cards.sass';
 
 
 function EventosUser(props) {
@@ -35,10 +34,10 @@ function EventosUser(props) {
             {
                 cards.map(item => (
 
-                    <>
+                    <div className="evento-usuario">
                         <Card titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic} />
                         <button onClick={() => EliminarInscripcion(item.inscripcionId)} className="btn btn-danger"> Eliminar</button>
-                    </>
+                    </div>
 
                 ))
             }

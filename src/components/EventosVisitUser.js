@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Carta from "./Carta";
 import Card from "./Card";
-import '../styles/cartas.css';
 
-import Carousel from 'react-grid-carousel'
 
 function EventosUser(props) {
 

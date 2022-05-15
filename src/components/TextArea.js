@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
-import Cookies from "universal-cookie";
-import '../styles/miCss.css';
-import obtenerDatos from "./CuerpoPerfil.js";
 
 
 function TextArea(props) {

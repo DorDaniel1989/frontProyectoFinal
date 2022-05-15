@@ -1,8 +1,5 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import ComentariosVisitUser from "./ComentariosVisitUser";
-import EventosVisitUser from "./EventosVisitUser";
 import defaultUser from "../imagenes/defaultUser.png";
 import NavTabsVisitUser from "../components/NavTabsVisitUser";
 import '../styles/perfil.sass';
@@ -27,14 +24,18 @@ function CuerpoVisitProfile() {
 
 
   return (
-    <div className='container'>
-      <div className="aside" id="aside-details">
+    <div className='container container-perfil'>
+        <div className="cabeceraPerfil" id="aside-details">
+            <div className="div_imagen">
+              <img src={user.imagen} className="imagenPerfil" />
+              <h1>{user.username}</h1>
+            </div>
 
-        <h1>PERFIL DE : {user.username}</h1>
-        <img src={user.imagen} />
-        <h2>Descripcion : {user.about_me}</h2>
+            <div className="div_about_me">
+              <h1>{user.about_me}</h1>
+            </div>
 
-      </div>
+          </div>
 
       <div className="bodyDetails">
 

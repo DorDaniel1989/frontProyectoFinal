@@ -1,6 +1,7 @@
 
 import React, { Component, useEffect, useState } from "react";
-import '../styles/login.css';
+import '../styles/login.sass';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
@@ -9,6 +10,7 @@ import "jquery-ui-dist/jquery-ui";
 function FormularioEditarUsuario(props) {
 
     var [formData, setForm] = useState({...props.tablaData});
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -89,6 +91,19 @@ function FormularioEditarUsuario(props) {
          })
     }
 
+
+
+    async function EliminarCuenta(usuarioId) {
+
+        console.log("eliminando cuenta" ,usuarioId)
+        const response = await axios.delete(` http://localhost:5000/api/Usuario/${usuarioId}`);
+        console.log(response) 
+        localStorage.clear();
+        
+        navigate("/");
+      }
+
+
     function cerrarVentana(){
 
         $(".container-datos").css("display", "none");
@@ -108,6 +123,7 @@ function FormularioEditarUsuario(props) {
                     </div>
                 </div>
                 <div className="body-form">
+                <button className="btn btn-danger" onClick={()=>EliminarCuenta(formData.usuarioId)}>Eliminar cuenta</button>
                
                     <form>
 
