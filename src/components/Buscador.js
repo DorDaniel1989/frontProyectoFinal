@@ -21,9 +21,9 @@ return (
         <TextField
           id="outlined-basic"
           onChange={inputHandler}
-          variant="outlined"
+          variant="standard"
           fullWidth
-          label="Search"
+          label="Buscar"
         />
       </div>
       <List input={inputText} />
