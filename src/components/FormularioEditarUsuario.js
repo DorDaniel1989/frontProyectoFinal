@@ -123,7 +123,7 @@ function FormularioEditarUsuario(props) {
                     </div>
                 </div>
                 <div className="body-form">
-                <button className="btn btn-danger" onClick={()=>EliminarCuenta(formData.usuarioId)}>Eliminar cuenta</button>
+                <button className="btn btn-primary border border-warning bg-transparent text-light btn-danger" onClick={()=>EliminarCuenta(formData.usuarioId)}>Eliminar cuenta</button>
                
                     <form>
 
@@ -187,7 +187,7 @@ function FormularioEditarUsuario(props) {
                             <input type="file" onChange={controlarCambio} name="imagen" id="imagen" className="form-control"/>
                         </div>
 
-                        <input onClick={() => actualizarUsuario()} className="btn login" value="GUARDAR CAMBIOS" />
+                        <input onClick={() => actualizarUsuario()} className="btn btn-primary border border-warning bg-transparent text-light login" value="GUARDAR CAMBIOS" />
 
                     </form>
 
