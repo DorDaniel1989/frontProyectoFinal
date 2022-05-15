@@ -248,15 +248,15 @@ function CuerpoDetalles(props) {
 
           <div id="fondo-evento">
 
-            <div className="absolute-info">
+            <div className="absolute-info p-2">
               {
                 comprobarInscripcion() ? (
-                  <div className="inscribirse-hype-container">
-                    <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="btn btn-success">Cancelar inscripción</button></a>
+                  <div className="inscribirse-hype-container ">
+                    <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="text-light border border-warning bg-dark btn btn-success">Cancelar inscripción</button></a>
                     <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
                     <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) :
                   (
-                    <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="btn btn-primary ">Inscribirme</button></a>)
+                    <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-primary ">Inscribirme</button></a>)
 
               }
 

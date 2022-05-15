@@ -17,7 +17,7 @@ export default function Carta(props) {
           <p>{props.descripcion}</p>
           <img height={200} src={imagen}/>
           
-          <Button className='boton-entrar' href= {ruta}>ENTRAR</Button>
+          <Button className='boton-entrar border border-warning bg-transparent' href= {ruta}>ENTRAR</Button>
         
  </div> 
   )

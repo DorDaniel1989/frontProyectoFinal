@@ -53,7 +53,7 @@ function ComentariosUser() {
                                     <div className="comment-head">
 
                                         <span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>
-                                        <button onClick={() => EliminarComentario(item.comentarioId)} className="btn btn-danger">Eliminar</button>
+                                        <button onClick={() => EliminarComentario(item.comentarioId)} className="text-light border border-warning bg-transparent btn btn-danger">Eliminar</button>
                                         <span>&emsp;{item.fecha_comentario}&nbsp;</span>
                                         <span>a las {item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>

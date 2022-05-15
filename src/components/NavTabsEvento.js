@@ -72,7 +72,7 @@ function NavTabsEvento(props) {
         >
           <h2>{props.descripcion}</h2>
          <div className="texto-pestaña-detalles">
-         
+          <hr  className="bg-white"/>
           <h3>Precio : {props.precio}</h3>
           <h4>Hora de inicio : {props.hora_inic}</h4>
           <h4>Hasta : {props.hora_fin}</h4>
@@ -80,7 +80,7 @@ function NavTabsEvento(props) {
           <h4>Fecha fin : {props.fecha_fin}</h4>
          </div>
          
-          <hr />
+          <hr/>
         
         </div>
 

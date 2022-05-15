@@ -88,7 +88,7 @@ function FormularioLogin() {
                             </div>
                             <input type="password" onChange={controlarCambio} name="password" id="password" className="form-control" placeholder="Password" />
                         </div>
-                        <input onClick={() => iniciarSesion()} className="btn login" value="LOGIN" />
+                        <input onClick={() => iniciarSesion()} className="btn login text-light border border-warning bg-transparent" value="LOGIN" />
                         <div className="message">
                             <div><input type="checkbox" /> Remember ME</div>
                             <div><a href="#">Forgot your password</a></div>
