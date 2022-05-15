@@ -236,15 +236,10 @@ function CuerpoDetalles(props) {
           <br></br>
           <h3>Precio entrada: {evento.precio}</h3>
           <br></br>
-
-          <TextArea display={"disabled"} />
-          <Comentarios />
-          <br />
-          <br />
+          <NavTabsEvento fecha_inic={evento.fecha_inic} fecha_fin={evento.fecha_fin} hora_inic={evento.hora_inic} hora_fin={evento.hora_fin} precio={evento.precio} descripcion={evento.descripcion} ubicacion={localizacion.localizacion} display={"disabled"} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={""}/>
+          
           <hr />
-          <h3 >Ubicacion:</h3>
-          <h2>{localizacion.localizacion}</h2>
-          <Map />
+          
         </div>
 
       </div>
@@ -296,7 +291,7 @@ function CuerpoDetalles(props) {
 
 
         <NavTabsEvento fecha_inic={evento.fecha_inic} fecha_fin={evento.fecha_fin} hora_inic={evento.hora_inic} hora_fin={evento.hora_fin} precio={evento.precio} descripcion={evento.descripcion} ubicacion={localizacion.localizacion} display={""} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={JSON.parse(localStorage.getItem('user')).usuarioId}/>
-
+        <hr />
           
 
       </div>
