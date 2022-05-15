@@ -33,7 +33,7 @@ function NavTabsEvento(props) {
           onClick={() => toggleTab(2)}
         >
        
-          Ubicacion
+          Ubicación
         </button>
 
         <button
@@ -70,7 +70,7 @@ function NavTabsEvento(props) {
         <div
           className={toggleState === 3 ? "content  active-content" : "content"}
         >
-             <h2>{props.descripcion}</h2>
+          <h2>{props.descripcion}</h2>
          <div className="texto-pestaña-detalles">
          
           <h3>Precio : {props.precio}</h3>
