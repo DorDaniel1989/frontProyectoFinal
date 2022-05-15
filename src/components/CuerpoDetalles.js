@@ -135,7 +135,7 @@ function CuerpoDetalles(props) {
     if (hypeado) {
       await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
         .catch(function (error) {
-          alert('Error!!! ->\n' + error)
+         
         });
       console.log('estabas hypeado prro');
     }

@@ -41,7 +41,11 @@ hr{
   justify-content: space-between;
   flex-wrap: wrap ;
   margin-top: 5%;
+  padding: 0!important
   
 }
+
+
+
 
 

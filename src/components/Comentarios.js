@@ -55,7 +55,7 @@ function Comentarios() {
                                 <>
                                 
                                 <div className="comment-box" key={item.comentarioId}>
-                                 <img height={30} src={item.imagen}/>
+                                 
                                     <div className="comment-head">
                                     
                                         {estaLogueado()?( item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className="text-dark border border-warning bg-transparent btn btn-danger">Eliminar</button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
@@ -66,6 +66,7 @@ function Comentarios() {
                                         <i className="fa fa-heart"></i>
                                     </div>
                                     <div className="comment-content">
+                                    <img height={80} src={item.imagen}/>
                                         {item.comentario_text}
                                     </div>
                                 </div>

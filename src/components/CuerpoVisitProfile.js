@@ -32,14 +32,14 @@ function CuerpoVisitProfile() {
             </div>
 
             <div className="div_about_me">
-              <h1>{user.about_me}</h1>
+            <p className="about_me">{user.about_me}</p>
             </div>
 
           </div>
 
       <div className="bodyDetails">
 
-        <h1>{user.about_me}</h1>
+     
 
         <NavTabsVisitUser />
 

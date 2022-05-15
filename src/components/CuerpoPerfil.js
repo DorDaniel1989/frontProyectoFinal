@@ -69,7 +69,7 @@ function CuerpoPerfil() {
             </div>
 
             <div className="div_about_me">
-              <h2>{user.about_me}</h2>
+              <p className="about_me">{user.about_me}</p>
             </div>
 
           </div>

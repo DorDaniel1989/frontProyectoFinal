@@ -103,10 +103,11 @@ function FormularioRegistro(props) {
     return (
 
 
-        <div className="register-container">
+        <div className="register-container-view">
+            <h3>Dale paso a la diversión  .  .  .  </h3>
             <div className="form-box ">
                 <div className="header-form">
-                    <h4 className="text-white text-center"> REGISTER</h4>
+                  
                     <div className="image">
                     </div>
                 </div>
@@ -174,7 +175,7 @@ function FormularioRegistro(props) {
                       
 
 
-                        <input onClick={() => registroUsuario()} className="btn login" value="REGISTRAME!" />
+                        <input onClick={() => registroUsuario()} className="btn btn-primary border border-warning bg-transparent text-light login" value="REGISTRAME!" />
 
                     </form>
 
