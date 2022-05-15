@@ -11,6 +11,7 @@ import fuego_tenue from "../imagenes/fuego_tenue.png";
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 import '../styles/evento.sass';
+import NavTabsEvento from "./NavTabsEvento"; 
 
 
 
@@ -293,23 +294,12 @@ function CuerpoDetalles(props) {
         </div>
         <div className="body-details">
 
-          <h4>{evento.fecha_inic} hasta {evento.fecha_fin} de {evento.hora_inic} a {evento.hora_fin}</h4>
 
+        <NavTabsEvento fecha_inic={evento.fecha_inic} fecha_fin={evento.fecha_fin} hora_inic={evento.hora_inic} hora_fin={evento.hora_fin} precio={evento.precio} descripcion={evento.descripcion} ubicacion={localizacion.localizacion} display={""} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={JSON.parse(localStorage.getItem('user')).usuarioId}/>
 
-          <p>{evento.descripcion}</p>
-          <br></br>
-          <h3>Precio entrada: {evento.precio}</h3>
-          <br></br>
+          
 
-          <TextArea display={""} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={JSON.parse(localStorage.getItem('user')).usuarioId} />
-          <Comentarios />
-          <br />
-          <br />
-          <hr />
-          <h3 >Ubicacion:</h3>
-          <h2>{localizacion.localizacion}</h2>
-          <Map />
-        </div>
+      </div>
 
       </div>
 
