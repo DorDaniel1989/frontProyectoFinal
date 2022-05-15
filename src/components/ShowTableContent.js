@@ -42,6 +42,14 @@ export default function ShowTableContent(props) {
     var auxTablaData = props.tablaData;
 
     auxTablaData.map((tupla) => {
+      if('administrator' in tupla){
+        if(tupla['administrator']){
+
+          tupla['administrator'] = 'True';
+        }else{
+          tupla['administrator'] = 'False';
+        }
+      }
       if('imagen' in tupla){
         if(tupla['imagen'] != null){
           if(tupla['imagen'] != ''){
