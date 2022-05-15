@@ -2,14 +2,16 @@
 import React, { Component, useEffect, useState } from "react";
 import '../styles/login.sass';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
-
+import { Navigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 
 function FormularioLogin() {
 
     const baseUrl = 'http://localhost:5000/api/Usuario/authenticate/';
-    const cookies = new Cookies();
+    const { Id } = useParams();
+    const navigate = useNavigate();
 
     const [formData, setForm] = useState({
         username: '',
@@ -35,7 +37,6 @@ function FormularioLogin() {
 
         console.log('Iniciando sesion...')
 
-
         await axios.post(baseUrl, data)
             .then(response => {
                 return response.data;
@@ -47,7 +48,13 @@ function FormularioLogin() {
                     localStorage.setItem('user', JSON.stringify(respuesta));
                     console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
                     console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).telefono)
-                    window.location.reload();
+                   
+             
+                   
+                    return (window.location.reload())
+                     
+                    
+
                 } else {
                     console.log(response)
                     alert('El usuario o la contraseña no son correctos')

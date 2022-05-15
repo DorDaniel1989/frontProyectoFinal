@@ -13,9 +13,10 @@ import "swiper/css/navigation";
 function Home() {
 
   const [eventos, setEventos] = useState([])
-
-
+  
+  
   useEffect(() => {
+   
     obtenerDatos()
   }, [])
 

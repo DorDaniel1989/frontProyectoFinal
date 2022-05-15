@@ -15,7 +15,7 @@ function NavTabs() {
 
 
   return (
-    <div className="container">
+    <div id="container-pestanas" className="container">
       <div className="bloc-tabs">
         <button
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
@@ -27,7 +27,6 @@ function NavTabs() {
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-       
           Comentarios
         </button>
       
