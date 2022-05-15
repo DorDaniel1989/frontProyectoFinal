@@ -24,7 +24,9 @@ h1 , h2{
   padding: 5%;
 }
 
-
+hr{
+  width: 100%!important
+}
 
 .MuiButton-root{
   background-color: #2d08c2 !important;

@@ -73,7 +73,7 @@ function TextArea(props) {
           
           <textarea className="form-control" id="textarea" rows="3"></textarea>
         </div>
-        <a><button onClick={PostComentario} type="button" className={"btn btn-primary "+props.display} >Añadir comentario</button></a>
+        <a><button onClick={PostComentario} type="button" className={"text-light border border-warning bg-transparent btn btn-primary "+props.display} >Añadir comentario</button></a>
 
       </form>
       </div>

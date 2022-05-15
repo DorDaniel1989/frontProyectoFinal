@@ -58,7 +58,7 @@ function Comentarios() {
                                  <img height={30} src={item.imagen}/>
                                     <div className="comment-head">
                                     
-                                        {estaLogueado()?( item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className="btn btn-danger">Eliminar</button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
+                                        {estaLogueado()?( item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className="text-dark border border-warning bg-transparent btn btn-danger">Eliminar</button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
                                         
                                         <span>&emsp;{item.fecha_comentario}&nbsp;</span>
                                         <span>a las {item.hora_comentario}</span>
