@@ -51,7 +51,7 @@ function NavTabsEvento(props) {
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-          <h2>Comentarios de usuarios</h2>
+        
           <hr />
 
           <TextArea display={props.display} eventoId={props.eventoId} categoriaId={props.categoriaId} usuarioId= {props.usuarioId}  />
@@ -61,7 +61,7 @@ function NavTabsEvento(props) {
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-          <h2>Ubicacion</h2>
+         
           <h3>{props.ubicacion}</h3>
           <hr />
           <Map />
@@ -70,13 +70,16 @@ function NavTabsEvento(props) {
         <div
           className={toggleState === 3 ? "content  active-content" : "content"}
         >
-          <h2>Descripcion del evento</h2>
-          <h2>{props.descripcion}</h2>
-          <h3>{props.precio}</h3>
-          <h4>{props.hora_inic}</h4>
-          <h4>{props.hora_fin}</h4>
-          <h4>{props.fecha_inic}</h4>
-          <h4>{props.fecha_fin}</h4>
+             <h2>{props.descripcion}</h2>
+         <div className="texto-pestaña-detalles">
+         
+          <h3>Precio : {props.precio}</h3>
+          <h4>Hora de inicio : {props.hora_inic}</h4>
+          <h4>Hasta : {props.hora_fin}</h4>
+          <h4>Fecha comienzo : {props.fecha_inic}</h4>
+          <h4>Fecha fin : {props.fecha_fin}</h4>
+         </div>
+         
           <hr />
         
         </div>
