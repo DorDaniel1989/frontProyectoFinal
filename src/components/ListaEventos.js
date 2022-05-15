@@ -50,8 +50,8 @@ function ListaEventos(props) {
         <ul className='d-none' id='uListEvt'>
             {filteredData.map((event) => (
                 <>
-                    <li key={event.eventoId}>{event.evento}</li>
-                    <Button href= {'/details/' + event.eventoId}>VER</Button>
+                    <li key={event.eventoId}><a href= {'/details/' + event.eventoId}>{event.evento}</a></li>
+                 
                 </>
             ))}
         </ul>

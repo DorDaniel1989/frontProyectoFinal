@@ -4,10 +4,26 @@
     align-items: center
     flex-direction: column
     row-gap: 20px
+    
 
 .search 
     width: 30%
+    background-color: white
+    margin-top: 8%
+    
+    label
+        &.Mui-focused
+          color: #cb990f !important
+    .MuiInput-underline:after
+         border-color: #cb990f !important
+         &.MuiOutlinedInput-notchedOutline
+          border-color: #cb990f !important
+        
 
-
-ul li 
+ul li a
     font-size: 20px
+    color: white
+    text-decoration: none
+    &:hover
+        color:  #cb990f
+
