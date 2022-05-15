@@ -7,7 +7,9 @@ import axios from 'axios';
 export default function FormData(props) {
 
 
-    function getBase64(objeto) {
+    function getBase64(objeto, metodo) {
+
+      console.log(objeto)
 
         // declaramos variable del tipo clave valor
 
@@ -15,7 +17,7 @@ export default function FormData(props) {
 
         //seleccionamos el objeto imagen de dentro del DOM de la etiqueta HTML
 
-        var file = document.querySelector(`#imagen${props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}`)['files'][0];
+        var file = document.querySelector(`#imagen${props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}${metodo}`)['files'][0];
 
         // creamos un reader y convertimos la imagen en string base64
 
@@ -66,7 +68,7 @@ export default function FormData(props) {
                 [name]: value
             })
 	    }else{
-            getBase64(e.target); 
+            getBase64(e.target, props.method); 
         }
 
         console.log(formData);
@@ -165,6 +167,7 @@ export default function FormData(props) {
                 administrator: 'checkbox',
                 nombre: "text",
                 apellido: "text",
+                about_me: "text",
                 direccion: "text",
                 telefono: "tel",
                 imagen: "file"
@@ -297,7 +300,7 @@ export default function FormData(props) {
                     Object.entries(campo).map(([key, value]) => (
                     <>
                         <label for={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>{key}:</label><br/>
-                        <input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} name={key} onChange={controlarCambio}></input><br/>
+                        <input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"") + props.method} name={key} onChange={controlarCambio}></input><br/>
                     </>
                         
                     ))
