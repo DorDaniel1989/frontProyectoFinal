@@ -1,12 +1,16 @@
 import React,{useState, useEffect} from "react";
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
-import Tabs from "./Tabs";
-import "datatables.net-dt/js/dataTables.dataTables"
-import "datatables.net-dt/css/jquery.dataTables.min.css"
-
+import MUIDataTable from "mui-datatables";
 
 export default function ShowTableContent(props) {
+
+  useEffect(()=>{
+        
+        $( '.imgCopy' ).tooltip();
+
+
+  } ,[])
  
     const tabs =  [{name:'Usuarios'}, {name: 'Inscripciones'} , {name: 'Eventos'}, {name: 'Comentarios'}, {name: 'Categorías'}, {name: 'Localizaciones'}];
 
@@ -23,19 +27,36 @@ export default function ShowTableContent(props) {
 
     const firstData = props.tablaData.slice(0, 1);
     
+    const columns = [];
+
+    firstData.map((tupla) => {
+        Object.entries(tupla).map(([key, value]) => {
+            columns.push({name: key,
+                        });
+            })
+        });
+
 
     var whichTabla = tabs.findIndex(t => {return t.name === props.tab;});
 
-    useEffect(()=>{
-        
-        $( '.imgCopy' ).tooltip();
-        
-    } ,[])
+    var auxTablaData = props.tablaData;
 
+    auxTablaData.map((tupla) => {
+      if('imagen' in tupla){
+        if(tupla['imagen'] != null){
+          if(tupla['imagen'] != ''){
+            if(!(tupla['imagen'] instanceof Object)){
 
-
-
+              tupla['imagen'] = (<td><img title="click para copiar en portapapeles" className="imgCopy" src={tupla['imagen']} alt="Imagen" width="50" height="50" onClick={(event) => {copyImage(event)}}/></td>) ;
+            }
+            
+          }
+        }
+      }
+    });
       
+console.log(auxTablaData)
+
     // función que copia en el portapapeles una imagen
 
     function copyImage(imagen) {
@@ -76,72 +97,19 @@ export default function ShowTableContent(props) {
     }
 
       return (
-        
-        <table className="tDatosbbdd display" onLoad={() =>{$( '.tDatosbbdd' ).DataTable();}}>
-            <thead>
-                <tr>
-                    {
+       
+          <MUIDataTable
+          title={tabs[whichTabla].name}
+          data={auxTablaData}
+          columns={columns}
+          options={{
+            selectableRows: false, // <===== will turn off checkboxes in rows
+            selectableRowsHeader: false,
+            isRowSelectable: false
+          }}
+        />       
 
-                        <>
-                        {
-                            firstData.map((tupla) => (
-                                Object.entries(tupla).map(([key, value]) => (
-                                    <th>
-                                        {key}
-                                    </th>
-                                    
-                                ))
-                            ))
-                        }
-                            
-                        </>
-
-                    }
-                </tr>
-            </thead>
-
-            <tbody>
-
-            {
-                props.tablaData.map((tupla) => (
-                    <tr>
-                        {
-                            Object.entries(tupla).map(([key, value]) => (
-                                key === 'imagen' ? 
-                                    value === null ? (<td></td>) : (<td><img title="click para copiar en portapapeles" className="imgCopy" src={value} alt="Imagen" width="50" height="50" onClick={(event) => {copyImage(event)}}/></td>) 
-                                : key === 'administrator' ? 
-                                        value === true ? (<td>True</td>) : (<td>False</td>) 
-                                : (<td>{value}</td>)  
-                            
-                            ))
-                        }
-                    
-                    </tr>
-                ))
-    
-            }
-            </tbody>
-
-            <tfoot>
-                <tr>
-                    {
-
-                        firstData.map((tupla) => (
-                            Object.entries(tupla).map(([key, value]) => (
-                                <>
-                                    <th>
-                                        {key}
-                                    </th>
-                                </>
-                            ))
-                        ))
-                        
-                    }
-                </tr>
-            </tfoot>
-            
-        </table>
-        
+      
     );
 
    }
