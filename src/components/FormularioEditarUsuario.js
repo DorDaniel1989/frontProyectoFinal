@@ -107,14 +107,14 @@ function FormularioEditarUsuario(props) {
     function cerrarVentana(){
 
         $(".container-datos").css("display", "none");
-        $("#container-perfil").css("display", "flex");
+        $("#container-pestanas").css("display", "block");
     }
 
 
     return (
 
 
-        <div className="register-container">
+        <div className="container register-container">
             <div className="form-box  form-editar-usuario">
             <button  onClick={cerrarVentana} className="btn btn-close bg-danger" ></button>
                 <div className="header-form">

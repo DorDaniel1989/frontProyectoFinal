@@ -46,9 +46,10 @@ function CuerpoPerfil() {
   function abrirFrameDatos() {
 
     console.log("Abriendo datos de usuario....")
-    $("#container-datos").css("display", "flex").css("z-index", "1")
-    $("#container-perfil").css("z-index", "99");
-
+   const container_datos = $("#container-datos").css("display", "flex")
+    
+    $("#container-pestanas").css("display", "none");
+    
   }
 
 
@@ -76,10 +77,10 @@ function CuerpoPerfil() {
           <div className="bodyDetails">
 
             <NavTabs />
-
+            <DatosUsuario tablaData={user} setTablaData={setUser} />
           </div>
 
-          <DatosUsuario tablaData={user} setTablaData={setUser} />
+         
         </div>
       );
     }

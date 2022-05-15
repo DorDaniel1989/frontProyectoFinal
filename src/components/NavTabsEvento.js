@@ -10,7 +10,7 @@ import Map from "./Map";
 
 function NavTabsEvento(props) {
   const [toggleState, setToggleState] = useState(1);
-
+  
   const toggleTab = (index) => {
     setToggleState(index);
   };
@@ -20,7 +20,7 @@ function NavTabsEvento(props) {
 
 
   return (
-    <div className="container">
+    <div  className="container">
       <div className="bloc-tabs">
         <button
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
