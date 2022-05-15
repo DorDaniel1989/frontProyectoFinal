@@ -202,7 +202,8 @@ export default function FormData(props) {
                 eventoId: "number",
                 categoriaId: "number",
                 usuarioId: "number",
-                fecha_comentario: "date"
+                fecha_comentario: "date",
+                hora_comentario: "time"
               }], 
             [
                 {
@@ -293,23 +294,23 @@ export default function FormData(props) {
       //console.log(fieldType[whichTabla][0])
 
       return (
-        <div className="container">
-            <form method={props.method} id={'Form' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
+        <div className="container border border-dark rounded-1">
+            <form method={props.method} id={'Form' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} className="formEdit">
             {
                 fieldType[whichTabla].map(campo => (
                     Object.entries(campo).map(([key, value]) => (
-                    <>
+                    <div className="dDataInput">
                         <label for={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>{key}:</label><br/>
                         <input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"") + props.method} name={key} onChange={controlarCambio}></input><br/>
-                    </>
+                    </div>
                         
                     ))
                     
                 ))
                 
             }
-            <div className="row">
-                <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => anyadirRegistro()} className="btn" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
+            <div className="dDataInput dDataInputBtn d-flex flex-column align-items-center">
+                <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => anyadirRegistro()} className="btn btn-primary border border-warning bg-transparent" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
             </div>
             </form>
         </div>

@@ -63,11 +63,15 @@ export default function DeleteField(props) {
 
     return (
 
-        <div className="container">
+        <div className="container border border-dark rounded-1">
    
-          <p>Introduzca el ID del registro que quiera eliminar:</p>
-          <input type="text" onChange={controlarCambio} name="id" className="iDelete" placeholder="ID" />
-          <input onClick={()=>eliminarRegistro()} value="Submit" className="btn" />
+          <div className="dDataInput">
+            <p>Introduzca el ID del registro que quiera eliminar:</p>
+            <input type="text" onChange={controlarCambio} name="id" className="iDelete" placeholder="ID" />
+          </div>
+          <div className="dDataInput dDataInputBtn d-flex flex-column align-items-center">
+            <input onClick={()=>eliminarRegistro()} value="Submit" className="btn btn-primary border border-warning bg-transparent" />
+          </div>
         </div>
        )
    }
