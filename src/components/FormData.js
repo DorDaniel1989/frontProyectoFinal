@@ -290,7 +290,7 @@ export default function FormData(props) {
       //console.log(fieldType[whichTabla][0])
 
       return (
-        <>
+        <div className="container">
             <form method={props.method} id={'Form' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>
             {
                 fieldType[whichTabla].map(campo => (
@@ -309,7 +309,7 @@ export default function FormData(props) {
                 <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => anyadirRegistro()} className="btn" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
             </div>
             </form>
-        </>
+        </div>
       );
 
    }

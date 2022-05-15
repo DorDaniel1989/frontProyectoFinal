@@ -27,7 +27,7 @@ function toggleDataTable(elem){
 
     <>
 
-        <div id="dTablas" className="container border border-dark rounded-2 bg-dark">
+        <div id="dTablas" className="container border border-dark rounded-1">
                 {
                 tabs.map(tabla => (
                     
