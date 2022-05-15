@@ -10,8 +10,12 @@
             flex-direction: column
 
             position: absolute
+            overflow: hidden
 
             margin-left: 0.5rem
+            top: 50%
+            -ms-transform: translateY(-50%)
+            transform: translateY(-50%)
             max-width: 350px
 
             .ui-state-active
@@ -22,12 +26,63 @@
         .showTable
 
             max-width: 1000px !important
+            padding-top: 5rem !important
+            
+            .MuiPaper-root
+                border: 2.5px solid #929292
 
-            button
-                font-size: 12px
+                .tss-1fz5efq-MUIDataTableToolbar-left
 
-            tbody
-                tr
-                    td
-                        font-size: 12px
-                        word-break: break-all
+                    display: flex
+                    position: absolute
+                    left: 0
+                    right: 0
+                    margin-left: auto
+                    margin-right: auto
+                    width: fit-content
+
+                    h6
+                        font-size: 35px
+
+                .tss-1cdcmys-MUIDataTable-responsiveBase
+                    scrollbar-color: #BA8B02 whitesmoke
+
+                    table
+                        thead
+                            th
+                                padding-top: 32px
+                                padding-bottom: 0
+                                button
+                                    font-size: 12px
+
+                                    text-align: center
+                                    background-color: #BA8B02 !important
+
+                                    margin: 0
+                                    top: 50%
+                                    left: 50%
+                                    -ms-transform: translate(-50%, -50%)
+                                    transform: translate(-50%, -50%)
+
+                                    .tss-bd2lw8-MUIDataTableHeadCell-sortActive
+                                        color: white
+                                    svg
+                                        color: white
+
+                        tbody
+
+                            tr
+                                height: 102px
+                                td
+                                    font-size: 12px                        
+
+                                    .tss-1qtl85h-MUIDataTableBodyCell-root
+                                        text-align: center
+
+                        tfoot
+
+                            .MuiTablePagination-selectLabel
+                                padding-top: 15px !important
+
+                            .MuiTablePagination-displayedRows
+                                padding-top: 15px !important
