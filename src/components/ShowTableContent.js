@@ -105,7 +105,9 @@ console.log(auxTablaData)
           options={{
             selectableRows: false, // <===== will turn off checkboxes in rows
             selectableRowsHeader: false,
-            isRowSelectable: false
+            isRowSelectable: false,
+            rowsPerPage: 5,
+            rowsPerPageOptions: [5, 10, 15, 30, 50, 75, 100],
           }}
         />       
 
