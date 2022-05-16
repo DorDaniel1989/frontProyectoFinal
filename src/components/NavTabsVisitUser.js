@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useParams } from 'react-router-dom';
 import ComentariosVisitUser from "./ComentariosVisitUser"; 
 import EventosVisitUser from "./EventosVisitUser";
+import EventIcon from '@mui/icons-material/Event';
+import CommentIcon from '@mui/icons-material/Comment';
 import '../styles/NavTabs.sass';
 
 function NavTabs() {
@@ -22,14 +24,15 @@ function NavTabs() {
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
-          Eventos 
+          <EventIcon/>
+          Eventos a los que asistirá
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-       
-          Comentarios
+       <CommentIcon/>
+           Comentarios del usuario
         </button>
        
       </div>
@@ -46,7 +49,7 @@ function NavTabs() {
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-          <h2>Mis comentarios</h2>
+      
           <hr />
           <ComentariosVisitUser />
         </div>

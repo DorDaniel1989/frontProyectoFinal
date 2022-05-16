@@ -50,9 +50,11 @@ function CuerpoDetalles(props) {
     const imagenf = document.getElementById("fondo-evento");
     console.log("imagen F ", imagenf)
     try{
-      imagenf.style.backgroundImage = `url(${imagen})`;
-      imagenf.style.width = "70%"
+      imagenf.style.backgroundImage = `url(${evento.imagen})`;
+     
       imagenf.style.maxHeight = "400px"
+      imagenf.style.backgroundSize = "cover"
+      
     }catch(e){
       
     }
@@ -152,7 +154,7 @@ function CuerpoDetalles(props) {
 
     const thisInsc = await axios.get(`http://localhost:5000/api/Inscripcion/${Id}`)
       .catch(function (error) {
-        alert('Error!!! ->\n' + error)
+       
       });
 
 
@@ -172,7 +174,7 @@ function CuerpoDetalles(props) {
 
     await axios.get(`http://localhost:5000/api/Inscripcion/HypeUp/${inscripcionId}`)
       .catch(function (error) {
-        alert('Error!!! ->\n' + error)
+        
       });
 
     hypeado = true;
@@ -185,7 +187,7 @@ function CuerpoDetalles(props) {
 
     await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
       .catch(function (error) {
-        alert('Error!!! ->\n' + error)
+       
       });
 
     hypeado = false;

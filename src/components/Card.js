@@ -8,18 +8,22 @@ export default function Carta(props) {
 
 
   const ruta = "/details/" + props.eventoId;
-  
+
 
   return (
 
-      <div className='card cardP ' key={props.titulo} >
-          <h2>{props.titulo}</h2>
-          <p>{props.fecha}</p>
-          <p>{props.descripcion}</p>
-          <img height={200} src={imagen}/>
-          
-          <Button className='boton-entrar border border-warning bg-transparent' href= {ruta}><VisibilityIcon/>ENTRAR</Button>
-        
- </div> 
+    <div className='card cardP ' key={props.titulo} >
+
+      <h2 className='tituloCard'>{props.titulo}</h2>
+      <Button className='boton-entrar border border-warning bg-transparent' href={ruta}><VisibilityIcon />ENTRAR</Button>
+      <div className='imagen-y-detalles'>
+      <img height={300} src={imagen} />
+        <p>{props.fecha}</p>
+        <p>{props.descripcion}</p>
+       
+      </div>
+     
+
+    </div>
   )
 }
