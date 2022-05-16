@@ -17,7 +17,7 @@ export default function Carta(props) {
       <h2 className='tituloCard'>{props.titulo}</h2>
       <Button className='boton-entrar border border-warning bg-transparent' href={ruta}><VisibilityIcon />ENTRAR</Button>
       <div className='imagen-y-detalles'>
-      <img height={300} src={imagen} />
+      <img height={180} src={imagen} />
         <p>{props.fecha}</p>
         <p>{props.descripcion}</p>
        
