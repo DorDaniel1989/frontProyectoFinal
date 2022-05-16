@@ -111,18 +111,15 @@ function Home() {
           //slidesPerView={3}
           //spaceBetween={30}
           //slidesPerGroup={3}
-          centeredSlides={true}
-        centeredSlidesBounds={true}
+          centeredSlidesBounds={true}
           breakpoints={{
             640: {
               slidesPerView: 1,
               spaceBetween: 20,
-              slidesPerGroup: 1
             },
             768: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 40,
-              slidesPerGroup: 2
             },
           }}
           //loop={true}
@@ -139,7 +136,7 @@ function Home() {
           allowTouchMove={false}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
+          className="hypeSwiper"
         >
           {
             masHypeados.map((tupla) => {
@@ -155,18 +152,15 @@ function Home() {
 
       <Swiper
         initialSlide={0}
-        centeredSlides={true}
         centeredSlidesBounds={true}
         breakpoints={{
           640: {
             slidesPerView: 1,
             spaceBetween: 20,
-            slidesPerGroup: 1
           },
           768: {
             slidesPerView: 2,
             spaceBetween: 40,
-            slidesPerGroup: 2
           },
         }}
         rewind={true}
@@ -189,192 +183,213 @@ function Home() {
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      <h1>Conciertos</h1>
+      {
+        (activeConciertos.length  != 0) ? (
+        <>
+          <h1>Conciertos</h1>
 
-      <Swiper
-        initialSlide={0}
-        centeredSlides={true}
-        centeredSlidesBounds={true}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            slidesPerGroup: 1
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-            slidesPerGroup: 2
-          },
-        }}
-        rewind={true}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true
-        }}
-        allowTouchMove={false}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {
-          activeConciertos.map((tupla) => {
-            return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
-          })
-        }
-      </Swiper>
+            <Swiper
+              initialSlide={0}
+              centeredSlidesBounds={true}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+                },
+              }}
+              rewind={true}
+              pagination={{
+                clickable: true,
+                dynamicBullets: true
+              }}
+              allowTouchMove={false}
+              navigation={true}
+              modules={[Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {
+                activeConciertos.map((tupla) => {
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                })
+              }
+            </Swiper>
+        </>
+        ) : (<></>)
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-
-      <h1>Para los otakus</h1>
-
-      <Swiper
-        initialSlide={0}
-        centeredSlides={true}
-        centeredSlidesBounds={true}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            slidesPerGroup: 1
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-            slidesPerGroup: 2
-          },
-        }}
-        rewind={true}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true
-        }}
-        allowTouchMove={false}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {
-          activeOtakus.map((tupla) => {
-            return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
-          })
-        }
-      </Swiper>
+      }
 
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      <h1>Gastronomía</h1>
+      {
+        (activeOtakus.length  != 0) ? (
+        <>
+          <h1>Para los otakus</h1>
 
-      <Swiper
-        initialSlide={0}
-        centeredSlides={true}
-        centeredSlidesBounds={true}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            slidesPerGroup: 1
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-            slidesPerGroup: 2
-          },
-        }}
-        rewind={true}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true
-        }}
-        allowTouchMove={false}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {
-          activeGastro.map((tupla) => {
-            return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
-          })
-        }
-      </Swiper>
+            <Swiper
+              initialSlide={0}
+              centeredSlidesBounds={true}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+                },
+              }}
+              rewind={true}
+              pagination={{
+                clickable: true,
+                dynamicBullets: true
+              }}
+              allowTouchMove={false}
+              navigation={true}
+              modules={[Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {
+                activeOtakus.map((tupla) => {
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                })
+              }
+            </Swiper>
+        </>
+        ) : (<></>)
 
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
-
-      <h1>Gaming</h1>
-
-      <Swiper
-        initialSlide={0}
-        centeredSlides={true}
-        centeredSlidesBounds={true}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            slidesPerGroup: 1
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-            slidesPerGroup: 2
-          },
-        }}
-        rewind={true}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true
-        }}
-        allowTouchMove={false}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {
-          activeGaming.map((tupla) => {
-            return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
-          })
-        }
-      </Swiper>
+      }
 
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      <h1>IT</h1>
+      {
+        (activeGastro.length  != 0) ? (
+        <>
+          <h1>Gastronomía</h1>
 
-      <Swiper
-        initialSlide={0}
-        centeredSlides={true}
-        centeredSlidesBounds={true}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            slidesPerGroup: 1
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-            slidesPerGroup: 2
-          },
-        }}
-        rewind={true}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true
-        }}
-        allowTouchMove={false}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {
-          activeIT.map((tupla) => {
-            return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
-          })
-        }
-      </Swiper>
+            <Swiper
+              initialSlide={0}
+              centeredSlidesBounds={true}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+                },
+              }}
+              rewind={true}
+              pagination={{
+                clickable: true,
+                dynamicBullets: true
+              }}
+              allowTouchMove={false}
+              navigation={true}
+              modules={[Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {
+                activeGastro.map((tupla) => {
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                })
+              }
+            </Swiper>
+        </>
+        ) : (<></>)
+
+      }
+
+      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+
+      {
+        (activeGaming.length  != 0) ? (
+        <>
+          <h1>Gaming</h1>
+
+            <Swiper
+              initialSlide={0}
+              centeredSlidesBounds={true}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+                },
+              }}
+              rewind={true}
+              pagination={{
+                clickable: true,
+                dynamicBullets: true
+              }}
+              allowTouchMove={false}
+              navigation={true}
+              modules={[Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {
+                activeGaming.map((tupla) => {
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                })
+              }
+            </Swiper>
+        </>
+        ) : (<></>)
+
+      }
+
+      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+      {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
+
+      {
+        (activeIT.length  != 0) ? (
+          <>
+            <h1>IT</h1>
+
+              <Swiper
+                initialSlide={0}
+                centeredSlidesBounds={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                }}
+                rewind={true}
+                pagination={{
+                  clickable: true,
+                  dynamicBullets: true
+                }}
+                allowTouchMove={false}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+              >
+                {
+                  activeIT.map((tupla) => {
+                    return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                  })
+                }
+              </Swiper>
+          </>
+        ) : (<></>)
+
+      }
+
    </>
    
   );}

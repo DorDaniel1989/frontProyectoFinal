@@ -1,39 +1,61 @@
-.swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.mySwiper.swiper-backface-hidden 
-    
+.swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-backface-hidden 
+
+    &:last-child
+        margin-bottom: 30px
 
     .swiper-button-prev
-        padding-top: 236px
-        padding-bottom: 236.5px
+        padding-top: 198px
+        padding-bottom: 198px
         padding-left: 20px
         padding-right: 50px
 
         margin-left: -10px
-        top: 8%
+        top: 8.7%
 
         color: var(--swiper-navigation-color, white)
 
         background-color: #000000a9
 
     .swiper-button-next
-        padding-top: 236px
-        padding-bottom: 236.5px
+        padding-top: 198px
+        padding-bottom: 198px
         padding-left: 50px
         padding-right: 20px
 
         margin-right: -10px
-        top: 8%
+        top: 8.7%
 
         color: var(--swiper-navigation-color, white)
 
         background-color: #000000a9
 
-    //.swiper-pagination
-        //position: absolute
-        //left: 0
-        //right: 0
-        //margin-left: auto
-        //margin-right: auto
-        //transform: translateY(400%) !important
+    &.hypeSwiper
 
-        //.swiper-pagination-bullet
-            //background: var(--swiper-pagination-bullet-inactive-color,#ffffff)
+        .swiper-button-prev
+            padding-top: 245px
+            padding-bottom: 242px
+
+            top: 7.2%
+
+        .swiper-button-next
+            padding-top: 245px
+            padding-bottom: 242px
+
+            top: 7.2%
+
+    .swiper-pagination
+        bottom: 0px 
+        margin-left: auto
+        margin-right: auto
+        
+        .swiper-pagination-bullet
+            background: var(--swiper-pagination-bullet-inactive-color,#ffffff)
+
+    .swiper-wrapper
+
+        padding-bottom: 30px
+
+        .swiper-slide
+
+            display: flex
+            justify-content: center
