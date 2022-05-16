@@ -26,7 +26,9 @@ return (
           label="Buscar"
         />
       </div>
-      <List input={inputText} />
+      <div id="dSearchRes">
+        <List input={inputText} />
+      </div>
     </div>
 );
 
