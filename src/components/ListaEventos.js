@@ -37,8 +37,10 @@ function ListaEventos(props) {
     });
 
     $( "#tBuscador" ).click(function(event) {
-        $("#uListEvt").removeClass('d-none');
-        event.stopPropagation();
+        if(props.input != null && props.input != ''){
+            $("#uListEvt").removeClass('d-none');
+            event.stopPropagation();
+        } 
     });
 
     $( "#uListEvt" ).click(function(event) {
@@ -48,6 +50,7 @@ function ListaEventos(props) {
 
     return (
         <ul className='d-none' id='uListEvt'>
+            <li id='lNoResult' className='d-none'><a>No se encontraron resultados...</a></li>
             {filteredData.map((event) => (
                 <>
                     <li key={event.eventoId}><a href= {'/details/' + event.eventoId}>{event.evento}</a></li>

@@ -8,11 +8,21 @@ import List from "./ListaEventos";
 
 function Buscador(){
 
-    const [inputText, setInputText] = useState("");
-    let inputHandler = (e) => {
+  const [inputText, setInputText] = useState("");
+  
+  let inputHandler = (e) => {
     //convert input text to lower case
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
+
+    if(lowerCase != null && lowerCase != ''){
+      console.log(lowerCase);
+      $("#uListEvt").not("#lNoResult").removeClass('d-none');
+      
+    }else{
+      $("#uListEvt").addClass('d-none');
+      $("#lNoResult").removeClass('d-none');
+    }
   };
 
 return (
