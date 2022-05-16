@@ -12,7 +12,8 @@
             margin-top: -8px
 
     #dCMS
-
+        position: relative
+        
         #dTablas
             display: flex
             flex-direction: column
@@ -21,7 +22,7 @@
             overflow: hidden
 
             margin-left: 0.5rem
-            top: 50%
+            top: 38%
             -ms-transform: translateY(-50%)
             transform: translateY(-50%)
             max-width: 350px
@@ -30,6 +31,33 @@
             padding-bottom: 8px !important
             background-color: #000000 !important
             border-color: #BA8B02 !important
+
+            @media screen and (max-width: 1800px)
+                position: static
+                display: block
+                margin-left: auto
+                margin-right: auto
+
+                margin-top: 15rem !important
+                margin-bottom: -10rem !important
+
+                width: 1000px
+                max-width: none
+            
+            @media screen and (max-width: 1100px)
+                max-width: 800px !important
+
+            @media screen and (max-width: 900px)
+                max-width: 700px !important
+
+            @media screen and (max-width: 800px)
+                max-width: 600px !important
+
+            @media screen and (max-width: 700px)
+                max-width: 500px !important
+
+            @media screen and (max-width: 600px)
+                max-width: 420px !important
 
             .ui-state-active
                 background-color: #000000 !important
@@ -55,7 +83,22 @@
         .showTable
 
             max-width: 1000px !important
-            padding-top: 1rem !important
+            padding-top: 0.5rem !important
+
+            @media screen and (max-width: 1100px)
+                max-width: 800px !important
+
+            @media screen and (max-width: 900px)
+                max-width: 700px !important
+
+            @media screen and (max-width: 800px)
+                max-width: 600px !important
+
+            @media screen and (max-width: 700px)
+                max-width: 500px !important
+
+            @media screen and (max-width: 600px)
+                max-width: 420px !important
 
             .MuiPaper-root
                 border: 2.5px solid #929292
@@ -72,6 +115,18 @@
 
                     h6
                         font-size: 35px
+
+                    .tss-1ufdzki-MUIDataTableSearch-main
+                        ::after
+                            border-bottom: 2px solid #BA8B02 !important
+
+                .tss-qbo1l6-MUIDataTableToolbar-actions
+
+                    .css-78trlr-MuiButtonBase-root-MuiIconButton-root
+                        &:hover
+                            color: #BA8B02 !important
+                    .tss-9z1tfs-MUIDataTableToolbar-iconActive
+                        color: #BA8B02 !important
 
                 .tss-1cdcmys-MUIDataTable-responsiveBase
                     //scrollbar-color: #BA8B02 whitesmoke
@@ -105,6 +160,12 @@
 
                                 .tss-1qtl85h-MUIDataTableBodyCell-root
                                     text-align: center
+                                
+                                .dImgTabla
+                                    display: block
+                                    margin-left: auto
+                                    margin-right: auto
+
                     tfoot
                         tr
                             td
@@ -116,6 +177,22 @@
         #dShowBackImage
             height: 750px
             padding: 0 !important
+
+            @media screen and (max-width: 1100px)
+                height: 600px
+
+            @media screen and (max-width: 900px)
+                height: 500px
+
+            @media screen and (max-width: 800px)
+                height: 400px
+
+            @media screen and (max-width: 700px)
+                height: 300px
+
+            @media screen and (max-width: 600px)
+                height: 200px
+
             #dBackImage
                 height: 50%
                 width: 50%
@@ -127,10 +204,42 @@
                 border-radius: 50%
                 border: 1px solid #ffffff4d
                 overflow: hidden
+
+                @media screen and (max-width: 1100px)
+                    background-size: 500px 500px
+
+                @media screen and (max-width: 900px)
+                    background-size: 400px 400px
+
+                @media screen and (max-width: 800px)
+                    background-size: 300px 300px
+
+                @media screen and (max-width: 700px)
+                    background-size: 260px 260px
+
+                @media screen and (max-width: 600px)
+                    background-size: 210px 210px
+
+
         .formsAPI
 
             .container
                 max-width: 1000px
+
+                @media screen and (max-width: 1100px)
+                    max-width: 800px !important
+
+                @media screen and (max-width: 900px)
+                    max-width: 700px !important
+
+                @media screen and (max-width: 800px)
+                    max-width: 600px !important
+
+                @media screen and (max-width: 700px)
+                    max-width: 500px !important
+
+                @media screen and (max-width: 600px)
+                    max-width: 420px !important
 
                 background-color: #000000 !important
                 border-color: #BA8B02 !important
@@ -145,6 +254,9 @@
                 .dDataInput
                     width: 50%
 
+                    @media screen and (max-width: 800px)
+                        width: 100%
+
                     p
                         color: white
 
@@ -157,6 +269,7 @@
 
                     input
                         width: fit-content
+                        margin-top: 8px
 
                 .dDataInputBtn
                     width: 100%
@@ -171,3 +284,11 @@
 
                 .dDataInputBtn
                     margin-top: 10px
+
+.MuiModal-root 
+    .MuiPaper-root
+        .tss-ynxllk-MUIDataTableFilter-root
+            .tss-1wwzodd-MUIDataTableFilter-header
+                .tss-14ngk2z-MUIDataTableFilter-reset
+                    .MuiButton-root
+                        background-color: #BA8B02 !important
