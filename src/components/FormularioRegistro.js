@@ -113,7 +113,7 @@ function FormularioRegistro(props) {
                 </div>
                 <div className="body-form">
                     <form>
-
+                    
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <i className="bi bi-person-circle"></i>

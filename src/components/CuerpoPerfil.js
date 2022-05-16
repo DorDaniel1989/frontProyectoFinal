@@ -49,7 +49,7 @@ function CuerpoPerfil() {
    const container_datos = $("#container-datos").css("display", "flex")
     
     $("#container-pestanas").css("display", "none");
-    
+   
   }
 
 
