@@ -24,14 +24,14 @@ function NavTabs() {
           onClick={() => toggleTab(1)}
         >
           <EventIcon/>
-          Eventos 
+          Mis Eventos 
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
           <CommentIcon/>
-          Comentarios
+          Mis comentarios
         </button>
       
       </div>
@@ -40,11 +40,6 @@ function NavTabs() {
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-          <h2>Eventos a los que asistiré</h2>
-          <hr />
-
-
-
           <EventosUser user = {Id} />
           
         </div>
@@ -52,8 +47,6 @@ function NavTabs() {
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
         >
-          <h2>Mis comentarios</h2>
-          <hr />
           <ComentariosUser />
         </div>
         <div

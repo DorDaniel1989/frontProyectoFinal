@@ -10,13 +10,24 @@
     display: flex
     align-items: center
     justify-content: space-between
+    flex-wrap: wrap
     border-radius: 1rem
     background: #000000
     background: -webkit-linear-gradient(to right, #434343, #000000)
     background: linear-gradient(to right, #434343, #000000)
+    background-image: url("../imagenes/fondo-card.jpg")
+    background-size: contain
     color: white
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.7)
     flex-direction: row
+
+    .tituloCard
+        width: 100%
+    
+    .imagen-y-detalles
+         width: 100%
+         display: flex
+         justify-content: space-evenly
 
   
 .boton-entrar
