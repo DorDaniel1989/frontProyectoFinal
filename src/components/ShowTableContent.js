@@ -55,7 +55,7 @@ export default function ShowTableContent(props) {
           if(tupla['imagen'] != ''){
             if(!(tupla['imagen'] instanceof Object)){
 
-              tupla['imagen'] = (<td><img title="click para copiar en portapapeles" className="imgCopy" src={tupla['imagen']} alt="Imagen" width="50" height="50" onClick={(event) => {copyImage(event)}}/></td>) ;
+              tupla['imagen'] = (<div className="dImgTabla"><img title="click para copiar en portapapeles" className="imgCopy" src={tupla['imagen']} alt="Imagen" width="50" height="50" onClick={(event) => {copyImage(event)}}/></div>) ;
             }
             
           }
@@ -115,7 +115,7 @@ console.log(auxTablaData)
             selectableRowsHeader: false,
             isRowSelectable: false,
             rowsPerPage: 5,
-            rowsPerPageOptions: [5, 10, 15, 30, 50, 75, 100],
+            rowsPerPageOptions: [1, 5, 10, 15, 30, 50, 75, 100],
           }}
         />       
 
