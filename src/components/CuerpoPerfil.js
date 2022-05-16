@@ -5,6 +5,8 @@ import { Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import defaultUser from "../imagenes/defaultUser.png";
 import DatosUsuario from "../components/DatosUsuario";
+import SettingsIcon from '@mui/icons-material/Settings';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import NavTabs from "../components/NavTabs";
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
@@ -63,7 +65,7 @@ function CuerpoPerfil() {
         <div id="container-perfil" className='container container-perfil'>
           <div className="cabeceraPerfil" id="aside-details">
             <div className="div_imagen">
-              <button className="btn-preferencias btn bg-primary" onClick={abrirFrameDatos}> <img src={imagenPreferencias} /> </button>
+              <ManageAccountsIcon sx={{ fontSize: 70 }} onClick={abrirFrameDatos}/>
               <img src={user.imagen} className="imagenPerfil" />
               <h1>{user.username}</h1>
             </div>

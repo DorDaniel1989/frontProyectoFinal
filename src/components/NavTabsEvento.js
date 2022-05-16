@@ -5,6 +5,9 @@ import EventosVisitUser from "./EventosVisitUser";
 import '../styles/NavTabs.sass';
 import TextArea from "./TextArea";
 import Comentarios from "./Comentarios";
+import CommentIcon from '@mui/icons-material/Comment';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import InfoIcon from '@mui/icons-material/Info';
 import Map from "./Map";
 
 
@@ -26,13 +29,14 @@ function NavTabsEvento(props) {
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
+          <CommentIcon/>
           Comentarios
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
-       
+       <LocationOnIcon/>
           Ubicación
         </button>
 
@@ -40,7 +44,7 @@ function NavTabsEvento(props) {
           className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(3)}
         >
-       
+       <InfoIcon/>
           Detalles
         </button>
        

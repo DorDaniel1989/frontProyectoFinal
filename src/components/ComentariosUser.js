@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import '../styles/comentarios.sass';
 
 
@@ -53,7 +53,7 @@ function ComentariosUser() {
                                     <div className="comment-head">
 
                                         <span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>
-                                        <button onClick={() => EliminarComentario(item.comentarioId)} className="text-dark border border-warning bg-transparent btn btn-danger">Eliminar</button>
+                                        <button onClick={() => EliminarComentario(item.comentarioId)} ><DeleteForeverIcon/></button>
                                         <span>&emsp;{item.fecha_comentario}&nbsp;</span>
                                         <span>a las {item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>
