@@ -20,6 +20,23 @@ const tabs =  [{name:'Usuarios'}, {name: 'Inscripciones'} , {name: 'Eventos'}, {
 
 function toggleDataTable(elem){
     $( ".formsAPI" ).not(`#${elem}`).addClass( "d-none" );
+
+    let activo = false;
+
+    // recorremos para ver si hay alguna tabla activa
+
+    $('.formsAPI').each(function(i, obj) {
+        if(! obj.classList.contains("d-none")){
+            activo = true;
+        }
+    });
+
+    if(!activo){
+        $('#dShowBackImage').addClass( "d-none" );
+    }else{
+        $('#dShowBackImage').removeClass( "d-none" );
+    }
+
     $(`#${elem}`).toggleClass( "d-none" );
 }
 
