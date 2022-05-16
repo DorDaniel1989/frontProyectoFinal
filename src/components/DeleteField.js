@@ -63,9 +63,9 @@ export default function DeleteField(props) {
 
     return (
 
-        <div className="container border border-dark rounded-1">
+        <div className="container border border-dark rounded-1 dDeleteData">
    
-          <div className="dDataInput">
+          <div className="dDataInput d-flex flex-column align-items-center">
             <p>Introduzca el ID del registro que quiera eliminar:</p>
             <input type="text" onChange={controlarCambio} name="id" className="iDelete" placeholder="ID" />
           </div>

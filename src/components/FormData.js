@@ -299,7 +299,7 @@ export default function FormData(props) {
             {
                 fieldType[whichTabla].map(campo => (
                     Object.entries(campo).map(([key, value]) => (
-                    <div className="dDataInput">
+                    <div className="dDataInput d-flex flex-column align-items-center">
                         <label for={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>{key}:</label><br/>
                         <input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"") + props.method} name={key} onChange={controlarCambio}></input><br/>
                     </div>
