@@ -207,7 +207,6 @@ function CuerpoDetalles(props) {
           <div id="fondo-evento">
 
           <div className="absolute-info">
-             
                 
             <button id="btn btn-inscribir " type="button" className="btn btn-primary disabled">Inscribirme</button>
 
