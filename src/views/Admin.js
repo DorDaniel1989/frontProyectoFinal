@@ -24,6 +24,13 @@ function Admin() {
               <div id="dCMS" className="container-fluid d-flex flex-wrap">
                 <Acordeon/>
 
+                <div className="showTable container-fluid d-flex flex-column align-items-center
+                justify-content-center" id="dShowBackImage">
+                  <div id="dBackImage">
+
+                  </div>
+                </div>  
+
                 <Forms/>
               </div>
 

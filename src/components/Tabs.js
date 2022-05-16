@@ -13,9 +13,11 @@ export default function Tabs(props) {
     },[]);
 
     function toggleOption(elem, datatable){
-        $( ".formsAPI" ).addClass( "d-none" );
+        $( ".formsAPI" ).not(`#${elem}`).addClass( "d-none" );
         $(`#${elem}`).toggleClass( "d-none" );
         $(`#${datatable}`).removeClass( "d-none" );
+        console.log('elemento: ' + elem);
+        console.log('datatable: ' + datatable);
     }
  
     return (
