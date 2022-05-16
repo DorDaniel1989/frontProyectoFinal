@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import '../styles/home.sass';
+import '../styles/carrusel.sass';
 
 function Home() {
 
