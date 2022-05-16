@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -58,7 +59,7 @@ function Comentarios() {
                                  
                                     <div className="comment-head">
                                     
-                                        {estaLogueado()?( item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className="text-dark border border-warning bg-transparent btn btn-danger">Eliminar</button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
+                                        {estaLogueado()?( item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <button onClick={() => EliminarComentario(item.comentarioId)} className=""><DeleteForeverIcon/></button></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
                                         
                                         <span>&emsp;{item.fecha_comentario}&nbsp;</span>
                                         <span>a las {item.hora_comentario}</span>

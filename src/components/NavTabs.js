@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useParams } from 'react-router-dom';
 import ComentariosUser from "./ComentariosUser";
 import EventosUser from "./EventosUser";
+import EventIcon from '@mui/icons-material/Event';
+import CommentIcon from '@mui/icons-material/Comment';
 import '../styles/NavTabs.sass';
 
 function NavTabs() {
@@ -21,12 +23,14 @@ function NavTabs() {
           className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(1)}
         >
+          <EventIcon/>
           Eventos 
         </button>
         <button
           className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
           onClick={() => toggleTab(2)}
         >
+          <CommentIcon/>
           Comentarios
         </button>
       

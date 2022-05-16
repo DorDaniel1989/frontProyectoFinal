@@ -132,7 +132,7 @@ function FormularioEditarUsuario(props) {
                         <div className="row">
                             <div className="form-group col col-10">
                             </div>
-                                <div className="col col-5 d-flex flex-column justify-content-center">
+                                <div className="col col-10  col-lg-5 d-flex flex-column justify-content-center">
                                 <label for="username">USERNAME</label>
                                     <div className="input-group mb-3">
                                         <div className="input-group-prepend">
@@ -145,7 +145,7 @@ function FormularioEditarUsuario(props) {
                             <div className="col col-5">
                                 <img onChange={controlarCambio} src={formData.imagen} className="imagenPerfil" />
                             </div>
-                            <div className="col col-5">
+                            <div className="col col-10  col-lg-5">
                                 <label for="username">PASSWORD</label>
                                 <div className="input-group mb-3 ">
                                     <div className="input-group-prepend">
@@ -156,7 +156,7 @@ function FormularioEditarUsuario(props) {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col col-5">
+                            <div className="col col-10  col-lg-5">
                                 <label for="username">EMAIL</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -165,7 +165,7 @@ function FormularioEditarUsuario(props) {
                                     <input type="text" onChange={controlarCambio} name="email" id="email" className="form-control" value={formData.email} placeholder="email" />
 
                                 </div>  </div>
-                            <div className="col col-5">
+                            <div className="col col-10  col-lg-5">
                                 <label for="username">NOMBRE</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -178,7 +178,7 @@ function FormularioEditarUsuario(props) {
 
 
                         <div className="row">
-                            <div className="col col-5">
+                            <div className="col col-10  col-lg-5">
                                 <label for="username">APELLIDO</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -187,7 +187,7 @@ function FormularioEditarUsuario(props) {
                                     <input type="text" onChange={controlarCambio} name="apellido" id="apellido" className="form-control" value={formData.apellido} placeholder="apellido" ></input>
                                 </div>
                             </div>
-                            <div className="col col-5">
+                            <div className="col col-10  col-lg-5">
                                 <label for="username">DIRECCIÓN</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -200,7 +200,7 @@ function FormularioEditarUsuario(props) {
 
 
                         <div className="row">
-                            <div className="col col-5">
+                            <div className="col col-10  col-lg-5">
                                 <label for="username">TELÉFONO</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -209,7 +209,7 @@ function FormularioEditarUsuario(props) {
                                     <input type="text" onChange={controlarCambio} name="telefono" id="telefono" className="form-control" value={formData.telefono} placeholder="telefono" />
                                 </div>
                             </div>
-                            <div className="col col-5">
+                            <div className="col col-10  col-lg-5">
                                 <label for="username">DINOS ALGO SOBRE TÍ</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -220,7 +220,7 @@ function FormularioEditarUsuario(props) {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col col-10">
+                            <div className="col-10  col-lg-5">
                                 <label for="username">IMAGEN PERFIL</label>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -232,10 +232,10 @@ function FormularioEditarUsuario(props) {
                         </div>
                         <hr />
                         <div className="row">
-                            <div className="col col-5">
+                            <div className="col-10  col-lg-5">
                                 <input onClick={() => actualizarUsuario()} className="btn btn-primary border border-warning bg-transparent text-light login" value="GUARDAR CAMBIOS" />
                             </div>
-                            <div className="col col-5">
+                            <div className="col-10 col-lg-5">
                                 <button className="btn btn-primary border border-warning bg-transparent text-light btn-danger" onClick={() => EliminarCuenta(formData.usuarioId)}>Eliminar cuenta</button>
 
                             </div>

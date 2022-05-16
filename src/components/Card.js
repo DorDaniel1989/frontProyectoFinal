@@ -1,6 +1,7 @@
 import * as React from 'react';
 import imagen from "../imagenes/marcanthony.png";
 import { Button } from '@mui/material';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import '../styles/cards.sass';
 
 export default function Carta(props) {
@@ -17,7 +18,7 @@ export default function Carta(props) {
           <p>{props.descripcion}</p>
           <img height={200} src={imagen}/>
           
-          <Button className='boton-entrar border border-warning bg-transparent' href= {ruta}>ENTRAR</Button>
+          <Button className='boton-entrar border border-warning bg-transparent' href= {ruta}><VisibilityIcon/>ENTRAR</Button>
         
  </div> 
   )

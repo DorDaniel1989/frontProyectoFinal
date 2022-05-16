@@ -5,7 +5,11 @@ import axios from 'axios';
 import { Navigate } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import LoginIcon from '@mui/icons-material/Login';
 
+import $ from 'jquery';
+import "jquery-ui-dist/jquery-ui";
 
 function FormularioLogin() {
 
@@ -27,6 +31,10 @@ function FormularioLogin() {
         console.log(formData)
     }
 
+    function cerrarDivLogin(){
+        $(".login-container").css("display","none");
+        $("#root").removeClass('modal-open')
+    }
 
     const iniciarSesion = async () => {
 
@@ -68,7 +76,9 @@ function FormularioLogin() {
 
 
         <div className="login-container">
+           
             <div className="form-box">
+            <KeyboardBackspaceIcon onClick={cerrarDivLogin}/>
                 <div className="header-form">
                     <h4 className="text-center"> LOGIN</h4>
                     <div className="image">
@@ -88,11 +98,9 @@ function FormularioLogin() {
                             </div>
                             <input type="password" onChange={controlarCambio} name="password" id="password" className="form-control" placeholder="Password" />
                         </div>
-                        <input onClick={() => iniciarSesion()} className="btn login text-light border border-warning bg-transparent" value="LOGIN" />
-                        <div className="message">
-                            <div><input type="checkbox" /> Remember ME</div>
-                            <div><a href="#">Forgot your password</a></div>
-                        </div>
+                        <button onClick={iniciarSesion} className="btn login text-light border border-warning bg-transparent"> <LoginIcon/>LOGIN</button>
+                       
+                        
                     </form>
                     <div className="social">
                         <a href="#"><i className="fab fa-facebook"></i></a>
