@@ -4,7 +4,8 @@ import Menu from '../components/Menu';
 import Acordeon from "../components/Acordeon";
 import Forms from "../components/FormulariosAdmin";
 import '../styles/admin.sass';
-import { render } from "@testing-library/react";
+import pichasu from "../imagenes/pichasu.gif";
+import hacking from "../imagenes/juanquer.gif";
 import  { Navigate } from 'react-router-dom'
 
 function Admin() {
@@ -18,7 +19,7 @@ function Admin() {
             <div className="container-fluid">
               <Menu/>
 
-              <marquee>Cuidado!!! que estás en el admin wacho</marquee>
+              <marquee id="mAviso"><img src={pichasu} alt="Pichasu" /><span>Cuidado!!! que estás en el admin wacho</span></marquee>
 
               <div id="dCMS" className="container-fluid d-flex flex-wrap">
                 <Acordeon/>
