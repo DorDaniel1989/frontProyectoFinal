@@ -16,12 +16,12 @@ function Admin() {
             return (<Navigate to='/'  />);
         }else{
           return (
-            <div className="container-fluid">
+            <div id="dAdminBody" className="container-fluid d-flex flex-column">
               <Menu/>
 
               <marquee id="mAviso"><img src={pichasu} alt="Pichasu" /><span>Cuidado!!! que estás en el admin wacho</span></marquee>
 
-              <div id="dCMS" className="container-fluid d-flex flex-wrap">
+              <div id="dCMS" className="container-fluid d-flex flex-column justify-content-center">
                 <Acordeon/>
 
                 <div className="showTable container-fluid d-flex flex-column align-items-center

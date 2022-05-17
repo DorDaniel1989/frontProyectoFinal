@@ -2,14 +2,10 @@
 import React, { Component, useEffect, useState } from "react";
 import '../styles/login.sass';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 
-
-
-function FormularioLogin() {
+function AdminLogin() {
 
     const baseUrl = 'http://localhost:5000/api/Usuario/authenticate/';
-    const cookies = new Cookies();
 
     const [formData, setForm] = useState({
         username: '',
@@ -44,7 +40,7 @@ function FormularioLogin() {
                 if (response != null) {
                     if(response.admin){
                         var respuesta = response;
-                        console.log(respuesta)
+                        //console.log(respuesta)
                         localStorage.setItem('user', JSON.stringify(respuesta));
                         console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
                         window.location.reload();
@@ -85,10 +81,6 @@ function FormularioLogin() {
                             <input type="password" onChange={controlarCambio} name="password" id="password" className="form-control" placeholder="Password" />
                         </div>
                         <input onClick={() => iniciarSesion()} className="btn login" value="LOGIN" />
-                        <div className="message">
-                            <div><input type="checkbox" /> Remember ME</div>
-                            <div><a href="#">Forgot your password</a></div>
-                        </div>
                     </form>
                     <div className="social">
                         <a href="#"><i className="fab fa-facebook"></i></a>
@@ -104,4 +96,4 @@ function FormularioLogin() {
     );
 }
 
-export default FormularioLogin;
+export default AdminLogin;
