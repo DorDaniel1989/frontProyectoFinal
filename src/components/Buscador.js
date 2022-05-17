@@ -16,7 +16,7 @@ function Buscador(){
     setInputText(lowerCase);
 
     if(lowerCase != null && lowerCase != ''){
-      console.log(lowerCase);
+      
       $("#uListEvt").not("#lNoResult").removeClass('d-none');
       
     }else{
@@ -35,9 +35,9 @@ return (
           fullWidth
           label="Buscar"
         />
-      </div>
-      <div id="dSearchRes">
-        <List input={inputText} />
+        <div id="dSearchRes">
+          <List input={inputText} />
+        </div>
       </div>
     </div>
 );
