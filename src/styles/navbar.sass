@@ -1,63 +1,57 @@
 
 
 .navbar 
+  position: relative
+
   display: flex
   align-items: center
+
   background: rgba(30, 21, 31, 0)
   color: white
+
   font-family: Helvetica
   font-weight: 300
+
   z-index: 1 !important
 
+  .logo-eventum
+    position: absolute
 
+    left: 0
+    right: 0
+    margin-left: auto
+    margin-right: auto
 
+    max-height: 160px
 
-.navbar__title 
-  margin-right: auto
-  font-size: 150%
-  padding: 12px 16px
+  .navbar__title 
+    margin-right: auto
+    font-size: 150%
+    padding: 12px 16px
 
+    a
+      margin-right: auto
+      font-size: 150%
+      padding: 12px 16px
+      color: #cb990f
+      text-decoration: none
 
-
-.navbar__title a
-  margin-right: auto
-  font-size: 150%
-  padding: 12px 16px
-  color: #cb990f
-  text-decoration: none
-
-
-
-.navbar__item 
-  padding: 16px 16px
-  cursor: pointer
-  vertical-align: middle
+  .navbar__item 
+    padding: 16px 16px
+    cursor: pointer
+    vertical-align: middle
   
+    h2 
+      a
+        color:white
+        text-decoration: none
 
-.navbar__item h2 a
-  color:white
-  text-decoration: none
+    button 
+      a
+        color: white
+        text-decoration: none
+      
+    .bienvenidoUsuario
+      a 
+        color: #cb990f
 
-
-.navbar button a
-  color: white
-  text-decoration: none
-  
-
-
-.logo-eventum
-  max-height: 180px
-
-
-.bienvenidoUsuario
-
-  
-.bienvenidoUsuario a 
-  color: #cb990f
-
-.titoloEventos
-  width: 100%
-  height: 10rem
-  border: 1px solid black
-  text-align: center
-  padding-top: 5rem

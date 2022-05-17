@@ -37,26 +37,36 @@ function ListaEventos(props) {
     });
 
     $( "#tBuscador" ).click(function(event) {
-        if(props.input != null && props.input != ''){
-            $("#uListEvt").removeClass('d-none');
-            event.stopPropagation();
-        } 
+
+        if ($(this).find('input').val()){
+            if (filteredData.length > 0) {
+                $("#uListEvt").not('#lNoResult').removeClass('d-none');
+                event.stopPropagation();
+            } 
+        }
+    });
+
+    $("#tBuscador").find('input').keyup(function (event) {
+        if (filteredData.length > 0) {
+            $('#lNoResult').addClass('d-none')
+        } else{
+            $('#lNoResult').removeClass('d-none')
+        }
     });
 
     $( "#uListEvt" ).click(function(event) {
         event.stopPropagation();
     });
-    
 
     return (
         <ul className='d-none' id='uListEvt'>
-            <li id='lNoResult' className='d-none'><a>No se encontraron resultados...</a></li>
             {filteredData.map((event) => (
                 <>
                     <li key={event.eventoId}><a href= {'/details/' + event.eventoId}>{event.evento}</a></li>
                  
                 </>
             ))}
+            <li id='lNoResult' className='d-none'><a>No se encontraron resultados...</a></li>
         </ul>
     )
 }
