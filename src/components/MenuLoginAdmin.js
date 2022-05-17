@@ -1,57 +1,24 @@
 
 
-import {Link, BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import FormularioLogin from '../components/FormularioLogin';
+import {Link} from "react-router-dom";
+import React from "react";
 import imagen from "../imagenes/Eventum_golden.png";
-import $ from 'jquery';
-import "jquery-ui-dist/jquery-ui";
-
+import HomeIcon from '@mui/icons-material/HomeTwoTone';
+import '../styles/navbar.sass';
 
 function Menu() {
 
-  const ruta = "/profile/";
-
-function displayLoginForm(){
-
-  $(".login-container").css("display","flex");
-  var clientHeight = document.getElementById('nav-bar').clientHeight;
-  $(".login-container").css("position", "sticky").css("top",clientHeight)
-  
-  console.log(clientHeight)
-}
-
-  function logout(){
-
-    localStorage.clear();
-    window.location="/";
-    
-  }
-
-
-
-  if(localStorage.getItem('user')==null)
   return (
     <>
     <header className='navbar' id="nav-bar" >
-    <div className='navbar__title navbar__item'><Link to='/'>Home</Link></div>
-    <img className="navbar__title logo-eventum" src={imagen}/>
+      <div className='navbar__title navbar__item home-logo'><Link to='/'><HomeIcon sx={{ fontSize: 70 }} /></Link></div>
+      <div className="navbar__logo"><Link to='/'><img className="logo-eventum" src={imagen}/></Link></div>
     
    </header>
-   <FormularioLogin/>
+
    </>
   )
-  else
-  return (
-    <header className='navbar' id="nav-bar">
-    <div className='navbar__title navbar__item'><Link to='/'>Home</Link></div>
-    <img className="navbar__title logo-eventum" src={imagen}/>
-    <div className='navbar__item'><button  className="btn btn-danger" onClick={logout}>Logout</button></div>
-    <div className='navbar__item'><h2><Link to={ruta+JSON.parse(localStorage.getItem('user')).usuarioId}>Hola {JSON.parse(localStorage.getItem('user')).nombre}</Link></h2></div>
-   
 
-    </header>
-  )
 }
 
 export default Menu;

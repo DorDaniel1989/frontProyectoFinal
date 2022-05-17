@@ -1,5 +1,6 @@
-.container-fluid
+#dAdminBody
     padding: 0 !important
+    min-height: 100vh
 
     #mAviso
         position: absolute
@@ -7,12 +8,21 @@
         color: white
         padding-top: 10px
 
+        z-index: 5
+
         img
             height: 25px
             margin-top: -8px
 
+        span
+            background-color: #000000c5
+
     #dCMS
         position: relative
+
+        flex: 1
+
+        height: fit-content
         
         #dTablas
             display: flex
@@ -83,7 +93,7 @@
         .showTable
 
             max-width: 1000px !important
-            padding-top: 0.5rem !important
+            padding-top: 1rem !important
 
             @media screen and (max-width: 1100px)
                 max-width: 800px !important
@@ -284,6 +294,9 @@
 
                 .dDataInputBtn
                     margin-top: 10px
+
+    .formularios.container-fluid
+        margin-bottom: 5px
 
 .MuiModal-root 
     .MuiPaper-root
