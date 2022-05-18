@@ -16,11 +16,11 @@ function Admin() {
         
     }else{
         return (
-            <>
+            <div className="container-fluid d-flex flex-column mw-100 min-vh-100 p-0">
                 <Menu/>
 
                 <Login/>
-            </>
+            </div>
         );
     }
 }
