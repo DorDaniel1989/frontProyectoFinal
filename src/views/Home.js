@@ -1,6 +1,7 @@
 import React, {Component, useEffect, useState } from "react";
 import Buscador from '../components/Buscador';
 import Menu from '../components/Menu';
+import FormularioLogin from '../components/FormularioLogin';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from "swiper";
@@ -103,6 +104,7 @@ function Home() {
   return (
    <>
     <Menu/>
+    <FormularioLogin />
     <Buscador/>
         <h1><img  className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img  className="hype hype-on" height={50} src={fuego_activo} /></h1>     
     

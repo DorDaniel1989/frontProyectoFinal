@@ -101,9 +101,9 @@ function FormularioRegistro(props) {
     return (
 
 
-        <div className="register-container-view">
-            <h3>Dale paso a la diversión  .  .  .  </h3>
-            <div className="form-box ">
+        <div className="register-container-view d-flex justify-content-center align-items-center">
+            <h3>Dale paso a la diversión  .  .  .  <br/>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; con EVENTUM</h3>
+            <div className="form-box d-flex flex-column justify-content-start">
                 <div className="header-form">
                   
                     <div className="image">

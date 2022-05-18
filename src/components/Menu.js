@@ -1,7 +1,6 @@
 
 import {Link} from "react-router-dom";
 import React from "react";
-import FormularioLogin from '../components/FormularioLogin';
 import imagen from "../imagenes/Eventum_golden.png";
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
@@ -41,7 +40,6 @@ function displayLoginForm(){
         <div className='navbar__item'><button className="btn btn-danger border border-warning bg-transparent" onClick={displayLoginForm}><LoginIcon/>Login</button></div>
     
     </header>
-    <FormularioLogin/>
    </>
   )
   else
