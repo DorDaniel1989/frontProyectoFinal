@@ -18,9 +18,7 @@ function Menu() {
 function displayLoginForm(){
 
   $(".login-container").css("display","flex");
-  $("#root").addClass('modal-open')
-  var clientHeight = document.getElementById('nav-bar').clientHeight;
-  $(".login-container").css("position", "sticky").css("top",clientHeight)
+  $("body").addClass('overflow-hidden')
   
 }
 
@@ -39,8 +37,8 @@ function displayLoginForm(){
     <header className='navbar' id="nav-bar" >
       <div className='navbar__title navbar__item home-logo'><Link to='/'><HomeIcon sx={{ fontSize: 70 }} /></Link></div>
       <div className="navbar__logo"><Link to='/'><img className="logo-eventum" src={imagen}/></Link></div>
-      <div className='navbar__item'><button className="btn btn-success border border-warning bg-transparent"><Link to='/register'>Regístrate</Link></button></div>
-      <div className='navbar__item'><button className="btn btn-primary border border-warning bg-transparent" onClick={displayLoginForm}><LoginIcon/>Login</button></div>
+        <div className='navbar__item'><button className="btn btn-danger border border-warning bg-transparent"><Link to='/register'>Regístrate</Link></button></div>
+        <div className='navbar__item'><button className="btn btn-danger border border-warning bg-transparent" onClick={displayLoginForm}><LoginIcon/>Login</button></div>
     
     </header>
     <FormularioLogin/>

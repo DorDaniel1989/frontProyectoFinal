@@ -4,6 +4,9 @@ import '../styles/login.sass';
 import axios from 'axios';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import LoginIcon from '@mui/icons-material/Login';
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
@@ -28,7 +31,7 @@ function FormularioLogin() {
 
     function cerrarDivLogin(){
         $(".login-container").css("display","none");
-        $("#root").removeClass('modal-open')
+        $("body").removeClass('overflow-hidden')
     }
 
     const iniciarSesion = async () => {
@@ -62,27 +65,31 @@ function FormularioLogin() {
         <div className="login-container">
            
             <div className="form-box">
-            <KeyboardBackspaceIcon onClick={cerrarDivLogin}/>
+            <KeyboardBackspaceIcon onClick={cerrarDivLogin} className="sRetroc"/>
                 <div className="header-form">
                     <h4 className="text-center"><LoginIcon/>LOGIN</h4>
                     <div className="image">
                     </div>
                 </div>
                 <div className="body-form">
-                    <form>
+                    <form className="d-flex flex-column align-items-center">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
-                                <i className="bi bi-person-circle"></i>
+                                <span class="input-group-text">
+                                    <FontAwesomeIcon icon={faUser} />
+                                </span>
                             </div>
                             <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control" placeholder="Username" />
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
-                              <i className="fa fa-lock"></i>
+                                <span className="input-group-text">
+                                    <FontAwesomeIcon icon={faLock} />
+                                </span>
                             </div>
                             <input type="password" onChange={controlarCambio} name="password" id="password" className="form-control" placeholder="Password" />
                         </div>
-                        <input onClick={() => iniciarSesion()} className="btn login text-light border border-warning bg-transparent" value="Acceder" />
+                        <input onClick={() => iniciarSesion()} className="btn btn-danger login text-light border border-warning bg-transparent" value="Acceder" />
                        
                         
                     </form>

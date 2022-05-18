@@ -3,9 +3,6 @@ import React from "react";
 import Menu from '../components/Menu';
 import FormularioRegistro from "../components/FormularioRegistro";
 import { Navigate } from 'react-router-dom'
-import { useNavigate } from "react-router-dom";
-import '../styles/admin.sass';
-
 
 function Register() {
 

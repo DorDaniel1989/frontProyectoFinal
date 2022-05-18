@@ -1,7 +1,10 @@
-
-import React, { Component, useEffect, useState } from "react";
+import React, { useState } from "react";
 import '../styles/login.sass';
 import axios from 'axios';
+import LoginIcon from '@mui/icons-material/Login';
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function AdminLogin() {
 
@@ -59,28 +62,35 @@ function AdminLogin() {
     return (
 
 
-        <div className="adminlogin-container">
+        <div className="login-container adminlogin d-flex flex-column justify-content-center">
+
             <div className="form-box">
                 <div className="header-form">
-                    <h4 className="text-primary text-center"> LOGIN</h4>
+                    <h4 className="text-center"><LoginIcon />LOGIN</h4>
                     <div className="image">
                     </div>
                 </div>
                 <div className="body-form">
-                    <form>
+                    <form className="d-flex flex-column align-items-center">
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
-                                <i className="bi bi-person-circle"></i>
+                                <span class="input-group-text">
+                                    <FontAwesomeIcon icon={faUser} />
+                                </span>
                             </div>
                             <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control" placeholder="Username" />
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
-                              <i className="fa fa-lock"></i>
+                                <span className="input-group-text">
+                                    <FontAwesomeIcon icon={faLock} />
+                                </span>
                             </div>
                             <input type="password" onChange={controlarCambio} name="password" id="password" className="form-control" placeholder="Password" />
                         </div>
-                        <input onClick={() => iniciarSesion()} className="btn login" value="LOGIN" />
+                        <input onClick={() => iniciarSesion()} className="btn btn-danger login text-light border border-warning bg-transparent" value="Acceder" />
+
+
                     </form>
                     <div className="social">
                         <a href="#"><i className="fab fa-facebook"></i></a>

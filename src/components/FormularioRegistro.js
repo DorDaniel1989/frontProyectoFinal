@@ -1,8 +1,7 @@
 
-import React, { Component, useEffect, useState } from "react";
-import '../styles/login.sass';
+import React, { useState } from "react";
+import '../styles/register.sass';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 
 
@@ -10,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 function FormularioRegistro(props) {
 
     const baseUrl = 'http://localhost:5000/api/Usuario/';
-    const cookies = new Cookies();
 
     const navigate = useNavigate();
 
@@ -175,7 +173,7 @@ function FormularioRegistro(props) {
                       
 
 
-                        <input onClick={() => registroUsuario()} className="btn btn-primary border border-warning bg-transparent text-light login" value="REGISTRAME!" />
+                        <input onClick={() => registroUsuario()} className="btn btn-danger border border-warning bg-transparent text-light register" value="REGISTRAME!" />
 
                     </form>
 
