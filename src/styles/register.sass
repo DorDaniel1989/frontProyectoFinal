@@ -1,39 +1,66 @@
-.register-container
-  
-  height: 95%
-  background: linear-gradient(to right, #434343, #000000)
-  display: flex
-  justify-content: center
-  align-items: center
+.register-view
+	.register-section
 
+		flex: 1
 
-.register-container-view
-  padding: 2rem
-  height: 95%
-  background: linear-gradient(to right, #434343, #000000)
-  display: flex
-  justify-content: center
-  align-items: center
+		min-height: auto
 
+		background: linear-gradient(to right, #434343, #000000)
 
+		.register-container-view
+			
+			flex: 1
 
-.form-box
-	width: 380px
-	height:fit-content
-	background-color:rgba(15, 15, 19, 0.838)
-	padding: 2rem
-	display: flex
-	flex-direction: column
-	justify-content: flex-start
-	opacity: 1
-	border-radius: 2%
-	border: 4px solid #BA8B02
-	color: aliceblue!important
+			min-height: auto
+			width: 100%
 
-.header-form
-	margin-bottom: 15px
-  
+			padding-top: 10px
 
-.register
-	background-color: aliceblue !important
+			h3
+				position: absolute
+
+				left: 150px
+
+				margin-bottom: 5rem
+
+				color: aliceblue !important
+
+				@media screen and (max-width: 1670px)
+					left: 100px
+
+				@media screen and (max-width: 1550px)
+					left: 50px
+
+				@media screen and (max-width: 1450px)
+					left: 25px
+
+				@media screen and (max-width: 1450px)
+					position: static
+
+					margin-bottom: 1rem
+
+			.form-box
+				width: fit-content
+				height: fit-content
+
+				padding: 1rem
+
+				background-color:rgba(15, 15, 19, 0.838)
+				opacity: 1
+
+				border-radius: 2%
+				border: 4px solid #BA8B02
+
+				color: aliceblue !important
+
+				.header-form
+					margin-bottom: 15px
+	
+				.body-form
+
+					form
+
+						.register
+						
+
 
