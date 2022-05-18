@@ -1,29 +1,34 @@
 .swiper.swiper-initialized.swiper-horizontal.swiper-pointer-events.swiper-backface-hidden 
+    position: relative
 
     &:last-child
         margin-bottom: 30px
 
     .swiper-button-prev
-        padding-top: 198px
-        padding-bottom: 198px
+        height: 100%
         padding-left: 20px
         padding-right: 50px
 
+        margin-top: 0 !important
         margin-left: -10px
-        top: 8.6%
+
+        top: 50%
+        transform: translateY(-50%)
 
         color: var(--swiper-navigation-color, white)
 
         background-color: #000000a9
 
     .swiper-button-next
-        padding-top: 198px
-        padding-bottom: 198px
+        height: 100%
         padding-left: 50px
         padding-right: 20px
 
+        margin-top: 0 !important
         margin-right: -10px
-        top: 8.6%
+
+        top: 50%
+        transform: translateY(-50%)
 
         color: var(--swiper-navigation-color, white)
 
@@ -32,16 +37,10 @@
     &.hypeSwiper
 
         .swiper-button-prev
-            padding-top: 245px
-            padding-bottom: 242px
-
-            top: 7.1%
+            
 
         .swiper-button-next
-            padding-top: 245px
-            padding-bottom: 242px
-
-            top: 7.1%
+            
 
     .swiper-pagination
         bottom: 0px 
