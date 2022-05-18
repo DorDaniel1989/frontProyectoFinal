@@ -46,15 +46,7 @@ function FormularioRegistro(props) {
     }
 
     const [formData, setForm] = useState({
-        username: props.username,
-        password: props.password,
-        email: props.email,
-        nombre: props.nombre,
-        apellido: props.apellido,
-        direccion: props.direccion,
-        telefono: props.telefono,
-        about_me: props.about_me,
-        imagen: props.imagen
+
     });
 
     const controlarCambio = e => {
@@ -74,28 +66,38 @@ function FormularioRegistro(props) {
 
     const registroUsuario = async () => {
 
-        console.log(formData);
+        //console.log(formData);
         console.log('Registrando usuario...');
 
+        if(formData.password != formData.confirmPwd){
+            alert('vuleva a introducir la contraseña');
 
+        }else{
 
-         await axios.post(baseUrl, formData)
-             .then(response => {
-                 return response.data;
-             }).then(response => {
+            delete formData.confirmPwd;
 
-                 if (response != null) {
-                     var respuesta = response;
-                     console.log(respuesta)
-                    
-                     navigate("/");
-                 } else {
-                     console.log(response)
-                     alert('El usuario o la contraseña no son correctos')
-                 }
-             }).catch(error => {
-                 console.log(error)
-             })
+            console.log(formData);
+
+            await axios.post(baseUrl, formData)
+                .then(response => {
+                    return response.data;
+                }).then(response => {
+
+                    if (response != null) {
+                        var respuesta = response;
+                        console.log(respuesta)
+
+                        navigate("/");
+                    } else {
+                        console.log(response)
+                        alert('El usuario o la contraseña no son correctos')
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+        }
+
+        
     }
 
     return (
@@ -112,62 +114,42 @@ function FormularioRegistro(props) {
                 <div className="body-form">
                     <form>
                     
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="bi bi-person-circle"></i>
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <div className="input-container-alone d-flex justify-content-center">
+                                <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control"  placeholder="Username" />
                             </div>
-                            <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control" value={props.username} placeholder="Username" />
                         </div>
 
-
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
-                            </div>
-                            <input type="password" onChange={controlarCambio} name="password" id="password" value={props.password} className="form-control" placeholder="Password" />
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <input type="text" onChange={controlarCambio} name="email" id="email" className="form-control" placeholder="email" />
                         </div>
 
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <div className="input-container-multiple d-flex justify-content-center">
+                                <input type="password" onChange={controlarCambio} name="password" id="password"  className="form-control" placeholder="Password" />
                             </div>
-                            <input type="text" onChange={controlarCambio} name="email" id="email" className="form-control" value={props.email} placeholder="email" />
+                            <div className="input-container-multiple d-flex justify-content-center">
+                                <input type="password" onChange={controlarCambio} name="confirmPwd" id="confirmPwd" className="form-control" placeholder="Confirm password" />
+                            </div>
                         </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
-                            </div>
-                            <input type="text" onChange={controlarCambio} name="nombre" id="nombre" className="form-control" value={props.nombre} placeholder="nombre" />
+                        
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <input type="text" onChange={controlarCambio} name="nombre" id="nombre" className="form-control" placeholder="nombre" />
                         </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
-                            </div>
-                            <input type="text" onChange={controlarCambio} name="apellido" id="apellido" className="form-control" value={props.apellido} placeholder="apellido" />
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <input type="text" onChange={controlarCambio} name="apellido" id="apellido" className="form-control" placeholder="apellido" />
                         </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
-                            </div>
-                            <input type="text" onChange={controlarCambio} name="direccion" id="direccion" className="form-control" value={props.direccion} placeholder="direccion" />
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <input type="text" onChange={controlarCambio} name="direccion" id="direccion" className="form-control" placeholder="direccion" />
                         </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
-                            </div>
-                            <input type="text" onChange={controlarCambio} name="telefono" id="telefono" className="form-control" value={props.telefono} placeholder="telefono" />
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <input type="text" onChange={controlarCambio} name="telefono" id="telefono" className="form-control" placeholder="telefono" />
                         </div>
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
-                            </div>
-                            <input type="text" onChange={controlarCambio} name="about_me" id="about_me" className="form-control" value={props.about_me} placeholder="about_me" />
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <input type="text" onChange={controlarCambio} name="about_me" id="about_me" className="form-control" placeholder="about_me" />
                         </div>
 
-                        <div className="input-group mb-3">
-                            <div className="input-group-prepend">
-                                <i className="fa fa-lock"></i>
-                            </div>
+                        <div className="input-group mb-3 d-flex justify-content-center">
                             <input type="file" onChange={controlarCambio} name="imagen" id="imagen" className="form-control"/>
                         </div>
                       
