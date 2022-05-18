@@ -12,7 +12,7 @@ function Menu() {
     <>
     <header className='navbar' id="nav-bar" >
       <div className='navbar__title navbar__item home-logo'><Link to='/'><HomeIcon sx={{ fontSize: 70 }} /></Link></div>
-      <div className="navbar__logo"><Link to='/'><img className="logo-eventum" src={imagen}/></Link></div>
+      <div className="navbar__logo"><Link to='/'><img alt="Evencum" className="logo-eventum" src={imagen}/></Link></div>
     
    </header>
 
