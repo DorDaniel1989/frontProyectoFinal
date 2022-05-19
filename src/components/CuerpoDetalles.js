@@ -135,10 +135,6 @@ function CuerpoDetalles(props) {
 
   }
 
-
-
-
-
   const EliminarInscripcion = async (Id) => {
 
     Swal.fire({
@@ -183,13 +179,6 @@ function CuerpoDetalles(props) {
   
 
 }
-
-
-
-
-
-
-
 
   async function checkHype(Id) {
 
@@ -247,29 +236,41 @@ function CuerpoDetalles(props) {
           <div className="cabecera-evento" id="aside-details">
       
             <div id="fondo-evento">
-      
+
               <div className="dFilter">
-                <div className="absolute-info p-2">
-      
-                  <h1>{evento.evento}</h1>
-      
-                  <div className="dDisponibilidad d-flex row justify-content-center">
-                    <div className="cuadrado-info d-flex flex-column align-items-center">
-                      <h4>{evento.aforo_max}</h4>
-                      <p>Aforo</p>
-                    </div>
-                    <div className="cuadrado-info d-flex flex-column align-items-center">
-                      <h4>{inscripciones.length}</h4>
-                      <p>Vendidos</p>
-                    </div>
-                    <div className="cuadrado-info d-flex flex-column align-items-center">
-                      <h4>{evento.aforo_max - inscripciones.length}</h4>
-                      <p>Disponibles</p>
-                    </div>
-                  </div>
-                
+
+                <div className="dLittleImage">
+                  <img src={evento.imagen} alt={evento.evento}></img>
                 </div>
-              </div>    
+
+                <div className="dFade d-flex">
+                  <div className="absolute-info p-2">
+
+                    <div className="dBasicInfo">
+                      <div className="dDataEvent d-flex flex-column">
+                        <h1>{evento.evento}</h1>
+                        <span>{localizacion.localizacion}</span>
+                      </div>
+                    </div>
+
+                    <div className="dDisponibilidad d-flex row justify-content-center">
+                      <div className="cuadrado-info d-flex flex-column align-items-center">
+                        <h4>{evento.aforo_max}</h4>
+                        <p>Aforo</p>
+                      </div>
+                      <div className="cuadrado-info d-flex flex-column align-items-center">
+                        <h4>{inscripciones.length}</h4>
+                        <p>Vendidos</p>
+                      </div>
+                      <div className="cuadrado-info d-flex flex-column align-items-center">
+                        <h4>{evento.aforo_max - inscripciones.length}</h4>
+                        <p>Disponibles</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>   
+              </div> 
             </div>
             {
               comprobarAforo() ? (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Inscríbete</button>) : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button>)
@@ -305,24 +306,37 @@ function CuerpoDetalles(props) {
             <div id="fondo-evento">
 
               <div className="dFilter">
-                <div className="absolute-info p-2">
-                  <h1>{evento.evento}</h1>
+                <div className="dLittleImage">
+                  <img src={evento.imagen} alt={evento.evento}></img>
+                </div>
 
-                  <div className="dDisponibilidad d-flex row justify-content-center">
-                    <div className="cuadrado-info d-flex flex-column align-items-center">
-                      <h4>{evento.aforo_max}</h4>
-                      <p>Aforo</p>
+                <div className="dFade d-flex">
+
+                  <div className="absolute-info p-2">
+
+                    <div className="dBasicInfo">
+                      <div className="dDataEvent d-flex flex-column">
+                        <h1>{evento.evento}</h1>
+                        <span>{localizacion.localizacion}</span>
+                      </div>
                     </div>
-                    <div className="cuadrado-info d-flex flex-column align-items-center">
-                      <h4>{inscripciones.length}</h4>
-                      <p>Vendidos</p>
+
+                    <div className="dDisponibilidad d-flex row justify-content-end">
+                      <div className="cuadrado-info d-flex flex-column align-items-center">
+                        <h4>{evento.aforo_max}</h4>
+                        <p>Aforo</p>
+                      </div>
+                      <div className="cuadrado-info d-flex flex-column align-items-center">
+                        <h4>{inscripciones.length}</h4>
+                        <p>Vendidos</p>
+                      </div>
+                      <div className="cuadrado-info d-flex flex-column align-items-center">
+                        <h4>{evento.aforo_max - inscripciones.length}</h4>
+                        <p>Disponibles</p>
+                      </div>
                     </div>
-                    <div className="cuadrado-info d-flex flex-column align-items-center">
-                      <h4>{evento.aforo_max - inscripciones.length}</h4>
-                      <p>Disponibles</p>
-                    </div>
+
                   </div>
-
                 </div>
               </div>
             </div>
