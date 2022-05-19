@@ -1,3 +1,49 @@
+.hype-container
+    position: fixed
+
+    transform: translate3d(0%, -50%, 0px)
+
+    top: 50%
+    right: 0
+
+    margin-right: -2px
+
+    padding: 5px 0 5px 3px
+
+    width: fit-content
+
+    background-color: black
+
+    border-top-left-radius: 8px
+    border-bottom-left-radius: 8px
+
+    z-index: 99999
+
+    &:before 
+        content: ""
+
+        position: absolute
+        z-index: -1
+
+        inset: 0
+
+        padding: 2px
+
+        border-top-left-radius: 8px
+        border-bottom-left-radius: 8px
+
+        background: linear-gradient(110deg, white , #ffc107)
+
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+        -webkit-mask-composite: xor
+        mask-composite: exclude
+
+    .hype
+        cursor: pointer
+
+        height: 50px 
+    
 .container-evento
     border: 2px solid white
     padding-left: 0.6%
@@ -35,6 +81,7 @@
 
                 background-color: #00000038
                 -webkit-backdrop-filter: blur(0.5rem)
+                -moz-backdrop-filter: blur(0.5rem)
                 backdrop-filter: blur(0.5rem)
 
                 .absolute-info
@@ -47,48 +94,28 @@
 
                     width: 100%
 
-                    background: linear-gradient(to right, #3a393977, #000000c5)
+                    background: linear-gradient(360deg, #000000d0, transparent)
 
                     h1
                         text-decoration: none
 
-                    a
-                        margin-right: 5px
+                    .dDisponibilidad
+                        width: 100%
 
-                        @media screen and (max-width: 1000px)
-                            width: 3rem
-
-                        #btn-inscribir
-                            margin-top: 25%
-
-
-                    .inscribirse-hype-container
-                        display: flex
-                        justify-content: space-between
-                        align-items: center
-
-                        @media screen and (max-width: 1000px)
-                            width: 55%
-
-                        .hype
-
-                            position: sticky
-
-                            transform: translate3d(0%, -50%, 0px)
-
-                            top: 50%
-                            right: 0
-
-                    .cuadrado-info
-                        width: 20%
-                        height: 6rem
-                        border-left: 3px solid white 
-                        padding: 2%
-
+                        .cuadrado-info
+                            width: 100px
+                            height: 6rem
+                            //border-left: 3px solid white 
+                            padding-top: 2%
+        #btn-inscribir
+            margin-top: 50px
+            
     .body-details
         background:  linear-gradient(to right, #434343, #979292)
         width: 100%
-        padding: 3%!important
+        padding: 3%
+
+        padding-top: 0
 
         .container
     

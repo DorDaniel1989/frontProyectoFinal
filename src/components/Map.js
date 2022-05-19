@@ -38,7 +38,6 @@ function Map() {
         localizacion[0].longitud = longitud;
         setLocalizacion(localizacion)
 
-
     }
 
     return (

@@ -207,26 +207,27 @@ function CuerpoDetalles(props) {
       
                   <h1>{evento.evento}</h1>
       
-                  {
-                    comprobarAforo() ? (<a><button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Inscríbete</button></a>) : (<a><button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button></a>)
-                  }
-                  <div className="cuadrado-info">
-                    <p>Aforo</p>
-                    <p>{evento.aforo_max}</p>
-                  </div>
-                  <div className="cuadrado-info">
-                    <p>Vendidos</p>
-                    <p>{inscripciones.length}</p>
-                  </div>
-                  <div className="cuadrado-info">
-                    <p>Disponibles</p>
-                    <p>{evento.aforo_max - inscripciones.length}</p>
+                  <div className="dDisponibilidad d-flex row justify-content-center">
+                    <div className="cuadrado-info d-flex flex-column align-items-center">
+                      <h4>{evento.aforo_max}</h4>
+                      <p>Aforo</p>
+                    </div>
+                    <div className="cuadrado-info d-flex flex-column align-items-center">
+                      <h4>{inscripciones.length}</h4>
+                      <p>Vendidos</p>
+                    </div>
+                    <div className="cuadrado-info d-flex flex-column align-items-center">
+                      <h4>{evento.aforo_max - inscripciones.length}</h4>
+                      <p>Disponibles</p>
+                    </div>
                   </div>
                 
                 </div>
-              </div>
-                
+              </div>    
             </div>
+            {
+              comprobarAforo() ? (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Inscríbete</button>) : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button>)
+            }
           </div>
           <div className="body-details">
                 
@@ -244,8 +245,12 @@ function CuerpoDetalles(props) {
     return (
       <>
         {
-            comprobarInscripcion() ? (<div><img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
-              <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) : (<></>)
+            comprobarInscripcion() ? (
+            <div className="hype-container">
+              <img onClick={restarHype} className="hype hype-on d-none" src={fuego_activo} />
+              <img onClick={sumarHype} className="hype hype-off"  src={fuego_tenue} />
+            </div>) : 
+            (<></>)
         }
         <div className='container container-evento'>
 
@@ -256,35 +261,33 @@ function CuerpoDetalles(props) {
               <div className="dFilter">
                 <div className="absolute-info p-2">
                   <h1>{evento.evento}</h1>
-                  {
-                    comprobarInscripcion() ? (
-                      <div className="inscribirse-hype-container ">
-                        <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="text-light border border-warning bg-dark btn btn-danger">Cancelar inscripción</button></a>
-                      </div>) :
-                      (
-                        comprobarAforo() ? (<a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger ">Inscribirse</button></a>) : (<a><button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button></a>)
-                      )
 
-                  }
-
-                  <div className="cuadrado-info">
-                    <p>Aforo</p>
-                    <p>{evento.aforo_max}</p>
-                  </div>
-                  <div className="cuadrado-info">
-                    <p>Vendidos</p>
-                    <p>{inscripciones.length}</p>
-                  </div>
-
-                  <div className="cuadrado-info">
-                    <p>Disponibles</p>
-                    <p>{evento.aforo_max - inscripciones.length}</p>
+                  <div className="dDisponibilidad d-flex row justify-content-center">
+                    <div className="cuadrado-info d-flex flex-column align-items-center">
+                      <h4>{evento.aforo_max}</h4>
+                      <p>Aforo</p>
+                    </div>
+                    <div className="cuadrado-info d-flex flex-column align-items-center">
+                      <h4>{inscripciones.length}</h4>
+                      <p>Vendidos</p>
+                    </div>
+                    <div className="cuadrado-info d-flex flex-column align-items-center">
+                      <h4>{evento.aforo_max - inscripciones.length}</h4>
+                      <p>Disponibles</p>
+                    </div>
                   </div>
 
                 </div>
               </div>
-
             </div>
+            {
+              comprobarInscripcion() ? (
+                <button id="btn-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="text-light border border-warning bg-dark btn btn-danger">Cancelar inscripción</button>) :
+              (
+                comprobarAforo() ? (<button id="btn-inscribir" onClick={Inscribirse} type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger ">Inscribirse</button>) : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button>)
+              )
+
+            }
           </div>
           <div className="body-details">
           <NavTabsEvento fecha_inic={evento.fecha_inic} fecha_fin={evento.fecha_fin} hora_inic={evento.hora_inic} hora_fin={evento.hora_fin} precio={evento.precio} descripcion={evento.descripcion} ubicacion={localizacion.localizacion} display={""} eventoId={evento.eventoId} categoriaId={evento.categoriaId} usuarioId={JSON.parse(localStorage.getItem('user')).usuarioId}/>
