@@ -3,12 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
-
-
-
-
-
-
+import "jquery-ui-dist/jquery-ui";
+import 'leaflet/dist/leaflet.css';
+import $ from 'jquery';
 
 function Map() {
 
@@ -16,13 +13,17 @@ function Map() {
     const [localizacion, setLocalizacion] = useState([])
     const { Id } = useParams();
 
-
-
     useEffect(() => {
 
         obtenerDatos()
 
     }, [])
+
+    //arregla bug del mapa mostrandose en gris
+
+    $('.bloc-tabs').find('.tabs').eq(1).click(function() {
+        window.dispatchEvent(new Event('resize'));
+      });
 
 
     const obtenerDatos = async () => {
@@ -40,15 +41,13 @@ function Map() {
 
     }
 
-
-
     return (
 
         <>
             {
                 localizacion.map(item => (
 
-                    <MapContainer center={[item.latitud, item.longitud]} zoom={8} scrollWheelZoom={false} key={item}>
+                    <MapContainer center={[item.latitud, item.longitud]} zoom={8} scrollWheelZoom={true} key={item}>
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
