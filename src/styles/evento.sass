@@ -14,8 +14,8 @@
 
     background-color: black
 
-    border-top-left-radius: 8px
-    border-bottom-left-radius: 8px
+    border-top-left-radius: 10px
+    border-bottom-left-radius: 10px
 
     z-index: 99999
 
@@ -64,49 +64,119 @@
         justify-content: center
 
         #fondo-evento
+
+            display: flex
+
             width: 100%!important
             max-height: 600px
             height: 600px
+
             background-size: cover
-            display: flex
-            justify-content: flex-end
-            align-items: end
+        
             background-color: white
 
             .dFilter
                 position: relative
 
+                display: flex
+
+                width: 100%!important
                 height: 100%
-                width: 100%
 
                 background-color: #00000038
                 -webkit-backdrop-filter: blur(0.5rem)
                 -moz-backdrop-filter: blur(0.5rem)
                 backdrop-filter: blur(0.5rem)
 
-                .absolute-info
+                .dLittleImage
+
+                    height: fit-content
+                    width: fit-content
+
+                    margin-top: 8%
+                    margin-left: 8%
+
+                    border: 0.5px solid #0000008b
+                    border-radius: 8px
+                    box-shadow: 1px 1px 1px 1px #00000068
+
+                    @media screen and (max-width: 768px)
+                        margin-top: 16%
+                        margin-left: auto
+                        margin-right: auto
+
+                    img
+                        height: 150px
+                        border-radius: 8px
+
+                .dFade
                     position: absolute
 
-                    display: flex
-                    flex-wrap: wrap
-
-                    bottom: 0
-
+                    height: 100%
                     width: 100%
 
-                    background: linear-gradient(360deg, #000000d0, transparent)
+                    .absolute-info
 
-                    h1
-                        text-decoration: none
+                        display: flex
+                        flex-wrap: wrap
 
-                    .dDisponibilidad
+                        margin-top: auto
+
+                        padding: 0 !important
+
                         width: 100%
 
-                        .cuadrado-info
-                            width: 100px
-                            height: 6rem
-                            //border-left: 3px solid white 
-                            padding-top: 2%
+                        .dBasicInfo
+                            width: 100%
+
+                            background: linear-gradient(360deg, #000000d0, transparent)
+
+                            .dDataEvent
+
+                                h1
+                                    width: fit-content
+
+                                    margin-left: 8%
+
+                                    padding: 0
+
+                                    text-decoration: none
+
+                                    @media screen and (max-width: 768px)
+                                        margin-left: auto
+                                        margin-right: auto
+
+                                span
+                                    width: fit-content
+
+                                    margin-left: 10%
+
+                                    padding: 0 0 85.8px 0
+
+                                    @media screen and (max-width: 768px)
+                                        margin-left: auto
+                                        margin-right: auto
+
+
+                        .dDisponibilidad
+                            width: 100%
+
+                            padding: 0
+                            margin: 0
+
+                            padding-right: 16%
+
+                            background: linear-gradient(360deg, black, #000000d0)
+
+                            @media screen and (max-width: 768px)
+                                justify-content: center !important
+
+                                padding: 0
+
+                            .cuadrado-info
+                                width: 100px
+                                height: 6rem
+                                padding-top: 2%
         #btn-inscribir
             margin-top: 50px
             
