@@ -3,7 +3,16 @@ import React, { useState } from "react";
 import '../styles/register.sass';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faAt } from "@fortawesome/free-solid-svg-icons";
+import { faUnlock } from "@fortawesome/free-solid-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { faSignature } from "@fortawesome/free-solid-svg-icons"; 
+import { faPeopleRoof } from "@fortawesome/free-solid-svg-icons";
+import { faHomeUser } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneFlip } from "@fortawesome/free-solid-svg-icons";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 function FormularioRegistro(props) {
@@ -116,46 +125,100 @@ function FormularioRegistro(props) {
                     
                         <div className="input-group mb-3 d-flex justify-content-center">
                             <div className="input-container-alone d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </span>
+                                </div>
                                 <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control"  placeholder="Username" />
                             </div>
                         </div>
 
                         <div className="input-group mb-3 d-flex justify-content-center">
-                            <input type="text" onChange={controlarCambio} name="email" id="email" className="form-control" placeholder="email" />
+                            <div className="input-container-alone d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faAt} />
+                                    </span>
+                                </div>
+                                <input type="text" onChange={controlarCambio} name="email" id="email" className="form-control" placeholder="email" />
+                            </div>
                         </div>
 
                         <div className="input-group mb-3 d-flex justify-content-center">
                             <div className="input-container-multiple d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faUnlock} />
+                                    </span>
+                                </div>
                                 <input type="password" onChange={controlarCambio} name="password" id="password"  className="form-control" placeholder="Password" />
                             </div>
                             <div className="input-container-multiple d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faLock} />
+                                    </span>
+                                </div>
                                 <input type="password" onChange={controlarCambio} name="confirmPwd" id="confirmPwd" className="form-control" placeholder="Confirm password" />
                             </div>
                         </div>
                         
                         <div className="input-group mb-3 d-flex justify-content-center">
-                            <input type="text" onChange={controlarCambio} name="nombre" id="nombre" className="form-control" placeholder="nombre" />
-                        </div>
-                        <div className="input-group mb-3 d-flex justify-content-center">
-                            <input type="text" onChange={controlarCambio} name="apellido" id="apellido" className="form-control" placeholder="apellido" />
-                        </div>
-                        <div className="input-group mb-3 d-flex justify-content-center">
-                            <input type="text" onChange={controlarCambio} name="direccion" id="direccion" className="form-control" placeholder="direccion" />
-                        </div>
-                        <div className="input-group mb-3 d-flex justify-content-center">
-                            <input type="text" onChange={controlarCambio} name="telefono" id="telefono" className="form-control" placeholder="telefono" />
-                        </div>
-                        <div className="input-group mb-3 d-flex justify-content-center">
-                            <input type="text" onChange={controlarCambio} name="about_me" id="about_me" className="form-control" placeholder="about_me" />
+                            <div className="input-container-multiple d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faSignature} />
+                                    </span>
+                                </div>
+                                <input type="text" onChange={controlarCambio} name="nombre" id="nombre" className="form-control" placeholder="nombre" />
+                            </div>
+                            <div className="input-container-multiple d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faPeopleRoof} />
+                                    </span>
+                                </div>
+                                <input type="text" onChange={controlarCambio} name="apellido" id="apellido" className="form-control" placeholder="apellido" />
+                            </div>
                         </div>
 
                         <div className="input-group mb-3 d-flex justify-content-center">
-                            <input type="file" onChange={controlarCambio} name="imagen" id="imagen" className="form-control"/>
+                            <div className="input-container-alone d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faHomeUser} />
+                                    </span>
+                                </div>
+                                <input type="text" onChange={controlarCambio} name="direccion" id="direccion" className="form-control" placeholder="direccion" />
+                            </div>
+                        </div>
+
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <div className="input-container-alone d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faPhoneFlip} />
+                                    </span>
+                                </div>
+                                <input type="text" onChange={controlarCambio} name="telefono" id="telefono" className="form-control" placeholder="telefono" />
+                            </div>
+                        </div>
+
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <div className="input-container-alone d-flex justify-content-center">
+                                <div className="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <FontAwesomeIcon icon={faImage} />
+                                    </span>
+                                </div>
+                                <input type="file" onChange={controlarCambio} name="imagen" id="imagen" className="form-control" />
+                            </div>
                         </div>
                       
-
-
-                        <input onClick={() => registroUsuario()} className="btn btn-danger border border-warning bg-transparent text-light register" value="REGISTRAME!" />
+                        <div className="input-group mb-3 d-flex justify-content-center">
+                            <input onClick={() => registroUsuario()} className="btn btn-danger border border-warning bg-transparent text-light register" value="REGISTRARSE" />
+                        </div>
 
                     </form>
 

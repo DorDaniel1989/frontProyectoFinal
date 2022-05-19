@@ -19,20 +19,23 @@
 			h3
 				position: absolute
 
-				left: 150px
+				left: 130px
 
 				margin-bottom: 5rem
 
 				color: aliceblue !important
 
-				@media screen and (max-width: 1670px)
-					left: 100px
+				@media screen and (max-width: 1860px)
+					left: 90px
+
+				@media screen and (max-width: 1700px)
+					left: 55px
 
 				@media screen and (max-width: 1550px)
-					left: 50px
+					left: 35px
 
 				@media screen and (max-width: 1500px)
-					left: 30px
+					left: 10px
 
 				@media screen and (max-width: 1450px)
 					position: static
@@ -42,11 +45,12 @@
 					margin-bottom: 2rem
 
 			.form-box
-				min-width: 417px
+				min-width: 460px
 				width: fit-content
 				height: fit-content
 
 				padding: 0.5rem
+				margin-bottom: 15px
 
 				background-color:rgba(15, 15, 19, 0.838)
 				opacity: 1
@@ -65,7 +69,23 @@
 
 						.input-group
 
+							&:not(:first-child)
+								margin-top: 20px	
+
+							.input-group-prepend
+
+							.input-group-text
+								height: 100%
+
+								background: linear-gradient(45deg, #ba4c02 , #fccb39)
+
+								svg
+									min-width: 20px
+									color: white							
+
 							.input-container-alone
+
+								width: 95%
 
 								.form-control
 
@@ -75,7 +95,12 @@
 								
 								.form-control
 
-									width: 75%
+									width: 71.5%
+
+								&:first-child
+									margin-right: auto
+								&:last-child
+									margin-left: auto
 
 						.register
 						
