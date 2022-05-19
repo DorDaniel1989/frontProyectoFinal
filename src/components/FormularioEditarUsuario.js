@@ -6,6 +6,8 @@ import axios from 'axios';
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import Swal from 'sweetalert2'
+
 import '../styles/login.sass';
 import '../styles/editarUsuario.sass';
 
@@ -77,8 +79,6 @@ function FormularioEditarUsuario(props) {
     const actualizarUsuario = async (data) => {
 
         console.log('actualizando usuario...');
-
-
         console.log("data FINAL del formulario =>", formData);
 
 
@@ -87,7 +87,16 @@ function FormularioEditarUsuario(props) {
                 return response.data;
             }).then(response => {
                 props.setTablaData(formData);
-                //alert('El usuario ha sido modificado')
+
+                Swal.fire({
+
+                    text: "Tu perfil fue actualizado con exito",
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    icon: "success"
+                })
+
             }
             ).catch(error => {
                 console.log("ERROR FATAL")
@@ -96,17 +105,54 @@ function FormularioEditarUsuario(props) {
     }
 
 
-
-    async function EliminarCuenta(usuarioId) {
-
+    function EliminarCuenta(usuarioId) {
+        var usuarioId= JSON.parse(localStorage.getItem('user')).usuarioId
         console.log("eliminando cuenta", usuarioId)
-        const response = await axios.delete(` http://localhost:5000/api/Usuario/${usuarioId}`);
-        console.log(response)
-        localStorage.clear();
-
-        navigate("/");
+    
+        Swal.fire({
+            title: '¿Estás serguro?',
+            text: "Desapareceras de nuestra base de datos",
+            icon: 'warning',
+            showCancelButton: true,
+            color: "#cb990f",
+            background: "linear-gradient(to right, #434343, #979292)",
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, estoy seguro',
+            cancelButtonText:'Mejor no'
+    
+        }).then((result) => {
+    
+            if (result.isConfirmed) {
+                console.log("hoplitas")
+                EliminarCuentaConfirmado(usuarioId)
+            }
+            console.log(" resultado de modal", result.isConfirmed)
+        })
+    
+    
+        async function EliminarCuentaConfirmado(_usuarioId) {
+    
+            console.log("eliminando cuenta", _usuarioId)
+            const response = await axios.delete(` http://localhost:5000/api/Usuario/${_usuarioId}`);
+            console.log(response)
+    
+            Swal.fire({
+                title: 'Cuenta Eliminada!',
+                text: 'Esperemos que vuelvas pronto a nuestras comunidad',
+                icon: 'success',
+                color: "#cb990f",
+                background: "linear-gradient(to right, #434343, #979292)",
+            }).then(
+    
+                localStorage.clear(),
+                window.location.href=('/')
+    
+            )
+    
+        }
     }
-
+    
 
     function cerrarVentana() {
 
@@ -115,6 +161,11 @@ function FormularioEditarUsuario(props) {
     }
 
 
+
+
+
+
+    
     return (
 
 
@@ -132,12 +183,12 @@ function FormularioEditarUsuario(props) {
                         <div className="row">
                             <div className="form-group col col-10">
                             </div>
-                                <div className="col col-10  col-lg-5 d-flex flex-column justify-content-center">
+                            <div className="col col-10  col-lg-5 d-flex flex-column justify-content-center">
                                 <label for="username">USERNAME</label>
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                            <i className="bi bi-person-circle"></i>
-                                        
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <i className="bi bi-person-circle"></i>
+
                                         <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control col-5" value={formData.username} placeholder="Username" />
                                     </div>
                                 </div>
@@ -236,8 +287,7 @@ function FormularioEditarUsuario(props) {
                                 <input onClick={() => actualizarUsuario()} className="btn btn-primary border border-warning bg-transparent text-light login" value="GUARDAR CAMBIOS" />
                             </div>
                             <div className="col-10 col-lg-5">
-                                <button className="btn btn-primary border border-warning bg-transparent text-light btn-danger" onClick={() => EliminarCuenta(formData.usuarioId)}>Eliminar cuenta</button>
-
+                            <input className="btn-eliminar-cuenta btn btn-danger border border-warning  text-light btn-danger" onClick={()=>{EliminarCuenta()}} value="Eliminar cuenta"/>
                             </div>
                         </div>
                     </form>
@@ -245,8 +295,6 @@ function FormularioEditarUsuario(props) {
                 </div >
             </div >
         </div >
-
-
 
     );
 }

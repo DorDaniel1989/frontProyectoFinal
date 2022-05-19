@@ -7,6 +7,7 @@ import "jquery-ui-dist/jquery-ui";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/HomeTwoTone';
+import Swal from 'sweetalert2'
 import '../styles/navbar.sass';
 
 function Menu() {
@@ -22,9 +23,20 @@ function displayLoginForm(){
 
   function logout(){
 
-    localStorage.clear();
-    window.location="/";
-    
+    Swal.fire({
+      title: 'Hasta las vista!',
+      text: "Vuelve pronto",
+      position: 'top-end',
+      showConfirmButton: false,
+      color: "#cb990f",
+      background: "linear-gradient(to right, #434343, #979292)",
+      timer: 1500
+
+    }).then(
+      setTimeout(()=>{window.location="/"},1500),
+      localStorage.clear()
+    )
+
   }
 
 //<div className='navbar__title navbar__item'><Link to='/'><HomeIcon sx={{ fontSize: 70 }} /></Link></div>

@@ -55,6 +55,7 @@ function CuerpoPerfil() {
   }
 
 
+
   if (localStorage.getItem('user') !== null) {
     if (JSON.parse(localStorage.getItem('user')).usuarioId != Id) {
       return (<Navigate to='/' />);
@@ -82,7 +83,7 @@ function CuerpoPerfil() {
             <DatosUsuario tablaData={user} setTablaData={setUser} />
           </div>
 
-         
+          
         </div>
       );
     }

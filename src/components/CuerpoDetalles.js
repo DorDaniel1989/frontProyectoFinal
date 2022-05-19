@@ -8,6 +8,8 @@ import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 import '../styles/evento.sass';
 import NavTabsEvento from "./NavTabsEvento"; 
+import Swal from 'sweetalert2'
+
 
 
 
@@ -66,8 +68,18 @@ function CuerpoDetalles(props) {
     
     axios.post('http://localhost:5000/api/Inscripcion', data).then(response => {
       return response.data
-    }).then(response => { console.log(response); window.location.reload(); })
+    }).then(response => { 
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        text: 'Tu inscripcion fue realizada !',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    
+      obtenerDatos()
 
+    })
 
   }
 
@@ -91,10 +103,6 @@ function CuerpoDetalles(props) {
 
     inscripciones.forEach(element => {
       if (element.username == (JSON.parse(localStorage.getItem('user')).username)) {
-        //console.log("encontrado!")
-        // setInscripcionId(inscripciones.inscripcionId)
-
-        console.log("inscripcionID => ", inscripcionId)
         inscrito = true;
         getInscripcion();
         checkHype(inscripcionId);
@@ -127,23 +135,61 @@ function CuerpoDetalles(props) {
 
   }
 
-  async function EliminarInscripcion(Id) {
 
-    if (hypeado) {
-      await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
-        .catch(function (error) {
+
+
+
+  const EliminarInscripcion = async (Id) => {
+
+    Swal.fire({
+        title: '¿Estás serguro?',
+        text: "Puede que más adelante no queden plazas",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, estoy seguro',
+        cancelButtonText:'Mejor no'
+      }).then((result) => {
+
+        if (result.isConfirmed) {
+            
          
-        });
-      console.log('estabas hypeado prro');
-    }
+            EliminarInscripcionConfirmado(Id)
+           
+          Swal.fire({
+            text:'Subscripcion Eliminada!',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1000
+          })
+        }
+      })
+  
+     async function EliminarInscripcionConfirmado(inscripcionId){
 
-    console.log('aca wacho ' + Id);
+      if (hypeado) {
+        await axios.get(`http://localhost:5000/api/Inscripcion/HypeDown/${inscripcionId}`)
+          .catch(function (error) {
+           
+          });
+      
+      }
 
-    const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
-    console.log(response)
-    obtenerDatos()
-    window.location.reload();
-  }
+        const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${inscripcionId}`);
+        console.log(response)
+        obtenerDatos()
+     }
+  
+
+}
+
+
+
+
+
+
+
 
   async function checkHype(Id) {
 

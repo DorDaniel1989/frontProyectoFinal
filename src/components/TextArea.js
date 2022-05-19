@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
 
 
 function TextArea(props) {
 
-   // const cookies = new Cookies();
+  const navigate = useNavigate();
+
+  const ruta = "/details/"+ props.eventoId;
+
+
+  console.log(ruta)
 
     function capturarComentario(){
       return  document.getElementById('textarea').value ;
@@ -61,8 +68,23 @@ function TextArea(props) {
     const PostComentario = async() =>{
         var data = crearPostBody()
         await axios.post('http://localhost:5000/api/Comentario',  data)
-        window.location.reload();
-     
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          text: 'Tu comentario fue añadido!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(
+          
+        
+
+          setTimeout(()=>{window.location.href=ruta} , 1500)
+          
+        )
+       
+      
+        
     }
 
   return (

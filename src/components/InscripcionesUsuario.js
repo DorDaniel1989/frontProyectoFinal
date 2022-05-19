@@ -29,6 +29,7 @@ function InscripcionesUsuario() {
         const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
         console.log(response)
         obtenerDatos()
+        
     
     }
 

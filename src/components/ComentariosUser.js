@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import '../styles/comentarios.sass';
+import Swal from 'sweetalert2'
 
 
 function ComentariosUser() {
@@ -23,7 +24,6 @@ function ComentariosUser() {
 
     const obtenerDatos = async () => {
 
-
         const comData = await fetch(`http://localhost:5000/api/Comentario/Usuario/${Id}`);
         const comentarios = await comData.json()
         setComentarios(comentarios)
@@ -36,6 +36,14 @@ function ComentariosUser() {
         const response = await axios.delete(` https://localhost:5001/api/Comentario/${Id}`);
         console.log(response)
         obtenerDatos()
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            text: 'Tu comentario fue eliminado!',
+            showConfirmButton: false,
+            timer: 1000
+          })
 
     }
 

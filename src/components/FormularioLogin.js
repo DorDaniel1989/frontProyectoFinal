@@ -2,18 +2,22 @@
 import React, { Component, useEffect, useState } from "react";
 import '../styles/login.sass';
 import axios from 'axios';
+import Swal from 'sweetalert2'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import LoginIcon from '@mui/icons-material/Login';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useNavigate } from "react-router-dom";
 
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
+import { PropaneSharp } from "@mui/icons-material";
 
 function FormularioLogin() {
 
     const baseUrl = 'http://localhost:5000/api/Usuario/authenticate/';
+    const navigate = useNavigate();
 
     const [formData, setForm] = useState({
         username: '',
@@ -42,20 +46,48 @@ function FormularioLogin() {
         }
 
         console.log('Iniciando sesion...')
-
+       
         await axios.post(baseUrl, data)
             .then(response => {
+                console.log(response)
+                
                 return response.data;
             }).then(response => {
 
                 var respuesta = response;
-                //console.log(respuesta)
+                console.log("respuesta", respuesta)
                 localStorage.setItem('user', JSON.stringify(respuesta));
                 console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
-                window.location.reload();
+
+                var saludo= "Hola de nuevo "+ JSON.parse(localStorage.getItem('user')).nombre
+                console.log(saludo)
+                Swal.fire({
+                    text: saludo,
+                    icon: 'success',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    color: "#cb990f",
+                    background: "linear-gradient(to right, #434343, #979292)",
+                    timer: 2000
+                  }).then(
+
+                    navigate("/"),
+                    setTimeout(()=>{window.location.reload()},2000)
+                  )
 
             }).catch(error => {
                 console.log(error)
+                Swal.fire({
+                    title: 'Error!',
+                    text: "La contraseña que has introducido no coincide",
+                    icon: 'error',
+                    color: "#cb990f",
+                    background: "linear-gradient(to right, #434343, #979292)",
+                    showConfirmButton: false,
+                    timer: 1500
+         
+                  })
+                  
             })
     }
 
