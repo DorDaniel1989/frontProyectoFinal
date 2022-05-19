@@ -7,7 +7,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faAt } from "@fortawesome/free-solid-svg-icons";
 import { faUnlock } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import { faSignature } from "@fortawesome/free-solid-svg-icons"; 
+import { faSignature } from "@fortawesome/free-solid-svg-icons";
 import { faPeopleRoof } from "@fortawesome/free-solid-svg-icons";
 import { faHomeUser } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneFlip } from "@fortawesome/free-solid-svg-icons";
@@ -19,6 +19,8 @@ import Swal from 'sweetalert2'
 function FormularioRegistro(props) {
 
     const baseUrl = 'http://localhost:5000/api/Usuario/';
+    const UrlComprobarUsuario = "http://localhost:5000/api/Usuario/ComprobarUsuario/";
+    const UrlComprobarEmail = "http://localhost:5000/api/Usuario/comprobarEmail/";
 
     const navigate = useNavigate();
 
@@ -26,7 +28,7 @@ function FormularioRegistro(props) {
 
         // declaramos variable del tipo clave valor
 
-        var {name,value} = objeto;
+        var { name, value } = objeto;
 
         //seleccionamos el objeto imagen de dentro del DOM de la etiqueta HTML
 
@@ -41,17 +43,17 @@ function FormularioRegistro(props) {
 
         reader.onload = function () {
             console.log(reader.result);
-          setForm({
-            ...formData,
-            [name]: reader.result
-        })
+            setForm({
+                ...formData,
+                [name]: reader.result
+            })
         };
         reader.onerror = function (error) {
-          console.log('Error: ', error);
-          setForm({
-            ...formData,
-            [name]: null
-        })
+            console.log('Error: ', error);
+            setForm({
+                ...formData,
+                [name]: null
+            })
         };
     }
 
@@ -61,99 +63,162 @@ function FormularioRegistro(props) {
 
     const controlarCambio = e => {
         const { name, value } = e.target;
-        if([name] != 'imagen'){
-		    setForm({
+        if ([name] != 'imagen') {
+            setForm({
                 ...formData,
                 [name]: value
             })
-	    }else{
-            getBase64(e.target); 
+        } else {
+            getBase64(e.target);
         }
-       // console.log("data de controlar cambio =>", formData)
+        // console.log("data de controlar cambio =>", formData)
 
+    }
+
+    async function comprobarSiUsuarioExiste() {
+
+        console.log(UrlComprobarUsuario + formData.username)
+
+        await axios.get(UrlComprobarUsuario + formData.username)
+            .then(response => {
+                console.log("data" ,response.data)
+                return response.data;
+            }).then(response => {
+                console.log("respuesta de username",response)
+                if (response === true) {
+                    Swal.fire({
+                        title: 'Ups!',
+                        text: "Ese usuario ya existe",
+                        icon: 'error',
+                        showConfirmButton: false,
+                        background: "linear-gradient(to right, #434343, #979292)",
+                        color: "#cb990f",
+                        iconColor: "#cb990f",
+                        timer: 1500
+                    })
+                }
+
+            })
+    }
+
+
+    const comprobarSiEmailExiste = async () => {
+
+
+        console.log(UrlComprobarEmail + formData.email)
+        await axios.get(UrlComprobarEmail + formData.email)
+            .then(response => {
+                return response.data;
+            }).then(response => {
+                console.log("respuesta de email", response)
+                if (response === true) {
+                    Swal.fire({
+                        title: 'Ups!',
+                        text: "Ya hay una cuenta registrada con ese email",
+                        icon: 'error',
+                        showConfirmButton: false,
+                        background: "linear-gradient(to right, #434343, #979292)",
+                        color: "#cb990f",
+                        iconColor: "#cb990f",
+                        timer: 1500
+                    })
+                }
+
+            }).then(
+               setTimeout(()=>{ window.location.reload()},1500)
+            )
     }
 
 
     const registroUsuario = async () => {
 
-        //console.log(formData);
         console.log('Registrando usuario...');
+        console.log("comprobacion Username " , !comprobarSiUsuarioExiste())
+
+       if(comprobarSiUsuarioExiste()) {
+           if(comprobarSiEmailExiste()){
             console.log(formData.password)
             console.log(formData.confirmPwd)
-        if(formData.password !== formData.confirmPwd){
-            Swal.fire({
-                title: 'Error!',
-                text: "La contraseña que has introducido no coincide",
-                icon: 'error',
-                showConfirmButton: false,
-                background: "linear-gradient(to right, #434343, #979292)",
-                color: "#cb990f",
-                timer: 1500
-              })
-
-        }else{
-
-            delete formData.confirmPwd;
-
-            console.log(formData);
-
-            await axios.post(baseUrl, formData)
-                .then(response => {
-                    return response.data;
-                }).then(response => {
-
-                    if (response != null) {
-                        var respuesta = response;
-                        console.log(respuesta)
-                        Swal.fire({
-                            title: 'Bienvenido!',
-                            text: "Tu registro ha sido completado con exito!",
-                            icon: 'success',
-                            showConfirmButton: false,
-                            color: "#cb990f",
-                            background: "linear-gradient(to right, #434343, #979292)",
-                            timer: 2000
-
-                          }).then(
-                             navigate("/")
-                          )
-
-                       
-                    } else {
-                        console.log(response)
-
-                        Swal.fire({
-                            title: 'Error!',
-                            text: "Algo ha fallado en el proceso de registro",
-                            icon: 'error',
-                            showConfirmButton: false,
-                            background: "linear-gradient(to right, #434343, #979292)",
-                            color: "#cb990f",
-                            timer: 1500
-                          })
-                    }
-                }).catch(error => {
-                    console.log(error)
-                })
+     
+             if (formData.password !== formData.confirmPwd) {
+                 Swal.fire({
+                     title: 'Error!',
+                     iconColor: "#cb990f",
+                     text: "La contraseña que has introducido no coincide",
+                     icon: 'error',
+                     showConfirmButton: false,
+                     background: "linear-gradient(to right, #434343, #979292)",
+                     color: "#cb990f",
+                     timer: 1500
+                 })
+     
+             } else {
+     
+                 delete formData.confirmPwd;
+     
+                 await axios.post(baseUrl, formData)
+                     .then(response => {
+                         return response.data;
+                     }).then(response => {
+     
+                         if (response != null) {
+                             var respuesta = response;
+                             console.log(respuesta)
+                             Swal.fire({
+                                 title: 'Bienvenido!',
+                                 text: "Tu registro ha sido completado con exito!",
+                                 icon: 'success',
+                                 iconColor: "#cb990f",
+                                 showConfirmButton: false,
+                                 color: "#cb990f",
+                                 background: "linear-gradient(to right, #434343, #979292)",
+                                 timer: 2000
+     
+                             }).then(
+                                 navigate("/")
+                             )
+     
+     
+                         } else {
+                             console.log(response)
+     
+                             Swal.fire({
+                                 title: 'Error!',
+                                 text: "Algo ha fallado en el proceso de registro",
+                                 icon: 'error',
+                                 showConfirmButton: false,
+                                 background: "linear-gradient(to right, #434343, #979292)",
+                                 color: "#cb990f",
+                                 iconColor: "#cb990f",
+                                 timer: 1500
+                             })
+                         }
+                     }).catch(error => {
+                         console.log(error)
+                     })
+             }
+     
+           }else
+            return
+    
         }
-
-        
-    }
-
+    
+           }
+    
     return (
 
 
         <div className="register-container-view d-flex flex-column justify-content-center align-items-center">
-            <h3>Dale paso a la diversión  .  .  .  <br/>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; con EVENTUM</h3>
+            <h3>Dale paso a la diversión  .  .  .  <br />&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; con EVENTUM</h3>
             <div className="form-box d-flex flex-column justify-content-start">
                 <div className="header-form">
-                  
+
                     <div className="image">
                     </div>
                 </div>
                 <div className="body-form">
                     <form>
-                    
+
                         <div className="input-group mb-3 d-flex justify-content-center">
                             <div className="input-container-alone d-flex justify-content-center">
                                 <div className="input-group-prepend">
@@ -161,7 +226,7 @@ function FormularioRegistro(props) {
                                         <FontAwesomeIcon icon={faUser} />
                                     </span>
                                 </div>
-                                <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control"  placeholder="Username" />
+                                <input type="text" onChange={controlarCambio} name="username" id="username" className="form-control" placeholder="Username" />
                             </div>
                         </div>
 
@@ -183,7 +248,7 @@ function FormularioRegistro(props) {
                                         <FontAwesomeIcon icon={faUnlock} />
                                     </span>
                                 </div>
-                                <input type="password" onChange={controlarCambio} name="password" id="password"  className="form-control" placeholder="Password" />
+                                <input type="password" onChange={controlarCambio} name="password" id="password" className="form-control" placeholder="Password" />
                             </div>
                             <div className="input-container-multiple d-flex justify-content-center">
                                 <div className="input-group-prepend">
@@ -194,7 +259,7 @@ function FormularioRegistro(props) {
                                 <input type="password" onChange={controlarCambio} name="confirmPwd" id="confirmPwd" className="form-control" placeholder="Confirm password" />
                             </div>
                         </div>
-                        
+
                         <div className="input-group mb-3 d-flex justify-content-center">
                             <div className="input-container-multiple d-flex justify-content-center">
                                 <div className="input-group-prepend">
@@ -246,7 +311,7 @@ function FormularioRegistro(props) {
                                 <input type="file" onChange={controlarCambio} name="imagen" id="imagen" className="form-control" />
                             </div>
                         </div>
-                      
+
                         <div className="input-group mb-3 d-flex justify-content-center">
                             <input onClick={() => registroUsuario()} className="btn btn-danger border border-warning bg-transparent text-light register" value="REGISTRARSE" />
                         </div>

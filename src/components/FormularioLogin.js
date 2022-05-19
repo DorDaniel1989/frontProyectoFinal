@@ -1,6 +1,7 @@
 
 import React, { Component, useEffect, useState } from "react";
 import '../styles/login.sass';
+import '../styles/modales.sass';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -23,6 +24,9 @@ function FormularioLogin() {
         username: '',
         password: ''
     });
+
+   
+       
 
     const controlarCambio = e => {
         const { name, value } = e.target;
@@ -61,22 +65,11 @@ function FormularioLogin() {
 
                 var saludo= "Hola de nuevo "+ JSON.parse(localStorage.getItem('user')).nombre
                 console.log(saludo)
-                Swal.fire({
-                    text: saludo,
-                    icon: 'success',
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    color: "#cb990f",
-                    background: "linear-gradient(to right, #434343, #979292)",
-                    timer: 2000
-                  }).then(
-
-                    navigate("/"),
-                    setTimeout(()=>{window.location.reload()},2000)
-                  )
+                exitoLoguearModal()
 
             }).catch(error => {
                 console.log(error)
+
                 Swal.fire({
                     title: 'Error!',
                     text: "La contraseña que has introducido no coincide",
@@ -89,6 +82,29 @@ function FormularioLogin() {
                   })
                   
             })
+    }
+
+
+    function exitoLoguearModal(){
+//falla cualquiera que no sea top-end,() sera que no sera visible por algun z-index? 
+        Swal.fire({
+            icon: 'success',
+            position: 'top-end',
+            text: 'Bienvenido',
+            color: "#cb990f",
+            iconColor:"#cb990f" ,
+            customClass: {
+                confirmButton: 'modal-exito' 
+              },
+            color: "#cb990f",
+            background: "linear-gradient(to right, #434343, #979292)",
+            showConfirmButton: false,
+            timer: 1500
+          }).then(
+
+            setTimeout(()=>{window.location.href=("/")},1500)
+           
+          )
     }
 
     return (
