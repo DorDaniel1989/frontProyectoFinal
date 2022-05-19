@@ -195,10 +195,6 @@ function CuerpoDetalles(props) {
     return (
 
       <>
-        {
-          comprobarInscripcion() ? (<div><img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
-            <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) : (<></>)
-        }
   
         <div className='container container-evento'>
       
@@ -264,8 +260,7 @@ function CuerpoDetalles(props) {
                     comprobarInscripcion() ? (
                       <div className="inscribirse-hype-container ">
                         <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="text-light border border-warning bg-dark btn btn-danger">Cancelar inscripción</button></a>
-                        <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
-                        <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) :
+                      </div>) :
                       (
                         comprobarAforo() ? (<a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger ">Inscribirse</button></a>) : (<a><button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button></a>)
                       )
