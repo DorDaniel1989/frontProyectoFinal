@@ -1,99 +1,111 @@
 .container-evento
     border: 2px solid white
-    padding-top: 0.6%
     padding-left: 0.6%
+    margin-top: 60px
+    margin-bottom: 60px
     color: white
     display: flex
     flex-wrap: wrap
     justify-content: center
     align-items: center
 
-.cabecera-evento
-    width: 100%
-    height: 20%
-    background: linear-gradient(to right, #434343, #979292)
-    padding: 2%
-    display: flex
-    flex-wrap: wrap
-    justify-content: center
-
-
-.body-details
-    background:  linear-gradient(to right, #434343, #979292)
-    width: 100%
-    padding: 3%!important
-
-#fondo-evento
-    width: 100%!important
-    height: 400px
-    background-size: cover
-    display: flex
-    justify-content: flex-end
-    align-items: end
-    background-color: white
-    
-   
-.absolute-info
-   
-    background: linear-gradient(to right, #3a3939b0, #000000)
-    width: 50%
-    display: flex
-    flex-wrap: wrap
-
-    a
-        margin-right: 5px
-
-.cuadrado-info
-    width: 15%
-    height: 6rem
-    border-left: 3px solid white 
-    padding: 2%
-
-.inscribirse-hype-container
-    display: flex
-    justify-content: space-between
-    align-items: center
-
-#btn-inscribir
-    margin-top: 25%
-
-.leaflet-container
-    height: 200px
-    width: 80%
-    margin-left: 10%
-    margin-bottom: 5%
-
-#map 
-    height: 200px
-    
-
-.texto-pestaña-detalles
-    margin-left: 3rem
-
-
-
-@media (max-width: 998px) 
-  
-    .absolute-info
-        background: linear-gradient(to right, #3a3939b0, #000000)
+    .cabecera-evento
         width: 100%
+        height: 20%
+        background: linear-gradient(to right, #434343, #979292)
         display: flex
         flex-wrap: wrap
         justify-content: center
-        
 
-    a
-        margin-right: 5px
-        width: 3rem
-  
-    .inscribirse-hype-container
-        width: 55%
-        display: flex
-        justify-content: space-between
-        align-items: center
+        #fondo-evento
+            width: 100%!important
+            max-height: 600px
+            height: 600px
+            background-size: cover
+            display: flex
+            justify-content: flex-end
+            align-items: end
+            background-color: white
 
-    form
-        display: flex
-        flex-direction: column
-        align-content: center
-        justify-content: center
+            .dFilter
+                position: relative
+
+                height: 100%
+                width: 100%
+
+                -webkit-backdrop-filter: blur(5px)
+                backdrop-filter: blur(5px)
+
+                .absolute-info
+                    position: absolute
+
+                    display: flex
+                    flex-wrap: wrap
+
+                    bottom: 0
+
+                    width: 100%
+
+                    background: linear-gradient(to right, #3a393977, #000000c5)
+
+                    h1
+                        text-decoration: none
+
+                    a
+                        margin-right: 5px
+
+                        @media screen and (max-width: 1000px)
+                            width: 3rem
+
+                        #btn-inscribir
+                            margin-top: 25%
+
+
+                    .inscribirse-hype-container
+                        display: flex
+                        justify-content: space-between
+                        align-items: center
+
+                        @media screen and (max-width: 1000px)
+                            width: 55%
+
+                    .cuadrado-info
+                        width: 20%
+                        height: 6rem
+                        border-left: 3px solid white 
+                        padding: 2%
+
+    .body-details
+        background:  linear-gradient(to right, #434343, #979292)
+        width: 100%
+        padding: 3%!important
+
+        .container
+    
+            .bloc-tabs
+
+            .content-tabs
+
+                .content
+
+                    .comments-container
+
+                        form
+
+                            @media screen and (max-width: 1000px)
+                                display: flex
+                                flex-direction: column
+                                align-content: center
+                                justify-content: center
+
+                    .leaflet-container
+                        height: 200px
+                        width: 80%
+                        margin-left: 10%
+                        margin-bottom: 5%
+
+
+                    .texto-pestaña-detalles
+                        margin-left: 3rem
+
+
