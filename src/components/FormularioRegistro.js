@@ -13,6 +13,7 @@ import { faHomeUser } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneFlip } from "@fortawesome/free-solid-svg-icons";
 import { faImage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Swal from 'sweetalert2'
 
 
 function FormularioRegistro(props) {
@@ -77,9 +78,18 @@ function FormularioRegistro(props) {
 
         //console.log(formData);
         console.log('Registrando usuario...');
-
-        if(formData.password != formData.confirmPwd){
-            alert('vuleva a introducir la contraseña');
+            console.log(formData.password)
+            console.log(formData.confirmPwd)
+        if(formData.password !== formData.confirmPwd){
+            Swal.fire({
+                title: 'Error!',
+                text: "La contraseña que has introducido no coincide",
+                icon: 'error',
+                showConfirmButton: false,
+                background: "linear-gradient(to right, #434343, #979292)",
+                color: "#cb990f",
+                timer: 1500
+              })
 
         }else{
 
@@ -95,11 +105,32 @@ function FormularioRegistro(props) {
                     if (response != null) {
                         var respuesta = response;
                         console.log(respuesta)
+                        Swal.fire({
+                            title: 'Bienvenido!',
+                            text: "Tu registro ha sido completado con exito!",
+                            icon: 'success',
+                            showConfirmButton: false,
+                            color: "#cb990f",
+                            background: "linear-gradient(to right, #434343, #979292)",
+                            timer: 2000
 
-                        navigate("/");
+                          }).then(
+                             navigate("/")
+                          )
+
+                       
                     } else {
                         console.log(response)
-                        alert('El usuario o la contraseña no son correctos')
+
+                        Swal.fire({
+                            title: 'Error!',
+                            text: "Algo ha fallado en el proceso de registro",
+                            icon: 'error',
+                            showConfirmButton: false,
+                            background: "linear-gradient(to right, #434343, #979292)",
+                            color: "#cb990f",
+                            timer: 1500
+                          })
                     }
                 }).catch(error => {
                     console.log(error)

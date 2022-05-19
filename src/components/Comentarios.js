@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-
+import Swal from 'sweetalert2'
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -37,6 +37,17 @@ function Comentarios() {
         const response = await axios.delete(` https://localhost:5001/api/Comentario/${Id}`);
         console.log(response)
         obtenerDatos()
+
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            text: 'Tu comentario fue eliminado!',
+            showConfirmButton: false,
+            timer: 1000
+          })
+            
+           
+            
 
     }
 

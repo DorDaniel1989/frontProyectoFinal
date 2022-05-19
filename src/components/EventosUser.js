@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import axios from 'axios';
+import "jquery-ui-dist/jquery-ui";
+import $ from 'jquery';
+import Swal from 'sweetalert2'
+
 import '../styles/cards.sass';
 
 
@@ -20,13 +24,44 @@ function EventosUser(props) {
 
     }
 
-    async function EliminarInscripcion(Id) {
-        console.log(Id)
-        const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${Id}`);
-        console.log(response)
-        obtenerDatos()
 
+    const EliminarInscripcion = async (Id) => {
+
+        Swal.fire({
+            title: '¿Estás serguro?',
+            text: "Puede que más adelante no queden plazas",
+            icon: 'warning',
+            showCancelButton: true,
+            color: "#cb990f",
+            background: "linear-gradient(to right, #434343, #979292)",
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, estoy seguro',
+            cancelButtonText:'Mejor no'
+            
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+                EliminarInscripcionConfirmado(Id)
+            }
+          })
+      
+         async function EliminarInscripcionConfirmado(inscripcionId){
+
+            const response = await axios.delete(` https://localhost:5001/api/Inscripcion/${inscripcionId}`);
+            console.log(response)
+            obtenerDatos()
+            Swal.fire({
+                title: 'Subscripcion Eliminada!',
+                icon: 'success',
+                showConfirmButton: false,
+                color: "#cb990f",
+                background: "linear-gradient(to right, #434343, #979292)",
+                timer: 1000
+            })
+         }
     }
+
 
     return (
         <div className="container-cartas">
@@ -36,12 +71,13 @@ function EventosUser(props) {
 
                     <div className="evento-usuario">
                         <Card titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic} />
-                        <button onClick={() => EliminarInscripcion(item.inscripcionId)} className="btn btn-danger"> Eliminar</button>
-                    </div>
 
+                        <button onClick={() => { EliminarInscripcion(item.inscripcionId)}} className="btn btn-danger"> Eliminar</button>
+
+                    </div>
                 ))
             }
-
+            
         </div>
     )
 }

@@ -18,9 +18,8 @@ export default function Carta(props) {
       <Button className='boton-entrar border border-warning bg-transparent' href={ruta}><VisibilityIcon />ENTRAR</Button>
      
       <img height={180} src={imagen} />
-        <p>{props.fecha}</p>
+      <p>{props.fecha}</p>
        
-  
      
 
     </div>
