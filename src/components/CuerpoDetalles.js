@@ -1,10 +1,6 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import imagen from "../imagenes/concierto.png";
-import TextArea from "./TextArea";
-import Comentarios from "./Comentarios";
-import Map from "./Map";
 import axios from 'axios';
 import fuego_activo from "../imagenes/fuego_activo.gif";
 import fuego_tenue from "../imagenes/fuego_tenue.png";
@@ -51,9 +47,6 @@ function CuerpoDetalles(props) {
     console.log("imagen F ", imagenf)
     try{
       imagenf.style.backgroundImage = `url(${evento.imagen})`;
-     
-      imagenf.style.maxHeight = "400px"
-      imagenf.style.backgroundSize = "cover"
       
     }catch(e){
       
@@ -83,9 +76,11 @@ function CuerpoDetalles(props) {
 
     if (inscripciones.length >= evento.aforo_max) {
     
-      document.getElementById("btn-inscribir").setAttribute("class", "btn btn-disabled btn-danger")
-      document.getElementById("btn-inscribir").innerText = "COMPLETO"
+      return false;
+
     }
+
+    return true;
 
   }
 
@@ -202,28 +197,31 @@ function CuerpoDetalles(props) {
       <div className='container container-evento'>
 
         <div className="cabecera-evento" id="aside-details">
-          <h1>{evento.evento}</h1>
 
           <div id="fondo-evento">
 
-          <div className="absolute-info">
-                
-            <button id="btn btn-inscribir " type="button" className="btn btn-primary disabled">Inscribirme</button>
+            <div className="dFilter">
+              <div className="absolute-info p-2">
 
-              <div className="cuadrado-info">
-                <p>Max</p>
-                <p>{evento.aforo_max}</p>
-              </div>
-              <div className="cuadrado-info">
-                <p>Van</p>
-                <p>{inscripciones.length}</p>
-              </div>
+                <h1>{evento.evento}</h1>
 
-              <div className="cuadrado-info">
-                <p>Faltan</p>
-                <p>{evento.aforo_max - inscripciones.length}</p>
-              </div>
+                {
+                  comprobarAforo() ? (<a><button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Inscríbete</button></a>) : (<a><button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button></a>)
+                }
+                <div className="cuadrado-info">
+                  <p>Aforo</p>
+                  <p>{evento.aforo_max}</p>
+                </div>
+                <div className="cuadrado-info">
+                  <p>Vendidos</p>
+                  <p>{inscripciones.length}</p>
+                </div>
+                <div className="cuadrado-info">
+                  <p>Disponibles</p>
+                  <p>{evento.aforo_max - inscripciones.length}</p>
+                </div>
 
+              </div>
             </div>
            
           </div>
@@ -244,40 +242,41 @@ function CuerpoDetalles(props) {
       <div className='container container-evento'>
 
         <div className="cabecera-evento" id="aside-details">
-          <h1>{evento.evento}</h1>
-
 
           <div id="fondo-evento">
 
-            <div className="absolute-info p-2">
-              {
-                comprobarInscripcion() ? (
-                  <div className="inscribirse-hype-container ">
-                    <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="text-light border border-warning bg-dark btn btn-danger">Cancelar inscripción</button></a>
-                    <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
-                    <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) :
-                  (
-                    <a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger ">Inscribirme</button></a>)
+            <div className="dFilter">
+              <div className="absolute-info p-2">
+                <h1>{evento.evento}</h1>
+                {
+                  comprobarInscripcion() ? (
+                    <div className="inscribirse-hype-container ">
+                      <a><button id="btn-bye-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="text-light border border-warning bg-dark btn btn-danger">Cancelar inscripción</button></a>
+                      <img onClick={restarHype} className="hype hype-on d-none" height={50} src={fuego_activo} />
+                      <img onClick={sumarHype} className="hype hype-off" height={50} src={fuego_tenue} /></div>) :
+                    (
+                      comprobarAforo() ? (<a><button id="btn-inscribir" onClick={Inscribirse} type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger ">Inscribirse</button></a>) : (<a><button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button></a>)
+                    )
 
-              }
+                }
 
-              {comprobarAforo()}
+                <div className="cuadrado-info">
+                  <p>Aforo</p>
+                  <p>{evento.aforo_max}</p>
+                </div>
+                <div className="cuadrado-info">
+                  <p>Vendidos</p>
+                  <p>{inscripciones.length}</p>
+                </div>
 
-              <div className="cuadrado-info">
-                <p>Max</p>
-                <p>{evento.aforo_max}</p>
+                <div className="cuadrado-info">
+                  <p>Disponibles</p>
+                  <p>{evento.aforo_max - inscripciones.length}</p>
+                </div>
+
               </div>
-              <div className="cuadrado-info">
-                <p>Van</p>
-                <p>{inscripciones.length}</p>
-              </div>
-
-              <div className="cuadrado-info">
-                <p>Faltan</p>
-                <p>{evento.aforo_max - inscripciones.length}</p>
-              </div>
-
             </div>
+
           </div>
         </div>
         <div className="body-details">
