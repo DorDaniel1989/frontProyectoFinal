@@ -72,8 +72,11 @@ function TextArea(props) {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
+          iconColor:"#cb990f" ,
           text: 'Tu comentario fue añadido!',
           showConfirmButton: false,
+          color: "#cb990f",
+          background: "linear-gradient(to right, #434343, #979292)",
           timer: 1500
         }).then(
           

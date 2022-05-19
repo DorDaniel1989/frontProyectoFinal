@@ -10,7 +10,7 @@ import '../styles/evento.sass';
 import NavTabsEvento from "./NavTabsEvento"; 
 import Swal from 'sweetalert2'
 
-
+import '../styles/modales.sass';
 
 
 function CuerpoDetalles(props) {
@@ -74,6 +74,12 @@ function CuerpoDetalles(props) {
         icon: 'success',
         text: 'Tu inscripcion fue realizada !',
         showConfirmButton: false,
+        color: "#cb990f",
+        background: "linear-gradient(to right, #434343, #979292)",
+        iconColor:"#cb990f" ,
+        customClass: {
+          confirmButton: 'example-class' 
+        },
         timer: 1500
       })
     
@@ -140,8 +146,10 @@ function CuerpoDetalles(props) {
     Swal.fire({
         title: '¿Estás serguro?',
         text: "Puede que más adelante no queden plazas",
-        icon: 'warning',
+        icon: 'question',
         showCancelButton: true,
+        color: "#cb990f",
+        background: "linear-gradient(to right, #434343, #979292)",
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, estoy seguro',
@@ -157,6 +165,9 @@ function CuerpoDetalles(props) {
             text:'Subscripcion Eliminada!',
             icon: 'success',
             showConfirmButton: false,
+            color: "#cb990f",
+            position: 'top-end',
+            background: "linear-gradient(to right, #434343, #979292)",
             timer: 1000
           })
         }

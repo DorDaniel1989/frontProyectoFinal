@@ -94,6 +94,8 @@ function FormularioEditarUsuario(props) {
                     position: 'top-end',
                     showConfirmButton: false,
                     timer: 1500,
+                    color: "#cb990f",
+                    background: "linear-gradient(to right, #434343, #979292)",
                     icon: "success"
                 })
 
