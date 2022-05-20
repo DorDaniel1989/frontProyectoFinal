@@ -52,7 +52,7 @@ function NavTabsEvento(props) {
       </div>
 
       <div className="content-tabs">
-        <div className={toggleState === 1 ? "content  active-content" : "content"}>
+        <div className={toggleState === 1 ? "content active-content" : "content"}>
         
           <hr />
 
@@ -60,13 +60,13 @@ function NavTabsEvento(props) {
           <Comentarios/>
         </div>
 
-        <div className={toggleState === 2 ? "content  active-content" : "content"}>
+        <div className={toggleState === 2 ? "content active-content" : "content"}>
           <div id="map">
             <Map />
           </div>
         </div>
 
-        <div className={toggleState === 3 ? "content  active-content" : "content"}>
+        <div className={toggleState === 3 ? "content active-content" : "content"}>
           <p>{props.descripcion}</p>
          <div className="texto-pestaña-detalles">
           <hr  className="bg-white"/>

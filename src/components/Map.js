@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet'
 import "jquery-ui-dist/jquery-ui";
 import 'leaflet/dist/leaflet.css';
+import '../styles/mapa.sass';
 import $ from 'jquery';
 
 function Map() {

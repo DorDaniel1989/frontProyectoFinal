@@ -264,7 +264,7 @@ function CuerpoDetalles(props) {
                       </div>
                     </div>
 
-                    <div className="dDisponibilidad d-flex row justify-content-center">
+                    <div className="dDisponibilidad d-flex row justify-content-end">
                       <div className="cuadrado-info d-flex flex-column align-items-center">
                         <h4>{evento.aforo_max}</h4>
                         <p>Aforo</p>
