@@ -142,7 +142,8 @@ function Home() {
         >
           {
             masHypeados.map((tupla) => {
-              return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+             
+              return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio}/></SwiperSlide>)
             })
           }
       </Swiper>
@@ -177,7 +178,8 @@ function Home() {
       >
         {
           latestEvents.map((tupla) => {
-            return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+            
+            return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} /></SwiperSlide>)
           })
         }
       </Swiper>
@@ -215,7 +217,7 @@ function Home() {
             >
               {
                 activeConciertos.map((tupla) => {
-                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} /></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -257,7 +259,7 @@ function Home() {
             >
               {
                 activeOtakus.map((tupla) => {
-                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} /></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -299,7 +301,7 @@ function Home() {
             >
               {
                 activeGastro.map((tupla) => {
-                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio}/></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -341,7 +343,7 @@ function Home() {
             >
               {
                 activeGaming.map((tupla) => {
-                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                  return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} /></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -383,7 +385,7 @@ function Home() {
               >
                 {
                   activeIT.map((tupla) => {
-                    return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} /></SwiperSlide>)
+                    return (<SwiperSlide><Card titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio}/></SwiperSlide>)
                   })
                 }
               </Swiper>
