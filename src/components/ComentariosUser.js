@@ -52,7 +52,7 @@ function ComentariosUser() {
             <ul id="comments-list" className="comments-list">
                 <h1>Comentarios </h1>
                 <li>
-                    <div className="comment-main-level">
+                    <div className="comment-main-level d-flex flex-column align-items-center">
                         {
 
                             comentarios.map(item => (
@@ -61,7 +61,7 @@ function ComentariosUser() {
                                     <div className="comment-head">
 
                                         <span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>
-                                        <button onClick={() => EliminarComentario(item.comentarioId)} ><DeleteForeverIcon/></button>
+                                        <DeleteForeverIcon onClick={() => EliminarComentario(item.comentarioId)}/>
                                         <span>&emsp;{item.fecha_comentario}&nbsp;</span>
                                         <span>a las {item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>

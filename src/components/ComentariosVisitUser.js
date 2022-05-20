@@ -33,7 +33,7 @@ function ComentariosUser() {
             <ul id="comments-list" className="comments-list">
                 <h1>Comentarios </h1>
                 <li>
-                    <div className="comment-main-level">
+                    <div className="comment-main-level d-flex flex-column align-items-center">
                         {
 
                             comentarios.map(item => (

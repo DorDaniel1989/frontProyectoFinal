@@ -62,30 +62,33 @@ function Comentarios() {
             <ul id="comments-list" className="comments-list">
                 <h2>Comentarios </h2>
                 <li>
-                    <div className="comment-main-level">
+                    <div className="comment-main-level d-flex flex-column align-items-center">
                         {
 
                             comentarios.map(item => (
                                 
-                                <>
-                                
-                                <div className="comment-box" key={item.comentarioId}>
-                                 
-                                    <div className="comment-head">
-                                    
-                                            {estaLogueado() ? (item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <DeleteForeverIcon onClick={() => EliminarComentario(item.comentarioId)} /></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
-                                        
-                                        <span>&emsp;{item.fecha_comentario}&nbsp;</span>
-                                        <span>a las {item.hora_comentario}</span>
-                                        <i className="fa fa-reply"></i>
-                                        <i className="fa fa-heart"></i>
+                                <div className="dCommentRow w-100 d-flex row justify-content-center">
+
+                                    <div className="dUserImg">
+                                        <img height={80} src={item.imagen}/>
                                     </div>
-                                    <div className="comment-content">
-                                    <img height={80} src={item.imagen}/>
-                                        {item.comentario_text}
+                                
+                                    <div className="comment-box details" key={item.comentarioId}>
+
+                                        <div className="comment-head">
+
+                                                {estaLogueado() ? (item.usuarioId === JSON.parse(localStorage.getItem('user')).usuarioId ? (<><span>#<Link to={rutaPropia + item.usuarioId}>{item.username}</Link></span> <DeleteForeverIcon onClick={() => EliminarComentario(item.comentarioId)} /></>) : (<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>)):<span>#<Link to={ruta + item.usuarioId}>{item.username}</Link></span>} 
+
+                                            <span>&emsp;{item.fecha_comentario}&nbsp;</span>
+                                            <span>a las {item.hora_comentario}</span>
+                                            <i className="fa fa-reply"></i>
+                                            <i className="fa fa-heart"></i>
+                                        </div>
+                                        <div className="comment-content">
+                                            {item.comentario_text}
+                                        </div>
                                     </div>
                                 </div>
-                                </>
                             ))
                         }
                     </div>
