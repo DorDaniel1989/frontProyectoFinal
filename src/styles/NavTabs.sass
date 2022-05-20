@@ -22,12 +22,22 @@
           color: rgb(255, 255, 255)
           background-color: #434343
 
+          border-top: 1px solid rgba(0, 0, 0, 0.274)
+
           &:not(:last-child)
             border-right: 1px solid rgba(0, 0, 0, 0.274)
 
+          &:first-child
+
+            border-left: 1px solid rgba(0, 0, 0, 0.274)
+            
+          &:last-child
+
+            border-right: 1px solid rgba(0, 0, 0, 0.274)
+            
+
           &.active-tabs  
-            background: white
-            border-bottom: 1px solid transparent
+            border: 1px solid transparent !important
             background: linear-gradient(to right, #434343, #000000)
             text-decoration: underline 2px #cb990f
 
