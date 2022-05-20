@@ -46,7 +46,7 @@ function CuerpoDetalles(props) {
     
 
     const imagenf = document.getElementById("fondo-evento");
-    console.log("imagen F ", imagenf)
+   
     try{
       imagenf.style.backgroundImage = `url(${evento.imagen})`;
       

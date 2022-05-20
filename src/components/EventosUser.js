@@ -4,6 +4,7 @@ import axios from 'axios';
 import "jquery-ui-dist/jquery-ui";
 import $ from 'jquery';
 import Swal from 'sweetalert2'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import '../styles/cards.sass';
 
@@ -70,9 +71,9 @@ function EventosUser(props) {
                 cards.map(item => (
 
                     <div className="evento-usuario">
-                        <Card titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic} />
-
-                        <button onClick={() => { EliminarInscripcion(item.inscripcionId)}} className="btn btn-danger"> Eliminar</button>
+                        <Card titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic} precio={item.precio}/>
+                        
+                        <button onClick={() => { EliminarInscripcion(item.inscripcionId)}}><DeleteForeverIcon/></button>
 
                     </div>
                 ))
