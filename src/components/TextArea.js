@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
+import '../styles/TextArea.sass';
 
 
 function TextArea(props) {
@@ -91,14 +92,18 @@ function TextArea(props) {
     }
 
   return (
-    <div className="comments-container">
-      <form>
+    <div className="comment-container d-flex row justify-content-center">
+      <form className="fTextArea">
       
-        <div className="form-group">
+        <div className="form-group d-flex row justify-content-center">
           
           <textarea className="form-control" id="textarea" rows="3"></textarea>
         </div>
-        <a><button onClick={PostComentario} type="button" className={"text-light border border-warning bg-dark btn btn-danger btn-añadir-comentario "+props.display} >Añadir comentario</button></a>
+
+        {(props.display) != "disabled" ? 
+          (<a><button onClick={PostComentario} type="button" className={"text-light border border-warning bg-dark btn btn-danger btn-añadir-comentario " + props.display} >Añadir comentario</button></a>) : 
+          (<a><button type="button" className={"text-light border border-warning bg-dark btn btn-danger btn-añadir-comentario " + props.display} >Añadir comentario</button></a>)
+        }
 
       </form>
       </div>
