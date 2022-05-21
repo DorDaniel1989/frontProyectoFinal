@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import imagen from "../imagenes/marcanthony.png";
 import { Button } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import "jquery-ui-dist/jquery-ui";
+import $ from 'jquery';
 import '../styles/cards.sass';
+
 
 
 export default function Carta(props) {
@@ -12,32 +15,66 @@ export default function Carta(props) {
   let precioParseao;
   (props.precio == 0) ? precioParseao = "GRATIS!" : precioParseao = props.precio + "€"
 
-
-
-
-  async function convertirImagen() {
-
-   const cssId='card-'+props.eventoId
-
-    const imagenf = document.getElementById(cssId);
-    try {
-      console.log("evento " + props.titulo + " imagen " + props.imagen)
-      imagenf.style.backgroundImage = `url(${props.imagen})`;
-      console.log("imagen F" + imagenf)
-    } catch (e) {}
-
-  }
+  const [idCarta, setIdCarta] = useState([])
 
   useEffect(() => {
     convertirImagen()
   }, [])
 
 
+  function convertirImagen() {
+
+
+  let cssCustomId=setIds(props.listado)+"card-"+props.eventoId
+ 
+  setIdCarta(cssCustomId)
+
+    let imagenf = document.getElementById(cssCustomId);
+    try {
+    
+      imagenf.style.backgroundImage = `url('${props.imagen}')`;
+      console.log("imagen F" + imagenf + "    "  + props.titulo)
+      console.log("Background image " +imagenf.style.backgroundImage)
+    
+
+    } catch (e) {}
+
+  }
+
+
+  function setIds(tipoListado){
+
+    let idListado="";
+
+    switch (tipoListado) {
+      case "hype": idListado = "hype-" 
+      break;
+      case "ultimos": idListado = "ultimos-" 
+      break;
+      case "conciertos": idListado = "conciertos-" 
+      break;
+      case "otaku": idListado = "otaku-" 
+      break;
+      case "gastronomia": idListado = "otaku-"
+      break;
+      case "gaming": idListado = "otaku-" 
+      break;
+      case "it": idListado = "it-" 
+      break;
+      default:  idListado =""
+      break;
+  }
+       return idListado;
+  }
+
+
+
+
   return (
 
     <div className='card' key={props.titulo} >
 
-      <div id={'card-'+props.eventoId} className='fondo-card-wrapper'>
+      <div id={idCarta} className='fondo-card-wrapper'>
 
           <div className="img-wrapper">
             <img height={180} src={props.imagen} />

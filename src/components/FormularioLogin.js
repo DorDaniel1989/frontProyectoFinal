@@ -49,11 +49,12 @@ function FormularioLogin() {
             "password": formData.password
         }
 
+
         console.log('Iniciando sesion...')
        
         await axios.post(baseUrl, data)
             .then(response => {
-                console.log(response)
+                console.log(response.data.message)
                 
                 return response.data;
             }).then(response => {
@@ -72,12 +73,17 @@ function FormularioLogin() {
 
                 Swal.fire({
                     title: 'Error!',
-                    text: "La contraseña que has introducido no coincide",
+                    text: "Los datos que has introducido no son correctos",
+                    position: 'top-end',
                     icon: 'error',
-                    color: "#cb990f",
+                    color: "#ff6600",
+                    iconColor: "red",
                     background: "linear-gradient(to right, #434343, #979292)",
+                    customClass: {
+                        container: 'my-swal'
+                      },
                     showConfirmButton: false,
-                    timer: 1500
+                    timer: 2000
          
                   })
                   
@@ -91,12 +97,12 @@ function FormularioLogin() {
             icon: 'success',
             position: 'top-end',
             text: 'Bienvenido',
-            color: "#cb990f",
-            iconColor:"#cb990f" ,
+            color: "#ff6600",
+            iconColor:"#39FF1A" ,
             customClass: {
                 confirmButton: 'modal-exito' 
               },
-            color: "#cb990f",
+           
             background: "linear-gradient(to right, #434343, #979292)",
             showConfirmButton: false,
             timer: 1500

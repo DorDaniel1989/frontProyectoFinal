@@ -28,7 +28,7 @@ function displayLoginForm(){
       text: "Vuelve pronto",
       position: 'top-end',
       showConfirmButton: false,
-      color: "#cb990f",
+      color: "#ff6600",
       background: "linear-gradient(to right, #434343, #979292)",
       timer: 1500
 
