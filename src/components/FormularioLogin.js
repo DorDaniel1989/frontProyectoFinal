@@ -49,7 +49,7 @@ function FormularioLogin() {
             "password": formData.password
         }
 
-
+        console.log(data)
         console.log('Iniciando sesion...')
        
         await axios.post(baseUrl, data)
@@ -112,6 +112,22 @@ function FormularioLogin() {
            
           )
     }
+
+    //enter login
+
+    $('#username').keyup(function(e){
+        if(e.keyCode == 13)
+        {
+            iniciarSesion()
+        }
+    });
+
+    $('#password').keyup(function(e){
+        if(e.keyCode == 13)
+        {
+            iniciarSesion()
+        }
+    });
 
     return (
 

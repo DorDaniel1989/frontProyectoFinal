@@ -5,6 +5,8 @@ import LoginIcon from '@mui/icons-material/Login';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import $ from 'jquery';
+import "jquery-ui-dist/jquery-ui";
 
 function AdminLogin() {
 
@@ -58,6 +60,22 @@ function AdminLogin() {
                 console.log(error)
             })
     }
+
+        //enter login
+
+        $('#username').keyup(function(e){
+            if(e.keyCode == 13)
+            {
+                iniciarSesion()
+            }
+        });
+    
+        $('#password').keyup(function(e){
+            if(e.keyCode == 13)
+            {
+                iniciarSesion()
+            }
+        });
 
     return (
 
