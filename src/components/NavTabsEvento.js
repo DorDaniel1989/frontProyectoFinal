@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ComentariosVisitUser from "./ComentariosVisitUser"; 
 import EventosVisitUser from "./EventosVisitUser";
 import '../styles/NavTabs.sass';
+import '../styles/detailsEvent.sass';
 import TextArea from "./TextArea";
 import Comentarios from "./Comentarios";
 import CommentIcon from '@mui/icons-material/Comment';
@@ -54,9 +55,10 @@ function NavTabsEvento(props) {
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content active-content" : "content"}>
         
-          <hr />
-
           <TextArea display={props.display} eventoId={props.eventoId} categoriaId={props.categoriaId} usuarioId= {props.usuarioId}  />
+
+          <hr className="bg-white"/>
+
           <Comentarios/>
         </div>
 
@@ -67,16 +69,30 @@ function NavTabsEvento(props) {
         </div>
 
         <div className={toggleState === 3 ? "content active-content" : "content"}>
-          <p>{props.descripcion}</p>
-         <div className="texto-pestaña-detalles">
-          <hr  className="bg-white"/>
-          <h3>Precio : {props.precio}</h3>
-          <h4>Hora de inicio : {props.hora_inic}</h4>
-          <h4>Hasta : {props.hora_fin}</h4>
-          <h4>Fecha comienzo : {props.fecha_inic}</h4>
-          <h4>Fecha fin : {props.fecha_fin}</h4>
-         </div>
-         
+          <div className="dEventDescription d-flex flex-column ps-2">
+            <h2>¿De qué trata este evento?</h2>
+            <p>{props.descripcion}</p>
+          </div>
+
+          <hr className="bg-white"/>
+
+          <div className="texto-pestaña-detalles">
+           <div className="dFechas dInfoEvento d-flex flex-column">
+            <h5>Fecha del evento</h5>
+            <p className="ps-3">{props.fecha_inic} - {props.fecha_fin}</p>
+           </div>
+
+           <div className="dHorarios dInfoEvento d-flex flex-column">
+            <h4>Horarios</h4>
+            <p className="ps-3">{props.hora_inic} - {props.hora_fin}</p>
+           </div>
+
+           <div className="dPrecios dInfoEvento d-flex flex-column">
+            <h4 className="ms-auto">Precio entrada</h4>
+            {(props.precio === '0') ? (<p className="pe-3 ms-auto">Gratis</p>) : (<p className="pe-3 ms-auto">{props.precio}€</p>)}
+           </div>
+          </div>
+
           <hr/>
         
         </div>

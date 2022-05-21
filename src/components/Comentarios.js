@@ -5,6 +5,7 @@ import axios from 'axios';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Swal from 'sweetalert2'
 import { Link, BrowserRouter, Routes, Route } from "react-router-dom";
+import defaultUser from "../imagenes/defaultUser.png";
 
 
 
@@ -70,7 +71,7 @@ function Comentarios() {
                                 <div className="dCommentRow w-100 d-flex row justify-content-center">
 
                                     <div className="dUserImg">
-                                        <img height={80} src={item.imagen}/>
+                                        {(item.imagen != null && item.imagen != '') ? (<img height={80} src={item.imagen}/>) : (<img height={80} src={defaultUser}/>)}
                                     </div>
                                 
                                     <div className="comment-box details" key={item.comentarioId}>
