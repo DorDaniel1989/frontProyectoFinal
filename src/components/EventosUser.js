@@ -35,8 +35,8 @@ function EventosUser(props) {
             showCancelButton: true,
             color: "#cb990f",
             background: "linear-gradient(to right, #434343, #979292)",
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: 'black',
+            cancelButtonColor: 'orange',
             confirmButtonText: 'Sí, estoy seguro',
             cancelButtonText:'Mejor no'
             

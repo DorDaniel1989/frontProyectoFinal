@@ -23,9 +23,9 @@ function EventosUser(props) {
 
             {
                 cards.map(item => (
-
+                    <div className="evento-usuario">
                     <Card titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic} />
-
+                    </div>
                 ))
             }
 

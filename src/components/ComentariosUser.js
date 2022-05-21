@@ -30,13 +30,32 @@ function ComentariosUser() {
         console.log(`http://localhost:5000/api/Comentario/evento/${Id}`);
     }
 
-    async function EliminarComentario(Id) {
+    async function EliminarComentario(comentarioId) {
 
-        console.log(Id)
-        const response = await axios.delete(` https://localhost:5001/api/Comentario/${Id}`);
+
+        Swal.fire({
+            title: '¿Estás serguro?',
+            text: "Puede que más adelante no queden plazas",
+            icon: 'warning',
+            showCancelButton: true,
+            color: "#cb990f",
+            background: "linear-gradient(to right, #434343, #979292)",
+            confirmButtonColor: 'black',
+            cancelButtonColor: 'orange',
+            confirmButtonText: 'Sí, estoy seguro',
+            cancelButtonText:'Mejor no'
+            
+          }).then((result) => {
+
+            if (result.isConfirmed) {
+                EliminarComentarioConfirmado(comentarioId)
+            }
+          })
+      
+    async function EliminarComentarioConfirmado(_comentarioId){
+        console.log(_comentarioId)
+        const response = await axios.delete(` https://localhost:5001/api/Comentario/${_comentarioId}`);
         console.log(response)
-        obtenerDatos()
-
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -45,6 +64,10 @@ function ComentariosUser() {
             timer: 1000
           })
 
+        obtenerDatos()
+
+    }
+     
     }
 
     return (

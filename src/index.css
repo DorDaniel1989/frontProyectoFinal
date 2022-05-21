@@ -49,3 +49,7 @@ hr{
 
 
 
+.my-swal {
+  z-index: 1;
+  height: 400px;
+}
