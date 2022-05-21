@@ -2,6 +2,7 @@ import React, {Component, useEffect, useState } from "react";
 import Buscador from '../components/Buscador';
 import Menu from '../components/Menu';
 import FormularioLogin from '../components/FormularioLogin';
+import Footer from '../components/Footer';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from "swiper";
@@ -106,7 +107,7 @@ function Home() {
     <Menu/>
     <FormularioLogin />
     <Buscador/>
-        <h1><img  className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img  className="hype hype-on" height={50} src={fuego_activo} /></h1>     
+        <h1 className="titulo-eventos-home"><img  className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img  className="hype hype-on" height={50} src={fuego_activo} /></h1>     
     
         <Swiper
           initialSlide={0}
@@ -151,7 +152,7 @@ function Home() {
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      <h1>Últimos eventos</h1>
+      <h1 className="titulo-eventos-home">Últimos eventos</h1>
 
       <Swiper
         initialSlide={0}
@@ -190,7 +191,7 @@ function Home() {
       {
         (activeConciertos.length  != 0) ? (
         <>
-          <h1>Conciertos</h1>
+          <h1 className="titulo-eventos-home">Conciertos</h1>
 
             <Swiper
               initialSlide={0}
@@ -232,7 +233,7 @@ function Home() {
       {
         (activeOtakus.length  != 0) ? (
         <>
-          <h1>Para los otakus</h1>
+          <h1 className="titulo-eventos-home">Para los otakus</h1>
 
             <Swiper
               initialSlide={0}
@@ -274,7 +275,7 @@ function Home() {
       {
         (activeGastro.length  != 0) ? (
         <>
-          <h1>Gastronomía</h1>
+          <h1 className="titulo-eventos-home">Gastronomía</h1>
 
             <Swiper
               initialSlide={0}
@@ -316,7 +317,7 @@ function Home() {
       {
         (activeGaming.length  != 0) ? (
         <>
-          <h1>Gaming</h1>
+          <h1 className="titulo-eventos-home">Gaming</h1>
 
             <Swiper
               initialSlide={0}
@@ -358,7 +359,7 @@ function Home() {
       {
         (activeIT.length  != 0) ? (
           <>
-            <h1>IT</h1>
+            <h1 className="titulo-eventos-home">IT</h1>
 
               <Swiper
                 initialSlide={0}
@@ -393,6 +394,7 @@ function Home() {
         ) : (<></>)
 
       }
+      <Footer/>
  
    </>
  

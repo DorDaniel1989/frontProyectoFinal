@@ -3,6 +3,7 @@ import React from "react";
 import Menu from '../components/Menu';
 import FormularioLogin from '../components/FormularioLogin';
 import CuerpoVisitProfile from "../components/CuerpoVisitProfile"
+import Footer from '../components/Footer';
 
 
 function VisitProfile() {
@@ -12,6 +13,7 @@ function VisitProfile() {
     <Menu/>
     <FormularioLogin />
     <CuerpoVisitProfile/>
+    <Footer/>
     </>
   );}
 
