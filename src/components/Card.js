@@ -17,12 +17,12 @@ export default function Carta(props) {
 
   const [idCarta, setIdCarta] = useState([])
 
+
   useEffect(() => {
     convertirImagen()
   }, [])
 
   
-
   function convertirImagen() {
 
 
@@ -56,9 +56,9 @@ export default function Carta(props) {
       break;
       case "otaku": idListado = "otaku-" 
       break;
-      case "gastronomia": idListado = "otaku-"
+      case "gastronomia": idListado = "gastronomia-"
       break;
-      case "gaming": idListado = "otaku-" 
+      case "gaming": idListado = "gaming-" 
       break;
       case "it": idListado = "it-" 
       break;
@@ -72,36 +72,39 @@ export default function Carta(props) {
 
 
   return (
+    <>
 
-    <div className='card' key={props.titulo} >
+      <div  className='card' key={props.titulo} >
 
-      <div id={idCarta} className='fondo-card-wrapper'>
+        <div onLoad={convertirImagen} id={idCarta} className='fondo-card-wrapper' >
 
-          <div className="img-wrapper">
-            <img height={180} src={props.imagen} />
-          </div>
+            <div className="img-wrapper">
+              <img height={180} src={props.imagen} />
+            </div>
 
-          <div className='btn-wrapper'>
-            <Button className='boton-entrar border border-warning bg-transparent' href={ruta}><VisibilityIcon />ENTRAR</Button>
-          </div>
+            <div className='btn-wrapper'>
+              <Button className='boton-entrar border border-warning bg-transparent' href={ruta}><VisibilityIcon />ENTRAR</Button>
+            </div>
+
+        </div>
+
+        <div className='detalles-wrapper'>
+
+            <h3 className='tituloCard'>{props.titulo}</h3>
+            <p>LUGAR</p>
+            <p>{props.fecha}</p>
+          
+        </div>
+
+        <div className='precio-wrapper'>
+
+            <p>{precioParseao}</p>
+
+        </div>
+
 
       </div>
-
-      <div className='detalles-wrapper'>
-
-          <h3 className='tituloCard'>{props.titulo}</h3>
-          <p>LUGAR</p>
-          <p>{props.fecha}</p>
-        
-      </div>
-
-      <div className='precio-wrapper'>
-
-           <p>{precioParseao}</p>
-
-      </div>
-
-
-    </div>
+      
+      </>
   )
 }

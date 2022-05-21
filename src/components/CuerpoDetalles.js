@@ -95,9 +95,7 @@ function CuerpoDetalles(props) {
     if (inscripciones.length >= evento.aforo_max) {
     
       return false;
-
     }
-
     return true;
 
   }
