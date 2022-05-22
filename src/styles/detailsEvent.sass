@@ -4,10 +4,19 @@
             text-align: center
         p
             margin: 0
+
+            @media screen and (max-width: 767px)
+                text-align: center
     .texto-pestaña-detalles
         margin-left: 3rem
 
+        @media screen and (max-width: 767px)
+            margin-left: 0
+
         .dInfoEvento
+
+            &:first-child
+                padding-top: 15px
 
             &:not(:last-child)
 
@@ -15,6 +24,37 @@
 
         .dFechas
 
+            @media screen and (max-width: 767px)
+                text-align: center
+
+            p
+
+                @media screen and (max-width: 767px)
+                    padding: 0 !important
+
+
         .dHorarios
 
+            @media screen and (max-width: 767px)
+                text-align: center
+
+            p
+
+                @media screen and (max-width: 767px)
+                    padding: 0 !important
+
         .dPrecios
+
+            @media screen and (max-width: 767px)
+                text-align: center
+
+            h4
+
+                @media screen and (max-width: 767px)
+                    margin-left: 0 !important
+
+            p
+
+                @media screen and (max-width: 767px)
+                    padding: 0 !important
+                    margin-left: 0 !important

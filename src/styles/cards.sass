@@ -1,34 +1,52 @@
-.hypeSwiper 
-    background-color:  #ba8c0200
-    .card
-        .fondo-card-wrapper
+.swiper
 
-        .img-wrapper
-        
-            img 
-                width: 300px
-                height: 300px
-                margin-left: 12rem
-                margin-top: 2rem
-
-
-
-@media (min-width: 580px)
-    .hypeSwiper 
+    &.hypeSwiper 
         background-color:  #ba8c0200
+
         .card
             .fondo-card-wrapper
-            
+                border-top-left-radius: 1rem
+                border-top-right-radius: 1rem
+
+                .dBackFilter
+
+                    height: 100%
+                    width: 100%
+
+                    display: flex
+                    flex-wrap: wrap
+
+                    border-top-left-radius: 1rem
+                    border-top-right-radius: 1rem
+
+                    background-color: #00000038
+                    -webkit-backdrop-filter: blur(0.5rem)
+                    -moz-backdrop-filter: blur(0.5rem)
+                    backdrop-filter: blur(0.5rem)
+
             .img-wrapper
+
+                height: fit-content
+                width: fit-content
+
+                margin-top: 8% !important
+                margin-left: 8%
+
+                border: 0.5px solid #0000008b
+                border-radius: 8px
+                box-shadow: 1px 1px 1px 1px #00000068
+
+                @media screen and (max-width: 579px)
+                    margin-left: auto
+                    margin-right: auto
+                    
+                img
+                    height: 150px
+                    width: 268px !important
+                    border-radius: 8px
+
             
-                img 
-                    width: 300px
-                    height: 300px
-                    margin-left: 12rem
-                    margin-top: 12rem
 
-
-.swiper
     .card
             margin-top: 1rem
             min-width: 200px
@@ -47,36 +65,76 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.7)
             flex-direction: row
 
+            @media (min-width: 580px)
+                min-width: 500px
+                height: 700px
+                width: 95%
+
             .fondo-card-wrapper
                 height: 200px
                 width: 100%!important
                 display: flex
                 flex-wrap: wrap
                 background-color: white
-                width: 100%!important
                 max-height: 600px
                 height: 400px
                 background-size: cover
 
-                .btn-wrapper , img
-                    width: 20%
+                border-top-left-radius: 1rem
+                border-top-right-radius: 1rem
 
-                img
-                    margin-top: 2rem
-                    margin-left: 1rem
-                    height: 150px
-                    width: 150px
+                .dBackFilter
 
-                .btn-wrapper
+                    height: 100%
                     width: 100%
-                    display: flex
-                    justify-content: center
-                    align-items: center
-                    background-color: rgba(63, 61, 61, 0.185)
 
-                    .boton-entrar
-                        //background-color: #BA8B02!important
+                    display: flex
+                    flex-wrap: wrap
+
+                    border-top-left-radius: 1rem
+                    border-top-right-radius: 1rem
+
+                    background-color: #00000038
+                    -webkit-backdrop-filter: blur(0.5rem)
+                    -moz-backdrop-filter: blur(0.5rem)
+                    backdrop-filter: blur(0.5rem)
+
+                    .img-wrapper
+
+                        height: fit-content
                         width: fit-content
+
+                        margin-top: 8%
+                        margin-left: 8%
+
+                        border: 0.5px solid #0000008b
+                        border-radius: 8px
+                        box-shadow: 1px 1px 1px 1px #00000068
+
+                        @media screen and (max-width: 579px)
+                            margin-top: 16%
+                            margin-left: auto
+                            margin-right: auto
+
+                        img
+                            height: 150px
+                            width: 268px !important
+                            border-radius: 8px
+
+                    .btn-wrapper
+                        position: absolute
+
+                        height: 100%
+                        width: 100%
+                        display: flex
+                        justify-content: center
+                        align-items: center
+                        background-color: rgba(63, 61, 61, 0.185)
+
+                        .boton-entrar
+                            margin-top: auto
+                            margin-bottom: 15px
+                            width: fit-content
 
             .detalles-wrapper
                 height: 20%
@@ -86,6 +144,9 @@
                 align-items: center
                 flex-wrap: wrap
                 background-color:  rgba(63, 61, 61, 0.185)
+
+                @media (min-width: 580px)
+                    height: 30%
 
                 h2,p
                     width: 100%
@@ -99,87 +160,16 @@
                 
                 background-color:  rgba(63, 61, 61, 0.185)
 
+                @media (min-width: 580px)
+                    height: 10%
+                    justify-content: flex-end
+
                 p
                     font-size: 2rem
                     margin-right: 4%
 
-    
-
-    @media (min-width: 580px)
-        .card
-            margin-top: 1rem
-            min-width: 500px
-            text-align: center
-            height: 700px
-            text-decoration: none !important
-            width: 95%
-            display: flex
-            align-items: start
-            justify-content: space-between
-            flex-wrap: wrap
-            border-radius: 1rem
-            background-image: url("../imagenes/fondo-card.jpg")
-            background-size: contain
-            color: white
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.7)
-            flex-direction: row
-
-            .fondo-card-wrapper
-                height: 250px
-                width: 100%!important
-                display: flex
-                flex-wrap: wrap
-                background-color: white
-                width: 100%!important
-                max-height: 600px
-                height: 400px
-                background-size: cover
-
-                .btn-wrapper , img
-                    width: 20%
-
-                img
-                    margin-top: 2rem
-                    margin-left: 3rem
-                    height: 250px
-                    width: 250px
-
-                .btn-wrapper
-                    width: 100%
-                    display: flex
-                    justify-content: center
-                    align-items: center
-                    background-color: rgba(63, 61, 61, 0.185)
-
-                    .boton-entrar
-                        //background-color: #BA8B02!important
-                        width: 20%
-
-            .detalles-wrapper
-                height: 30%
-                width: 100%
-                display: flex
-                justify-content: center
-                align-items: center
-                flex-wrap: wrap
-                background-color:  rgba(63, 61, 61, 0.185)
-
-                h2,p
-                    width: 100%
-
-
-            .precio-wrapper
-                height: 10%
-                width: 100%
-                display: flex
-                justify-content: flex-end
-                
-                background-color:  rgba(63, 61, 61, 0.185)
-
-                p
-                    font-size: 3em
-                    margin-right: 4%
-
+                    @media (min-width: 580px)
+                        font-size: 3em
     
 
 .evento-usuario
@@ -187,11 +177,9 @@
     button
         max-height: 30px
         color: #ff6600
-    @media (min-width: 992px)
-         button
-            max-height: 30px
+        @media (min-width: 992px)
             margin-top: 17%
-            color: #ff6600
+
     .card
         margin-top: 1rem
         min-width: 200px
@@ -217,37 +205,65 @@
             display: flex
             flex-wrap: wrap
             background-color: white
-            width: 100%!important
             max-height: 600px
             height: 400px
             background-size: cover
 
-            .btn-wrapper , img
-                width: fit-content
-            .btn-wrapper
+            border-top-left-radius: 1rem
+            border-top-right-radius: 1rem
+
+            .dBackFilter
+
+                height: 100%
                 width: 100%
-                height: 10%
+
                 display: flex
-                justify-content: center
-                align-items: center
-                background-color: rgba(63, 61, 61, 0.185)
+                flex-wrap: wrap
 
-                .boton-entrar
-                    //background-color: #BA8B02!important
+                border-top-left-radius: 1rem
+                border-top-right-radius: 1rem
+
+                background-color: #00000038
+                -webkit-backdrop-filter: blur(0.5rem)
+                -moz-backdrop-filter: blur(0.5rem)
+                backdrop-filter: blur(0.5rem)
+
+                .btn-wrapper
+                    position: absolute
+
+                    height: 100%
+                    width: 100%
+
+                    display: flex
+                    justify-content: center
+                    align-items: center
+                    background-color: rgba(63, 61, 61, 0.185)
+
+                    .boton-entrar
+                        margin-top: auto
+                        margin-bottom: 15px
+
+                        width: fit-content
+                .img-wrapper
+
+                    height: fit-content
                     width: fit-content
-            img
-                margin-top: 0.5rem
-                margin-left: 3rem
-                height: 150px
-                width: 150px     
-            @media (min-width: 777px)
-                img
-                    margin-top: 1rem
-                    margin-left: 3rem
-                    height: 150px
-                    width: 150px
-
-           
+    
+                    margin-top: 4% !important
+                    margin-left: 8%
+    
+                    border: 0.5px solid #0000008b
+                    border-radius: 8px
+                    box-shadow: 1px 1px 1px 1px #00000068
+    
+                    @media screen and (max-width: 579px)
+                        margin-left: auto
+                        margin-right: auto
+                        
+                    img
+                        height: 100px
+                        width: 177px !important
+                        border-radius: 8px     
 
         .detalles-wrapper
             height: 10%
@@ -274,21 +290,3 @@
                 margin-right: 4%
 
     
-
-
-
-// @media (max-width: 770px) 
-//     .cardP 
-//       max-width: 300px
-//       img
-//         max-width: 170px
-//       a
-//           width: 70%
-
-// @media (max-width:1000px) 
-//     .cardP 
-//       max-width: 300px
-//       img
-//         max-width: 170px
-//       a
-//           width: 70%
