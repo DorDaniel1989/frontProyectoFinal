@@ -116,7 +116,7 @@ export default function DeleteField(props) {
         <input type="text" onChange={controlarCambio} name="id" className="iDelete" placeholder="ID" />
       </div>
       <div className="dDataInput dDataInputBtn d-flex flex-column align-items-center">
-        <input onClick={() => eliminarRegistro()} value="Submit" className="btn btn-primary border border-warning bg-transparent" />
+        <input onClick={() => eliminarRegistro()} value="Submit" className="btn btn-danger border border-warning bg-transparent" />
       </div>
     </div>
   )
