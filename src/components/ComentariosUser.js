@@ -35,14 +35,13 @@ function ComentariosUser() {
     console.log(comentarios)
     async function EliminarComentario(comentarioId) {
 
-
         Swal.fire({
             title: '¿Estás serguro?',
             text: "Puede que más adelante no queden plazas",
             icon: 'warning',
             showCancelButton: true,
             color: "#cb990f",
-            background: "linear-gradient(to right, #434343, #979292)",
+            background: "linear-gradient(to right, #434343, #000)",
             confirmButtonColor: 'black',
             cancelButtonColor: 'orange',
             confirmButtonText: 'Sí, estoy seguro',
@@ -55,6 +54,7 @@ function ComentariosUser() {
             }
           })
       
+          
     async function EliminarComentarioConfirmado(_comentarioId){
         console.log(_comentarioId)
         const response = await axios.delete(` https://localhost:5001/api/Comentario/${_comentarioId}`);
@@ -62,7 +62,10 @@ function ComentariosUser() {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
-            text: 'Tu comentario fue eliminado!',
+            title: 'Tu comentario fue eliminado!',
+            iconColor:"#39FF1A" ,
+            color: "#cb990f",
+            background: "linear-gradient(360deg, #000000d0, transparent)",
             showConfirmButton: false,
             timer: 1000
           })

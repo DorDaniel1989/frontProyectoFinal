@@ -50,7 +50,7 @@ export default function DeleteField(props) {
       icon: 'warning',
       showCancelButton: true,
       color: "#cb990f",
-      background: "linear-gradient(to right, #434343, #979292)",
+      background: "linear-gradient(to right, #434343, #000)",
       confirmButtonColor: 'black',
       cancelButtonColor: 'orange',
       confirmButtonText: 'Sí, estoy seguro',
@@ -80,13 +80,9 @@ export default function DeleteField(props) {
             icon: 'success',
             position: 'top-end',
             text: 'Registro eliminado correctamente',
-            color: "#ff6600",
             iconColor:"#39FF1A" ,
-            customClass: {
-                confirmButton: 'modal-exito' 
-              },
-           
-            background: "linear-gradient(to right, #434343, #979292)",
+            color: "#cb990f",
+            background: "linear-gradient(360deg, #000000d0, transparent)",
             showConfirmButton: false,
             timer: 1500
 
@@ -95,16 +91,12 @@ export default function DeleteField(props) {
           console.log(error)
 
           Swal.fire({
-              title: 'Error!',
-              text: "Ese registro no existe",
+              title: 'Ese registro no existe!',
               position: 'top-end',
               icon: 'error',
-              color: "#ff6600",
               iconColor: "red",
-              background: "linear-gradient(to right, #434343, #979292)",
-              customClass: {
-                  container: 'my-swal'
-                },
+              color: "#cb990f",
+              background: "linear-gradient(360deg, #000000d0, transparent)",
               showConfirmButton: false,
               timer: 2000
    

@@ -34,7 +34,7 @@ function EventosUser(props) {
             icon: 'warning',
             showCancelButton: true,
             color: "#cb990f",
-            background: "linear-gradient(to right, #434343, #979292)",
+            background: "linear-gradient(to right, #434343, #000)",
             confirmButtonColor: 'black',
             cancelButtonColor: 'orange',
             confirmButtonText: 'Sí, estoy seguro',
@@ -55,9 +55,11 @@ function EventosUser(props) {
             Swal.fire({
                 title: 'Subscripcion Eliminada!',
                 icon: 'success',
+                position : 'top-end',
                 showConfirmButton: false,
+                iconColor:"#39FF1A" ,
                 color: "#cb990f",
-                background: "linear-gradient(to right, #434343, #979292)",
+                background: "linear-gradient(360deg, #000000d0, transparent)",
                 timer: 1000
             })
          }

@@ -94,10 +94,11 @@ function FormularioEditarUsuario(props) {
                     position: 'top-end',
                     showConfirmButton: false,
                     timer: 1500,
-                    color: "#ff6600",
-                    background: "linear-gradient(to right, #434343, #979292)",
-                    icon: "success",
-                    iconColor: "#ff6600 "
+                    iconColor:"#39FF1A" ,
+                    color: "#cb990f",
+                    background: "linear-gradient(360deg, #000000d0, transparent)",
+                    icon: "success"
+                    
                 })
 
             }
@@ -118,7 +119,7 @@ function FormularioEditarUsuario(props) {
             icon: 'warning',
             showCancelButton: true,
             color: "#cb990f",
-            background: "linear-gradient(to right, #434343, #979292)",
+            background: "linear-gradient(to right, #434343, #000)",
             confirmButtonColor: 'black',
             cancelButtonColor: 'orange',
             confirmButtonText: 'Sí, estoy seguro',
@@ -130,7 +131,7 @@ function FormularioEditarUsuario(props) {
                 console.log("hoplitas")
                 EliminarCuentaConfirmado(usuarioId)
             }
-            console.log(" resultado de modal", result.isConfirmed)
+            
         })
     
     
@@ -145,12 +146,14 @@ function FormularioEditarUsuario(props) {
                 text: 'Esperemos que vuelvas pronto a nuestras comunidad',
                 icon: 'success',
                 color: "#cb990f",
-                background: "linear-gradient(to right, #434343, #979292)",
+                showConfirmButton: false,
+                background: "linear-gradient(to right, #434343, #000)",
+                timer : 3000
             }).then(
-    
-                localStorage.clear(),
-                window.location.href=('/')
-    
+
+                setTimeout(()=>{ localStorage.clear(); window.location.href=('/')} , 3000)
+               
+            
             )
     
         }

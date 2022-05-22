@@ -266,12 +266,13 @@ export default function FormData(props) {
                    
                 
                 Swal.fire({
-                  text:'Algo salió mal y no se pudo añadir el registro',
+                  title:'Algo salió mal y no se pudo añadir el registro',
                   icon: 'error',
+                  iconColor: 'red',
                   showConfirmButton: false,
-                  color: "#cb990f",
                   position: 'top-end',
-                  background: "linear-gradient(to right, #434343, #979292)",
+                  color: "#cb990f",
+                  background: "linear-gradient(360deg, #000000d0, transparent)",
                   timer: 1000
                 })
               
@@ -280,12 +281,13 @@ export default function FormData(props) {
                     return response.data;
                 }).then(response=>{
                   Swal.fire({
-                    text:'Registro añadido satisfactoriamente',
+                    title:'Registro añadido satisfactoriamente',
                     icon: 'success',
+                    iconColor:"#39FF1A" ,
+                    position: 'top-end',
                     showConfirmButton: false,
                     color: "#cb990f",
-                    position: 'top-end',
-                    background: "linear-gradient(to right, #434343, #979292)",
+                    background: "linear-gradient(360deg, #000000d0, transparent)",
                     timer: 1000
                   })
 
@@ -299,24 +301,25 @@ export default function FormData(props) {
             await axios.put(`http://localhost:5000/api/${endPointName[whichTabla]}/${formData[id]}`, data)
                .catch(function (error) {
                 Swal.fire({
-                  text:'Algo salió mal y no se pudo añadir el registro',
+                  title:'Algo salió mal y no se pudo añadir el registro',
                   icon: 'error',
                   showConfirmButton: false,
-                  color: "#cb990f",
                   position: 'top-end',
-                  background: "linear-gradient(to right, #434343, #979292)",
+                  color: "#cb990f",
+                  background: "linear-gradient(360deg, #000000d0, transparent)",
                   timer: 1000
                 })       
                }).then(response =>{
                     return response.data;
                 }).then(response=>{
                   Swal.fire({
-                    text:'Registro añadido satisfactoriamente',
+                    title:'Registro añadido satisfactoriamente',
                     icon: 'success',
+                    iconColor:"#39FF1A" ,
                     showConfirmButton: false,
-                    color: "#cb990f",
                     position: 'top-end',
-                    background: "linear-gradient(to right, #434343, #979292)",
+                    color: "#cb990f",
+                    background: "linear-gradient(360deg, #000000d0, transparent)",
                     timer: 1000
                   })
 
