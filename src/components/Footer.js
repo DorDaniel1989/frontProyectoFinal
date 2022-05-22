@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
-import Swal from 'sweetalert2'
+
+import imagen from "../imagenes/Eventum_golden.png";
 import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import '../styles/footer.css';
 
@@ -16,34 +17,33 @@ function Footer(props) {
 
         <div class="footer-left">
 
-            <h3>Company<span>logo</span></h3>
+        <Link to='/'><img alt="Evencum" width={150} className="logo-eventum" src={imagen}/></Link>
 
             <p class="footer-links">
-                <a href="#" class="link-1">Home</a>
+                <a href="/" class="link-1">Home</a>
                 
-                <a href="#">Home</a>
             
             
             </p>
 
-            <p class="footer-company-name">Company Name © 2015</p>
+            <p class="footer-company-name">Eventum © 2022</p>
         </div>
 
         <div class="footer-center">
 
             <div>
                 <i class="fa fa-map-marker"></i>
-                <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
+                <p><span>Plaiaundi, s/n, </span> 20301 Irun, Gipuzkoa</p>
             </div>
 
             <div>
                 <i class="fa fa-phone"></i>
-                <p>+1.555.555.5555</p>
+                <p>+34 943 89 92 14</p>
             </div>
 
             <div>
                 <i class="fa fa-envelope"></i>
-                <p><a href="mailto:support@company.com">support@company.com</a></p>
+                <p><a href="mailto:support@company.com">support@eventum.com</a></p>
             </div>
 
         </div>
@@ -51,8 +51,8 @@ function Footer(props) {
         <div class="footer-right">
 
             <p class="footer-company-about">
-                <span>About the company</span>
-                Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+                <span>Sobre la empresa</span>
+                Somos una plataforma donde combinamos las ventajas de una red social con la participacion de nuestros usuarios en eventos presenciales
             </p>
 
             <div class="footer-icons">
