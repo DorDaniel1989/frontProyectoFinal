@@ -141,7 +141,6 @@ export default function FormData(props) {
                 {
                 comentario_text: "text",
                 eventoId: "number",
-                categoriaId: "number",
                 usuarioId: "number",
                 fecha_comentario: "date",
                 hora_comentario: "time"
@@ -202,7 +201,6 @@ export default function FormData(props) {
                 comentarioId: "number",
                 comentario_text: "text",
                 eventoId: "number",
-                categoriaId: "number",
                 usuarioId: "number",
                 fecha_comentario: "date",
                 hora_comentario: "time"
