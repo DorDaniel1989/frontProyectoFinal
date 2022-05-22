@@ -10,7 +10,6 @@ import '../styles/evento.sass';
 import NavTabsEvento from "./NavTabsEvento"; 
 import Swal from 'sweetalert2'
 
-import '../styles/modales.sass';
 
 
 function CuerpoDetalles(props) {

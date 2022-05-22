@@ -90,17 +90,16 @@ function FormularioRegistro(props) {
                         title: 'Ups!',
                         text: "Ese usuario ya existe",
                         icon: 'error',
+                        iconColor: "red",
                         showConfirmButton: false,
-                        background: "linear-gradient(to right, #434343, #979292)",
                         color: "#cb990f",
-                        iconColor: "#cb990f",
+                        background: "linear-gradient(360deg, #000000d0, transparent)",
                         timer: 1500
                     })
                 }
 
             })
     }
-
 
     const comprobarSiEmailExiste = async () => {
 
@@ -116,9 +115,10 @@ function FormularioRegistro(props) {
                         title: 'Ups!',
                         text: "Ya hay una cuenta registrada con ese email",
                         icon: 'error',
+                        iconColor: "red",
                         showConfirmButton: false,
-                        background: "linear-gradient(to right, #434343, #979292)",
                         color: "#cb990f",
+                        background: "linear-gradient(360deg, #000000d0, transparent)",
                         iconColor: "#cb990f",
                         timer: 1500
                     })
@@ -142,13 +142,12 @@ function FormularioRegistro(props) {
      
              if (formData.password !== formData.confirmPwd) {
                  Swal.fire({
-                     title: 'Error!',
-                     iconColor: "#cb990f",
-                     text: "La contraseña que has introducido no coincide",
                      icon: 'error',
+                     iconColor: "red",
+                     title: "La contraseña que has introducido no coincide",
                      showConfirmButton: false,
-                     background: "linear-gradient(to right, #434343, #979292)",
                      color: "#cb990f",
+                     background: "linear-gradient(360deg, #000000d0, transparent)",
                      timer: 1500
                  })
      
@@ -183,12 +182,11 @@ function FormularioRegistro(props) {
                              console.log(response)
      
                              Swal.fire({
-                                 title: 'Error!',
-                                 text: "Algo ha fallado en el proceso de registro",
+                                 title: 'Algo ha fallado en el proceso de registro',
                                  icon: 'error',
                                  showConfirmButton: false,
-                                 background: "linear-gradient(to right, #434343, #979292)",
                                  color: "#cb990f",
+                                 background: "linear-gradient(360deg, #000000d0, transparent)",
                                  iconColor: "#cb990f",
                                  timer: 1500
                              })

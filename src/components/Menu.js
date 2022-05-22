@@ -25,11 +25,10 @@ function displayLoginForm(){
 
     Swal.fire({
       title: 'Hasta las vista!',
-      text: "Vuelve pronto",
       position: 'top-end',
       showConfirmButton: false,
-      color: "#ff6600",
-      background: "linear-gradient(to right, #434343, #979292)",
+      color: "#cb990f",
+      background: "linear-gradient(360deg, #000000d0, transparent)",
       timer: 1500
 
     }).then(
