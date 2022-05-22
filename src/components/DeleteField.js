@@ -72,9 +72,7 @@ export default function DeleteField(props) {
     async function eliminarRegistroConfirmado() {
 
       await axios.delete(`http://localhost:5000/api/${endPointName[whichTabla]}/${formData.id}`)
-        .catch(function (error) {
-          alert('El registro seleccionado no existe!!!')
-        }).then(response => {
+       .then(response => {
           return response.data;
         }).then(
       
@@ -92,12 +90,28 @@ export default function DeleteField(props) {
             showConfirmButton: false,
             timer: 1500
 
-         } )
+         })
+        ).catch(error => {
+          console.log(error)
 
-        )
-
+          Swal.fire({
+              title: 'Error!',
+              text: "Ese registro no existe",
+              position: 'top-end',
+              icon: 'error',
+              color: "#ff6600",
+              iconColor: "red",
+              background: "linear-gradient(to right, #434343, #979292)",
+              customClass: {
+                  container: 'my-swal'
+                },
+              showConfirmButton: false,
+              timer: 2000
+   
+            })
+            
+      })
     }
-  
   }
 
 
