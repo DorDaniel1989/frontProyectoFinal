@@ -196,7 +196,7 @@ function FormularioEditarUsuario(props) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col col-12  col-lg-5">
+                            <div className="col col-12  col-lg-6 d-flex flex-row justify-content-center align-items-center">
                                 <img onChange={controlarCambio} src={formData.imagen} className="imagenPerfil" />
                             </div>
                             <div className="col col-10 offset-1 offset-lg-1 col-lg-4">
@@ -287,10 +287,10 @@ function FormularioEditarUsuario(props) {
                         <hr />
                         <div className="row">
                             <div className="col-10 offset-1 offset-lg-1 col-lg-4 mb-3">
-                                <input onClick={() => actualizarUsuario()} className="btn btn-primary border border-warning bg-transparent text-light login" value="GUARDAR CAMBIOS" />
+                                <input onClick={() => actualizarUsuario()} className="btn btn-danger border border-warning bg-transparent text-light login" value="GUARDAR CAMBIOS" />
                             </div>
                             <div className="col-10 offset-1 col-lg-5 mb-3">
-                            <input className="btn-eliminar-cuenta btn btn-danger border border-warning  text-light btn-danger" onClick={()=>{EliminarCuenta()}} value="Eliminar cuenta"/>
+                            <input className="btn-eliminar-cuenta btn btn-danger border border-warning  text-light btn-danger bg-dark" onClick={()=>{EliminarCuenta()}} value="Eliminar cuenta"/>
                             </div>
                         </div>
                     </form>

@@ -111,20 +111,9 @@ function Home() {
     
         <Swiper
           initialSlide={0}
-          //slidesPerView={3}
-          //spaceBetween={30}
-          //slidesPerGroup={3}
+          slidesPerView={1}
+          spaceBetween={30}
           centeredSlidesBounds={true}
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 1,
-              spaceBetween: 40,
-            },
-          }}
           //loop={true}
           //loopFillGroupWithBlank={true}
           rewind={true} /* solo se puede loop o rewind, los 2 a la vez no */
@@ -162,7 +151,7 @@ function Home() {
             slidesPerView: 1,
             spaceBetween: 20,
           },
-          768: {
+          1150: {
             slidesPerView: 2,
             spaceBetween: 40,
           },
@@ -201,7 +190,7 @@ function Home() {
                   slidesPerView: 1,
                   spaceBetween: 20,
                 },
-                768: {
+                1150: {
                   slidesPerView: 2,
                   spaceBetween: 40,
                 },
@@ -243,7 +232,7 @@ function Home() {
                   slidesPerView: 1,
                   spaceBetween: 20,
                 },
-                768: {
+                1150: {
                   slidesPerView: 2,
                   spaceBetween: 40,
                 },
@@ -285,7 +274,7 @@ function Home() {
                   slidesPerView: 1,
                   spaceBetween: 20,
                 },
-                768: {
+                1150: {
                   slidesPerView: 2,
                   spaceBetween: 40,
                 },
@@ -327,7 +316,7 @@ function Home() {
                   slidesPerView: 1,
                   spaceBetween: 20,
                 },
-                768: {
+                1150: {
                   slidesPerView: 2,
                   spaceBetween: 40,
                 },
@@ -369,7 +358,7 @@ function Home() {
                     slidesPerView: 1,
                     spaceBetween: 20,
                   },
-                  768: {
+                  1150: {
                     slidesPerView: 2,
                     spaceBetween: 40,
                   },

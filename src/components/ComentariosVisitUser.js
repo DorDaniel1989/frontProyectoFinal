@@ -31,7 +31,6 @@ function ComentariosUser() {
     return (
         <div className="comments-container">
             <ul id="comments-list" className="comments-list">
-                <h1>Comentarios </h1>
                 <li>
                     <div className="comment-main-level d-flex flex-column align-items-center">
                         {

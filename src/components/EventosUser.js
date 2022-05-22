@@ -70,7 +70,7 @@ function EventosUser(props) {
             {
                 cards.map(item => (
 
-                    <div className="evento-usuario">
+                    <div className="evento-usuario d-flex justify-content-center flex-wrap">
                         <Card titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic} precio={item.precio}/>
                         
                         <button onClick={() => { EliminarInscripcion(item.inscripcionId)}}><DeleteForeverIcon/></button>

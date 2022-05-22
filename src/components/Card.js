@@ -83,7 +83,7 @@ export default function Carta(props) {
             </div>
 
             <div className='btn-wrapper'>
-              <Button className='boton-entrar border border-warning bg-transparent' href={ruta}><VisibilityIcon />ENTRAR</Button>
+              <Button className='boton-entrar border border-warning bg-dark' href={ruta}><VisibilityIcon />ENTRAR</Button>
             </div>
 
         </div>
