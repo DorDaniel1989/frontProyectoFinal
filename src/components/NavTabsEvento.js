@@ -55,7 +55,7 @@ function NavTabsEvento(props) {
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content active-content" : "content"}>
         
-          <TextArea display={props.display} eventoId={props.eventoId} categoriaId={props.categoriaId} usuarioId= {props.usuarioId}  />
+          <TextArea display={props.display} eventoId={props.eventoId}  usuarioId= {props.usuarioId}  />
 
           <hr className="bg-white"/>
 
