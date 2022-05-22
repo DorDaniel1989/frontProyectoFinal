@@ -41,8 +41,6 @@ function NavTabs() {
         <div
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
-          <h2>Eventos a los que asistiré</h2>
-          <hr />
           <EventosVisitUser user = {Id} />
         </div>
 

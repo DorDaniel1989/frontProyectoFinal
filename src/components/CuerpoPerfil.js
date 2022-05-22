@@ -62,16 +62,17 @@ function CuerpoPerfil() {
     } else {
       return (
 
-
         <div id="container-perfil" className='container container-perfil'>
           <div className="cabeceraPerfil" id="aside-details">
-            <div className="div_imagen">
-              <ManageAccountsIcon sx={{ fontSize: 70 }} onClick={abrirFrameDatos}/>
+            <div className="div_imagen d-flex flex-column align-items-center">
               <img src={user.imagen} className="imagenPerfil" />
-              <h1>{user.username}</h1>
+              <div className="dUsername d-flex flex-row justify-content-center">
+                <h4>@{user.username}</h4>
+                <ManageAccountsIcon sx={{ fontSize: 70 }} onClick={abrirFrameDatos}/>
+              </div>
             </div>
 
-            <div className="div_about_me">
+            <div className="div_about_me d-flex flex-column">
               <p className="about_me">{user.about_me}</p>
             </div>
 

@@ -26,12 +26,14 @@ function CuerpoVisitProfile() {
   return (
     <div className='container container-perfil'>
         <div className="cabeceraPerfil" id="aside-details">
-            <div className="div_imagen">
+            <div className="div_imagen d-flex flex-column align-items-center">
               <img src={user.imagen} className="imagenPerfil" />
-              <h1>{user.username}</h1>
+              <div className="dUsername d-flex flex-row justify-content-center">
+                <h4>@{user.username}</h4>
+              </div>
             </div>
 
-            <div className="div_about_me">
+            <div className="div_about_me d-flex flex-column">
             <p className="about_me">{user.about_me}</p>
             </div>
 
@@ -41,7 +43,7 @@ function CuerpoVisitProfile() {
 
      
 
-        <NavTabsVisitUser />
+        <NavTabsVisitUser tablaData={user} setTablaData={setUser}/>
 
       </div>
 
