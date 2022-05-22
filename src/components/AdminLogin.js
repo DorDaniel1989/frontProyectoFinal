@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/login.sass';
 import axios from 'axios';
+import Swal from 'sweetalert2'
 import LoginIcon from '@mui/icons-material/Login';
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
@@ -48,16 +49,83 @@ function AdminLogin() {
                         //console.log(respuesta)
                         localStorage.setItem('user', JSON.stringify(respuesta));
                         console.log("Bienvenid@ ", JSON.parse(localStorage.getItem('user')).nombre)
-                        window.location.reload();
+                        Swal.fire({
+                            title: 'Hola administrador!',
+                            text: "Ten cuidado con lo que tocas",
+                            position: 'top-end',
+                            color: "#ff6600",
+                            iconColor:"#39FF1A" ,
+                            icon: "success",
+                            background: "linear-gradient(to right, #434343, #979292)",
+                            customClass: {
+                                container: 'my-swal'
+                              },
+                            showConfirmButton: false,
+                            timer: 2000
+                 
+                          }).then(
+                            setTimeout(()=>{window.location.reload()},2000)
+                          )
+                          
+                        
                     }else{
-                        alert('El usuario no es un administrador')
+                        Swal.fire({
+                            title: 'Error!',
+                            text: "El usuario no es un administrador",
+                            position: 'center',
+                            icon: 'error',
+                            color: "#ff6600",
+                            iconColor: "red",
+                            background: "linear-gradient(to right, #434343, #979292)",
+                            customClass: {
+                                container: 'my-swal'
+                              },
+                            showConfirmButton: false,
+                            timer: 2000
+                 
+                          })
+                          
                     }
                 } else {
                     console.log(response)
-                    alert('El usuario o la contraseña no son correctos')
+                    Swal.fire({
+                        title: 'Error!',
+                        text: "El usuario o la contraseña no son correctos",
+                        position: 'top-end',
+                        icon: 'error',
+                        color: "#ff6600",
+                        iconColor: "red",
+                        background: "linear-gradient(to right, #434343, #979292)",
+                        customClass: {
+                            container: 'my-swal'
+                          },
+                        showConfirmButton: false,
+                        timer: 2000
+             
+                      })
+                      
                 }
             }).catch(error => {
                 console.log(error)
+                
+                Swal.fire({
+                    title: 'Error!',
+                    text: "El usuario o la contraseña no son correctos",
+                    position: 'top-end',
+                    icon: 'error',
+                    color: "#ff6600",
+                    iconColor: "red",
+                    background: "linear-gradient(to right, #434343, #979292)",
+                    customClass: {
+                        container: 'my-swal'
+                      },
+                    showConfirmButton: false,
+                    timer: 2000
+         
+                  })
+
+
+
             })
     }
 

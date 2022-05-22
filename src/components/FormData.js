@@ -2,6 +2,8 @@ import React,{useState, useEffect} from "react";
 import $ from 'jquery';
 import "jquery-ui-dist/jquery-ui";
 import axios from 'axios';
+import Swal from 'sweetalert2'
+
 
 
 export default function FormData(props) {
@@ -263,11 +265,31 @@ export default function FormData(props) {
         if(props.method == 'POST'){
             await axios.post(`http://localhost:5000/api/${endPointName[whichTabla]}`, data)
                .catch(function (error) {
-                   alert('El registro no se puedo añadir!!!')                
+                   
+                
+                Swal.fire({
+                  text:'Algo salió mal y no se pudo añadir el registro',
+                  icon: 'error',
+                  showConfirmButton: false,
+                  color: "#cb990f",
+                  position: 'top-end',
+                  background: "linear-gradient(to right, #434343, #979292)",
+                  timer: 1000
+                })
+              
+
                }).then(response =>{
                     return response.data;
                 }).then(response=>{
-                       alert('Registro añadido satisfactoriamente')
+                  Swal.fire({
+                    text:'Registro añadido satisfactoriamente',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    color: "#cb990f",
+                    position: 'top-end',
+                    background: "linear-gradient(to right, #434343, #979292)",
+                    timer: 1000
+                  })
 
                 })  
         }else{
@@ -278,11 +300,27 @@ export default function FormData(props) {
 
             await axios.put(`http://localhost:5000/api/${endPointName[whichTabla]}/${formData[id]}`, data)
                .catch(function (error) {
-                   alert('El registro no se puedo añadir!!!')                
+                Swal.fire({
+                  text:'Algo salió mal y no se pudo añadir el registro',
+                  icon: 'error',
+                  showConfirmButton: false,
+                  color: "#cb990f",
+                  position: 'top-end',
+                  background: "linear-gradient(to right, #434343, #979292)",
+                  timer: 1000
+                })       
                }).then(response =>{
                     return response.data;
                 }).then(response=>{
-                       alert('Registro añadido satisfactoriamente')
+                  Swal.fire({
+                    text:'Registro añadido satisfactoriamente',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    color: "#cb990f",
+                    position: 'top-end',
+                    background: "linear-gradient(to right, #434343, #979292)",
+                    timer: 1000
+                  })
 
                 })  
         }
