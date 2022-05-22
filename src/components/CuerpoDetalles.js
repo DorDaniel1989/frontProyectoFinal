@@ -19,6 +19,7 @@ function CuerpoDetalles(props) {
   const [evento, setEvento] = useState([])
   const [inscripciones, setInscripciones] = useState([])
   const [localizacion, setlocalizacion] = useState([])
+  const [fechaFin, setFechaFin] = useState([])
   const { Id } = useParams();
 
   const [inscripcionId, setInscripcionId] = useState([])
@@ -27,6 +28,8 @@ function CuerpoDetalles(props) {
     obtenerDatos()
     comprobarInscripcion();
   }, [])
+
+
 
 
   const obtenerDatos = async () => {
@@ -53,6 +56,7 @@ function CuerpoDetalles(props) {
       
     }
     
+    setFechaFin(new Date(+(evento.fecha_fin.split("/"))[2], (evento.fecha_fin.split("/"))[1] - 1, +(evento.fecha_fin.split("/"))[0]))
 
   }
 
@@ -281,7 +285,9 @@ function CuerpoDetalles(props) {
               </div> 
             </div>
             {
-              comprobarAforo() ? (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Inscríbete</button>) : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button>)
+              (fechaFin > new Date()) ? 
+                (comprobarAforo() ? (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Inscríbete</button>) : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button>))
+                : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Finalizado</button>)           
             }
           </div>
           <div className="body-details">
@@ -349,11 +355,12 @@ function CuerpoDetalles(props) {
               </div>
             </div>
             {
-              comprobarInscripcion() ? (
+              (fechaFin > new Date()) ? 
+              (comprobarInscripcion() ? (
                 <button id="btn-inscribir" onClick={() => { EliminarInscripcion(inscripcionId) }} type="button" className="text-light border border-warning bg-dark btn btn-danger">Cancelar inscripción</button>) :
               (
                 comprobarAforo() ? (<button id="btn-inscribir" onClick={Inscribirse} type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger ">Inscribirse</button>) : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn disabled btn-danger">Completo</button>)
-              )
+              )) : (<button id="btn-inscribir" type="button" className="text-light border border-warning bg-dark mr-md-3 btn btn-danger disabled">Finalizado</button>)
 
             }
           </div>
