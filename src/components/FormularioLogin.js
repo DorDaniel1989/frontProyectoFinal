@@ -1,7 +1,7 @@
 
 import React, { Component, useEffect, useState } from "react";
 import '../styles/login.sass';
-import '../styles/modales.sass';
+
 import axios from 'axios';
 import Swal from 'sweetalert2'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
@@ -72,16 +72,13 @@ function FormularioLogin() {
                 console.log(error)
 
                 Swal.fire({
-                    title: 'Error!',
-                    text: "Los datos que has introducido no son correctos",
+                    
+                    title: "Los datos que has introducido no son correctos",
                     position: 'top-end',
                     icon: 'error',
-                    color: "#ff6600",
                     iconColor: "red",
-                    background: "linear-gradient(to right, #434343, #979292)",
-                    customClass: {
-                        container: 'my-swal'
-                      },
+                    color: "#cb990f",
+                    background: "linear-gradient(360deg, #000000d0, transparent)",
                     showConfirmButton: false,
                     timer: 2000
          
@@ -96,14 +93,14 @@ function FormularioLogin() {
         Swal.fire({
             icon: 'success',
             position: 'top-end',
-            text: 'Bienvenido',
-            color: "#ff6600",
+            title: 'Bienvenido',
             iconColor:"#39FF1A" ,
+            color: "#cb990f",
+            background: "linear-gradient(360deg, #000000d0, transparent)",
             customClass: {
                 confirmButton: 'modal-exito' 
               },
            
-            background: "linear-gradient(to right, #434343, #979292)",
             showConfirmButton: false,
             timer: 1500
           }).then(
