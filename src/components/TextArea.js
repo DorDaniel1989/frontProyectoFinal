@@ -58,7 +58,6 @@ function TextArea(props) {
         return {
             "comentario_text" : capturarComentario(),
             "eventoId": props.eventoId,
-            "categoriaId" : props.categoriaId,
             "usuarioId": props.usuarioId,
             "fecha_comentario" : obtenerFecha(),
             "hora_comentario" : obtenerHora()
