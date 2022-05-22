@@ -349,7 +349,7 @@ export default function FormData(props) {
                 
             }
             <div className="dDataInput dDataInputBtn d-flex flex-column align-items-center">
-                <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => anyadirRegistro()} className="btn btn-primary border border-warning bg-transparent" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
+                <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => anyadirRegistro()} className="btn btn-danger border border-warning bg-transparent" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
             </div>
             </form>
         </div>
