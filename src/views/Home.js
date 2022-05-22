@@ -28,7 +28,7 @@ function Home() {
   }, [])
 
   const obtenerDatos = async () => {
-    const data = await fetch('http://localhost:5000/api/Evento');
+    const data = await fetch('http://localhost:5000/api/Evento/EventosPlusLoc');
     const eventos = await data.json()
     setEventos(eventos)
 
@@ -36,7 +36,9 @@ function Home() {
 
   //Hype data
   
-  let orderHypeados = eventos.sort((a, b) => (b.popularidad > a.popularidad) ? 1 : -1);
+  let activeEvents = eventos.filter(({ fecha_inic }) => new Date(+(fecha_inic.split("/"))[2], (fecha_inic.split("/"))[1] - 1, +(fecha_inic.split("/"))[0]) > new Date());
+
+  let orderHypeados = activeEvents.sort((a, b) => (b.popularidad > a.popularidad) ? 1 : -1);
 
   let masHypeados = orderHypeados.slice(0, 8);
 
@@ -107,72 +109,87 @@ function Home() {
     <Menu/>
     <FormularioLogin />
     <Buscador/>
-        <h1 className="titulo-eventos-home"><img  className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img  className="hype hype-on" height={50} src={fuego_activo} /></h1>     
+
+    {
+      (masHypeados.length  != 0) ? (
+        <>
+
+          <h1 className="titulo-eventos-home"><img  className="hype hype-on" height={50} src={fuego_activo} /> Los Más Hypeados   <img  className="hype hype-on" height={50} src={fuego_activo} /></h1>     
     
-        <Swiper
-          initialSlide={0}
-          slidesPerView={1}
-          spaceBetween={30}
-          centeredSlidesBounds={true}
-          //loop={true}
-          //loopFillGroupWithBlank={true}
-          rewind={true} /* solo se puede loop o rewind, los 2 a la vez no */
-          autoplay={{
-            delay: 8000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true
-          }}
-          allowTouchMove={false}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="hypeSwiper"
-        >
-          {
-            masHypeados.map((tupla) => {
-             
-              return (<SwiperSlide><Card listado="hype" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio}/></SwiperSlide>)
-            })
-          }
-      </Swiper>
+          <Swiper
+            initialSlide={0}
+            slidesPerView={1}
+            spaceBetween={30}
+            centeredSlidesBounds={true}
+            //loop={true}
+            //loopFillGroupWithBlank={true}
+            rewind={true} /* solo se puede loop o rewind, los 2 a la vez no */
+            autoplay={{
+              delay: 8000,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true
+            }}
+            allowTouchMove={false}
+            navigation={true}
+            modules={[Autoplay, Pagination, Navigation]}
+            className="hypeSwiper"
+          >
+            {
+              masHypeados.map((tupla) => {
+              
+                return (<SwiperSlide><Card listado="hype" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
+              })
+            }
+          </Swiper>
+        </>) : (<></>)
+    }
+
+        
 
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
 
-      <h1 className="titulo-eventos-home">Últimos eventos</h1>
+      {
+        (latestEvents.length  != 0) ? (
+          <>
+            <h1 className="titulo-eventos-home">Últimos eventos</h1>
 
-      <Swiper
-        initialSlide={0}
-        centeredSlidesBounds={true}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          1150: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-          },
-        }}
-        rewind={true}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true
-        }}
-        allowTouchMove={false}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {
-          latestEvents.map((tupla) => {
-            
-            return (<SwiperSlide><Card listado="ultimos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} /></SwiperSlide>)
-          })
-        }
-      </Swiper>
+            <Swiper
+              initialSlide={0}
+              centeredSlidesBounds={true}
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                1150: {
+                  slidesPerView: 2,
+                  spaceBetween: 40,
+                },
+              }}
+              rewind={true}
+              pagination={{
+                clickable: true,
+                dynamicBullets: true
+              }}
+              allowTouchMove={false}
+              navigation={true}
+              modules={[Autoplay, Pagination, Navigation]}
+              className="mySwiper"
+            >
+              {
+                latestEvents.map((tupla) => {
+                  
+                  return (<SwiperSlide><Card listado="ultimos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic} precio={tupla.precio} localizacion={tupla.localizacion} /></SwiperSlide>)
+                })
+              }
+            </Swiper>
+          </>
+        ) : (<></>)
+      }
 
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
       {/* /////////////////////////////////////////////////////////////////////////////////////////// */}
@@ -207,7 +224,7 @@ function Home() {
             >
               {
                 activeConciertos.map((tupla) => {
-                  return (<SwiperSlide><Card listado="conciertos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} /></SwiperSlide>)
+                  return (<SwiperSlide><Card listado="conciertos" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -249,7 +266,7 @@ function Home() {
             >
               {
                 activeOtakus.map((tupla) => {
-                  return (<SwiperSlide><Card  listado="otaku"titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} /></SwiperSlide>)
+                  return (<SwiperSlide><Card  listado="otaku"titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -291,7 +308,7 @@ function Home() {
             >
               {
                 activeGastro.map((tupla) => {
-                  return (<SwiperSlide><Card listado="gastronomia" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio}/></SwiperSlide>)
+                  return (<SwiperSlide><Card listado="gastronomia" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -333,7 +350,7 @@ function Home() {
             >
               {
                 activeGaming.map((tupla) => {
-                  return (<SwiperSlide><Card listado="gaming" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} /></SwiperSlide>)
+                  return (<SwiperSlide><Card listado="gaming" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
                 })
               }
             </Swiper>
@@ -375,7 +392,7 @@ function Home() {
               >
                 {
                   activeIT.map((tupla) => {
-                    return (<SwiperSlide><Card listado="it" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio}/></SwiperSlide>)
+                    return (<SwiperSlide><Card listado="it" titulo={tupla.evento} descripcion={tupla.descripcion} imagen={tupla.imagen} eventoId={tupla.eventoId} fecha={tupla.fecha_inic}  precio={tupla.precio} localizacion={tupla.localizacion}/></SwiperSlide>)
                   })
                 }
               </Swiper>

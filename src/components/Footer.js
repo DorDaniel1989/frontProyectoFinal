@@ -4,7 +4,11 @@ import imagen from "../imagenes/Eventum_golden.png";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 import GitHubIcon from '@mui/icons-material/GitHub';
-import '../styles/footer.css';
+import '../styles/footer.sass';
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarker } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 function Footer(props) {
@@ -32,7 +36,7 @@ function Footer(props) {
         <div class="footer-center">
 
             <div>
-                <i class="fa fa-map-marker"></i>
+                <FontAwesomeIcon className="fa fa-envelope" icon={faMapMarker} />
                 <p><span>Plaiaundi, s/n, </span> 20301 Irun, Gipuzkoa</p>
             </div>
 
@@ -42,7 +46,7 @@ function Footer(props) {
             </div>
 
             <div>
-                <i class="fa fa-envelope"></i>
+                <FontAwesomeIcon className="fa fa-envelope" icon={faEnvelope} />
                 <p><a href="mailto:support@company.com">support@eventum.com</a></p>
             </div>
 

@@ -28,7 +28,8 @@
             height: fit-content
 
             .dCommentRow
-               height: 111px
+               min-height: 111px
+               height: fit-content
                margin-top: 15px
 
             .dUserImg
@@ -111,6 +112,7 @@
                   background-color: black
 
                .comment-head
+                  position: relative
                   background: #FCFCFC
 
                   min-height: 48px
@@ -140,6 +142,17 @@
 
                         &:hover
                            color: #ff6600
+
+                  .sRedirectToEvent
+                     position: absolute
+
+                     top: 50%
+                     -ms-transform: translateY(-50%)
+                     transform: translateY(-50%)
+
+                     margin-right: 5px
+
+                     right: 0
 
                   svg
                      max-height: 20px

@@ -93,7 +93,7 @@ export default function Carta(props) {
         <div className='detalles-wrapper'>
 
             <h3 className='tituloCard'>{props.titulo}</h3>
-            <p>LUGAR</p>
+            <p>{props.localizacion}</p>
             <p>{props.fecha}</p>
           
         </div>
