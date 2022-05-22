@@ -11,6 +11,7 @@ import Swal from 'sweetalert2'
 function ComentariosUser() {
 
     const ruta = "/profile/";
+    const rutaEvento = "/details/";
     const [comentarios, setComentarios] = useState([])
     const { Id } = useParams();
 
@@ -30,6 +31,8 @@ function ComentariosUser() {
         console.log(`http://localhost:5000/api/Comentario/evento/${Id}`);
     }
 
+
+    console.log(comentarios)
     async function EliminarComentario(comentarioId) {
 
 
@@ -88,6 +91,7 @@ function ComentariosUser() {
                                         <span>a las {item.hora_comentario}</span>
                                         <i className="fa fa-reply"></i>
                                         <i className="fa fa-heart"></i>
+                                        <span className="sRedirectToEvent"><Link to={rutaEvento + item.eventoId}>Ir al evento</Link></span>
                                     </div>
                                     <div className="comment-content">
                                         {item.comentario_text}
