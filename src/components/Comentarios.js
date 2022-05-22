@@ -9,27 +9,20 @@ import defaultUser from "../imagenes/defaultUser.png";
 
 
 
-function Comentarios() {
+function Comentarios(props) {
 
     const ruta = "/visitProfile/";
     const rutaPropia = "/profile/";
-    const [comentarios, setComentarios] = useState([])
+    
     const { Id } = useParams();
-
-
-    useEffect(() => {
-        obtenerDatos()
-
-    }, [])
-
 
     const obtenerDatos = async () => {
 
 
         const comData = await fetch(`http://localhost:5000/api/Comentario/evento/${Id}`);
         const comentarios = await comData.json()
-        setComentarios(comentarios)
-
+        props.setTabla(comentarios)
+  
     }
 
     async function EliminarComentario(Id) {
@@ -37,7 +30,6 @@ function Comentarios() {
         console.log(Id)
         const response = await axios.delete(` https://localhost:5001/api/Comentario/${Id}`);
         console.log(response)
-        obtenerDatos()
 
         Swal.fire({
             position: 'top-end',
@@ -50,7 +42,7 @@ function Comentarios() {
             timer: 1000
           })
             
-           
+          obtenerDatos();
             
 
     }
@@ -66,7 +58,7 @@ function Comentarios() {
                     <div className="comment-main-level d-flex flex-column align-items-center">
                         {
 
-                            comentarios.map(item => (
+                            props.tabla.map(item => (
                                 
                                 <div className="dCommentRow w-100 d-flex row justify-content-center">
 

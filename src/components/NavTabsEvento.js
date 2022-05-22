@@ -1,7 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import ComentariosVisitUser from "./ComentariosVisitUser"; 
-import EventosVisitUser from "./EventosVisitUser";
 import '../styles/NavTabs.sass';
 import '../styles/detailsEvent.sass';
 import TextArea from "./TextArea";
@@ -20,6 +18,23 @@ function NavTabsEvento(props) {
   };
 
   const { Id } = useParams();
+
+  const [comentarios, setComentarios] = useState([])
+
+  useEffect(() => {
+      obtenerDatos()
+
+  }, [])
+
+
+  const obtenerDatos = async () => {
+
+
+      const comData = await fetch(`http://localhost:5000/api/Comentario/evento/${Id}`);
+      const comentarios = await comData.json()
+      setComentarios(comentarios)
+
+  }
 
 
 
@@ -55,11 +70,11 @@ function NavTabsEvento(props) {
       <div className="content-tabs">
         <div className={toggleState === 1 ? "content active-content" : "content"}>
         
-          <TextArea display={props.display} eventoId={props.eventoId}  usuarioId= {props.usuarioId}  />
+          <TextArea display={props.display} eventoId={props.eventoId}  usuarioId= {props.usuarioId}  tabla={comentarios} setTabla={setComentarios} />
 
           <hr className="bg-white"/>
 
-          <Comentarios/>
+          <Comentarios tabla={comentarios} setTabla={setComentarios}/>
         </div>
 
         <div className={toggleState === 2 ? "content active-content" : "content"}>

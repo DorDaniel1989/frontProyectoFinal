@@ -80,15 +80,22 @@ function TextArea(props) {
           timer: 1500
         }).then(
           
-        
-
-          setTimeout(()=>{window.location.href=ruta} , 1500)
+          obtenerDatos()
           
         )
        
       
         
     }
+
+    const obtenerDatos = async () => {
+
+
+      const comData = await fetch(`http://localhost:5000/api/Comentario/evento/${props.eventoId}`);
+      const comentarios = await comData.json()
+      props.setTabla(comentarios)
+
+  }
 
   return (
     <div className="comment-container d-flex row justify-content-center">
