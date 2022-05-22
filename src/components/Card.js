@@ -78,12 +78,14 @@ export default function Carta(props) {
 
         <div onLoad={convertirImagen} id={idCarta} className='fondo-card-wrapper' >
 
-            <div className="img-wrapper">
-              <img height={180} src={props.imagen} />
-            </div>
+            <div className="dBackFilter">
+              <div className="img-wrapper">
+                <img height={180} src={props.imagen} />
+              </div>
 
-            <div className='btn-wrapper'>
-              <Button className='boton-entrar border border-warning bg-dark' href={ruta}><VisibilityIcon />ENTRAR</Button>
+              <div className='btn-wrapper'>
+                <Button className='boton-entrar border border-warning bg-dark' href={ruta}><VisibilityIcon />ENTRAR</Button>
+              </div>
             </div>
 
         </div>
