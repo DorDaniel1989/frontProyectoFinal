@@ -75,7 +75,10 @@ function EventosUser(props) {
                     <div className="evento-usuario d-flex justify-content-center align-items-center flex-wrap">
                         <Card titulo={item.evento} descripcion={item.descripcion} imagen={item.imagen} eventoId={item.eventoId} fecha={item.fecha_inic} precio={item.precio}/>
                         
-                        <DeleteForeverIcon className="dDeleteSus" onClick={() => { EliminarInscripcion(item.inscripcionId)}}/>
+                        {
+                            (new Date(+(item.fecha_fin.split("/"))[2], (item.fecha_fin.split("/"))[1] - 1, +(item.fecha_fin.split("/"))[0]) > new Date()) ? (<DeleteForeverIcon className="dDeleteSus" onClick={() => { EliminarInscripcion(item.inscripcionId)}}/>) : (<DeleteForeverIcon className="dDeleteNope" />)
+                        }
+                        
 
                     </div>
                 ))
