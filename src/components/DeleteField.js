@@ -46,7 +46,7 @@ export default function DeleteField(props) {
 
     Swal.fire({
       title: '¿Estás serguro?',
-      text: "Puede que más adelante no queden plazas",
+      text: "Desapareceran todos los registros de la BBDD relacionados con el usuario",
       icon: 'warning',
       showCancelButton: true,
       color: "#cb990f",
