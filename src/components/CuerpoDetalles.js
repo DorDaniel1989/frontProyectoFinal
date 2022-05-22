@@ -71,14 +71,12 @@ function CuerpoDetalles(props) {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        text: 'Tu inscripcion fue realizada !',
+        title: 'Tu inscripcion fue realizada !',
         showConfirmButton: false,
+        iconColor:"#39FF1A" ,
         color: "#cb990f",
-        background: "linear-gradient(to right, #434343, #979292)",
-        iconColor:"#cb990f" ,
-        customClass: {
-          confirmButton: 'example-class' 
-        },
+        background: "linear-gradient(360deg, #000000d0, transparent)",
+        
         timer: 1500
       })
     
@@ -144,10 +142,9 @@ function CuerpoDetalles(props) {
         title: '¿Estás serguro?',
         text: "Puede que más adelante no queden plazas",
         icon: 'question',
-        iconColor: '#ff6600',
         showCancelButton: true,
         color: "#cb990f",
-        background: "linear-gradient(to right, #434343, #979292)",
+        background: "linear-gradient(to right, #434343, #000)",
         confirmButtonColor: 'black',
         cancelButtonColor: 'orange',
         confirmButtonText: 'Sí, estoy seguro',
@@ -160,12 +157,14 @@ function CuerpoDetalles(props) {
             EliminarInscripcionConfirmado(Id)
            
           Swal.fire({
-            text:'Subscripcion Eliminada!',
+            title:'Subscripcion Eliminada!',
             icon: 'success',
-            showConfirmButton: false,
+            iconColor:"#39FF1A" ,
             color: "#cb990f",
+            background: "linear-gradient(360deg, #000000d0, transparent)",
+            showConfirmButton: false,
             position: 'top-end',
-            background: "linear-gradient(to right, #434343, #979292)",
+            
             timer: 1000
           })
         }

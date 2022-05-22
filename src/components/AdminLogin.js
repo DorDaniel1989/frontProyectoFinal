@@ -53,13 +53,11 @@ function AdminLogin() {
                             title: 'Hola administrador!',
                             text: "Ten cuidado con lo que tocas",
                             position: 'top-end',
-                            color: "#ff6600",
+                            icon: 'success',
+                            position: 'top-end',
                             iconColor:"#39FF1A" ,
-                            icon: "success",
-                            background: "linear-gradient(to right, #434343, #979292)",
-                            customClass: {
-                                container: 'my-swal'
-                              },
+                            color: "#cb990f",
+                            background: "linear-gradient(360deg, #000000d0, transparent)",
                             showConfirmButton: false,
                             timer: 2000
                  
@@ -70,16 +68,12 @@ function AdminLogin() {
                         
                     }else{
                         Swal.fire({
-                            title: 'Error!',
-                            text: "El usuario no es un administrador",
-                            position: 'center',
+                            title: 'El usuario no es un administrador',
                             icon: 'error',
-                            color: "#ff6600",
                             iconColor: "red",
-                            background: "linear-gradient(to right, #434343, #979292)",
-                            customClass: {
-                                container: 'my-swal'
-                              },
+                            position: 'top-end',
+                            color: "#cb990f",
+                            background: "linear-gradient(360deg, #000000d0, transparent)",
                             showConfirmButton: false,
                             timer: 2000
                  
@@ -89,16 +83,12 @@ function AdminLogin() {
                 } else {
                     console.log(response)
                     Swal.fire({
-                        title: 'Error!',
-                        text: "El usuario o la contraseña no son correctos",
+                        title: 'El usuario o la contraseña no son correctos',
                         position: 'top-end',
                         icon: 'error',
-                        color: "#ff6600",
                         iconColor: "red",
-                        background: "linear-gradient(to right, #434343, #979292)",
-                        customClass: {
-                            container: 'my-swal'
-                          },
+                        color: "#cb990f",
+                        background: "linear-gradient(360deg, #000000d0, transparent)",
                         showConfirmButton: false,
                         timer: 2000
              
@@ -109,16 +99,13 @@ function AdminLogin() {
                 console.log(error)
                 
                 Swal.fire({
-                    title: 'Error!',
-                    text: "El usuario o la contraseña no son correctos",
+                    title: 'Sin inventar cuentas chavaleh',
                     position: 'top-end',
                     icon: 'error',
                     color: "#ff6600",
                     iconColor: "red",
-                    background: "linear-gradient(to right, #434343, #979292)",
-                    customClass: {
-                        container: 'my-swal'
-                      },
+                    color: "#cb990f",
+                    background: "linear-gradient(360deg, #000000d0, transparent)",
                     showConfirmButton: false,
                     timer: 2000
          

@@ -97,10 +97,6 @@ function FormularioLogin() {
             iconColor:"#39FF1A" ,
             color: "#cb990f",
             background: "linear-gradient(360deg, #000000d0, transparent)",
-            customClass: {
-                confirmButton: 'modal-exito' 
-              },
-           
             showConfirmButton: false,
             timer: 1500
           }).then(

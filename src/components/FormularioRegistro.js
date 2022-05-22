@@ -160,18 +160,19 @@ function FormularioRegistro(props) {
                          return response.data;
                      }).then(response => {
      
-                         if (response != null) {
+                         if (response !== null) {
                              var respuesta = response;
                              console.log(respuesta)
                              Swal.fire({
                                  title: 'Bienvenido!',
+                                 position: 'center',
                                  text: "Tu registro ha sido completado con exito!",
                                  icon: 'success',
-                                 iconColor: "#cb990f",
+                                 iconColor:"#39FF1A" ,
                                  showConfirmButton: false,
                                  color: "#cb990f",
-                                 background: "linear-gradient(to right, #434343, #979292)",
-                                 timer: 2000
+                                 background: "linear-gradient(to right, #434343, #000)",
+                                 timer: 3000
      
                              }).then(
                                  navigate("/")
