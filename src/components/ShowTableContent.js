@@ -43,11 +43,11 @@ export default function ShowTableContent(props) {
 
     auxTablaData.map((tupla) => {
       if('administrator' in tupla){
-        if(tupla['administrator']){
+        if ((!tupla['administrator'] && tupla['administrator'] !== 'True') || (tupla['administrator'] === 'False')){
 
-          tupla['administrator'] = 'True';
-        }else{
           tupla['administrator'] = 'False';
+        }else{
+          tupla['administrator'] = 'True';
         }
       }
       if('imagen' in tupla){

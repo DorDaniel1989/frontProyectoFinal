@@ -47,7 +47,7 @@ export default function FormData(props) {
         //añadiremos dinámicamente los inputfields
     ])
 
-    const controlarCambio = e =>{
+    function controlarCambio(e){
         var {name,value} = e.target;
 
         if(name.includes("fecha")){
@@ -74,6 +74,52 @@ export default function FormData(props) {
         }
 
         console.log(formData);
+      }
+
+      function putDataInfo(DOM){
+        var id = DOM.target.value;
+        
+        var preparedData;
+        
+        props.tablaData.map(tupla => {
+          
+          if (Object.entries(tupla)[0][1] === +(id)) {
+
+            preparedData = tupla;
+
+            
+
+            setForm(preparedData);
+            console.log(formData);
+            return true;
+          }
+        });
+
+        var inputData = document.getElementsByClassName(props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + props.method);
+        let data = Object.entries(preparedData);
+
+        for (var i = 1; i < inputData.length; i++) {
+
+          if (inputData[i].name === 'imagen') {
+            if (data[i][1] !== null && data[i][1] !== ''){
+
+              preparedData['imagen'] = data[i][1].props.children.props.src;
+              setForm(preparedData);
+            }
+          }else{
+            if (inputData[i].name === 'administrator') {
+              if (data[i][1] === 'True') {
+                $(`#${inputData[i].id}`).prop('checked', true);
+                preparedData['administrator'] = true;
+              } else {
+                $(`#${inputData[i].id}`).prop('checked', false);
+                preparedData['administrator'] = false;
+              }
+              setForm(preparedData);
+            }
+            inputData[i].value = data[i][1]; 
+          }
+        }
       }
 
 
@@ -330,17 +376,42 @@ export default function FormData(props) {
         obtenerDatos();
     }
 
-      //console.log(fieldType[whichTabla][0])
+      var tableIDs = [];
+
+      props.tablaData.map(tupla => {
+        tableIDs.push(Object.entries(tupla)[0][1])
+      })
+
+      tableIDs = tableIDs.sort((a, b) => a - b);
+      
+      //console.log(tableIDs)
 
       return (
         <div className="container border border-dark rounded-1">
             <form method={props.method} id={'Form' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} className="formEdit">
-            {
+            {//Object.entries(campo)[0][0] mediante esto obtendremos el nombre de la PK de la tabla
                 fieldType[whichTabla].map(campo => (
                     Object.entries(campo).map(([key, value]) => (
                     <div className="dDataInput d-flex flex-column align-items-center">
                         <label for={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")}>{key}:</label><br/>
-                        <input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"") + props.method} name={key} onChange={controlarCambio}></input><br/>
+                        {
+                          (props.method === 'PUT') ?
+                            (
+                              (Object.entries(campo)[0][0]== key) ? 
+                              
+                                (<select id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + props.method} name={key} className={props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + props.method} onChange={(e) => { controlarCambio(e); putDataInfo(e)}} >
+                                  <option value={0} selected></option>
+                                  {
+                                    tableIDs.map(id => (
+                                      <option value={id} >{id}</option>
+                                    ))
+                                  }
+                                  </select>) 
+                                  : 
+                                (<><input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + props.method} name={key} className={props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + props.method} onChange={(e) => { controlarCambio(e) }} ></input><br /></>)
+                              
+                            ) : (<><input type={value} id={key + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + props.method} name={key} className={props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "") + props.method} onChange={(e) => { controlarCambio(e) }} ></input><br /></>)
+                        }
                     </div>
                         
                     ))
@@ -349,7 +420,7 @@ export default function FormData(props) {
                 
             }
             <div className="dDataInput dDataInputBtn d-flex flex-column align-items-center">
-                <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g,"")} onClick={() => anyadirRegistro()} className="btn btn-danger border border-warning bg-transparent" value={'Añadir ' + (endPointNameButton[whichTabla]) }/>
+              <input id={'bPost' + props.tab.normalize('NFD').replace(/[\u0300-\u036f]/g, "")} onClick={() => anyadirRegistro()} className="btn btn-danger border border-warning bg-transparent" value={(props.method === 'PUT') ? ('Modificar ') + (endPointNameButton[whichTabla]) : ('Añadir ') + (endPointNameButton[whichTabla]) }/>
             </div>
             </form>
         </div>
